@@ -1,7 +1,12 @@
+import { Typography } from '@mui/material';
+import { theme } from './styles/theme';
+import { ThemeProvider } from '@mui/system';
 
 function App() {
   return (
-    <div>MacPaw_Test</div>
+    <ThemeProvider theme={theme}>
+      <Typography>MacPaw_Test</Typography>
+    </ThemeProvider>
   );
 }
 
