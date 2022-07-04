@@ -1,10 +1,19 @@
 import { createTheme } from '@mui/material/styles';
 
 export const theme = createTheme({
+  components: {
+    MuiCssBaseline: {
+      styleOverrides: {
+        body: {
+          backgroundColor: '#F8F8F7',
+          color: '#1D1D1D', // black
+        },
+      },
+    },
+  },
   palette: {
     primary: {
-      light: '#8C8C8C', // gray
-      main: '#1D1D1D', // black
+      main: '#8C8C8C', // gray
     },
     secondary: {
       light: '#FBE0DC', // light-red
@@ -12,18 +21,23 @@ export const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: 'Jost',
-    fontWeightRegular: 400,
+    allVariants: {
+      fontFamily: `'Jost', sans-serif`,
+    },
+    h1: {
+      fontSize: 44,
+      fontWeight: 500,
+    },
   },
   breakpoints: {
     keys: ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'],
     values: {
-      xs: 375, // min-width for mobile devices
+      xs: 0, // min-width for mobile devices
       sm: 480, // min-width for tablets
-      md: 768,  // min-width for small screens, laptops
+      md: 768, // min-width for small screens, laptops
       lg: 1024, // min-width for the rest screens
       xl: 1200,
       xxl: 1440,
-    }
-  }
+    },
+  },
 });
