@@ -1,9 +1,9 @@
 import React from 'react';
 import Box from '@mui/material/Box';
 import NavLinkText from './NavLinkText';
-import vote from '../img/vote-table.svg';
-import breeds from '../img/pet-breeds.svg';
-import search from '../img/images-search.svg';
+import vote from '../img/vote-table.png';
+import breeds from '../img/pet-breeds.png';
+import search from '../img/images-search.png';
 import NavLinkImg from './NavLinkImg';
 import { styled } from '@mui/system';
 
