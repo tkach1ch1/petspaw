@@ -1,31 +1,25 @@
 import { theme } from './styles/theme';
 import { ThemeProvider } from '@mui/system';
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  Navigate,
-} from 'react-router-dom';
-import Home from './pages/Home';
-import Breeds from './pages/Breeds';
-import Gallery from './pages/Gallery';
-import Voting from './pages/Voting';
+import { BrowserRouter as Router } from 'react-router-dom';
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
+import { useRoutes } from './routes';
+
+// Breakpoints for computers and laptops are based on the most popular display sizes, such as:
+// 1024x768
+// 1280x720
+// 1366x768
+// 1440x900
+// 1920x1080
 
 function App() {
+  const routes = useRoutes();
   return (
     <ThemeProvider theme={theme}>
-      <CssBaseline />
       <Box p={{ xs: '20px', sm: '30px' }}>
+        <CssBaseline />
         <Router>
-          <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='breeds' element={<Breeds />} />
-            <Route path='gallery' element={<Gallery />} />
-            <Route path='voting' element={<Voting />} />
-            <Route path='*' element={<Navigate to='/' replace />} />
-          </Routes>
+          <div>{routes}</div>
         </Router>
       </Box>
     </ThemeProvider>

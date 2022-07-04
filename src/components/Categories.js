@@ -12,7 +12,8 @@ const Categories = () => {
       sx={{
         display: { sm: 'flex' },
         flexDirection: { sm: 'column' },
-        alignItems: {sm: 'center'},
+        alignItems: { sm: 'center' },
+        ml: { lg: '0px', xl: '85px', xxl: '120px' },
       }}
     >
       <Box

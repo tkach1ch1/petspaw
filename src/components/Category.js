@@ -37,7 +37,7 @@ const Category = () => {
           backgroundcolor={'#B4B7FF'}
           border={'4px solid rgba(255, 255, 255, 0.6)'}
         >
-          <ImgBox>
+          <ImgBox >
             <img src={vote} alt='vote-table' />
           </ImgBox>
         </NavLinkImg>
@@ -65,7 +65,7 @@ const Category = () => {
           backgroundcolor={'#FFD280'}
           border={'4px solid rgba(255, 255, 255, 0.6)'}
         >
-          <ImgBox>
+          <ImgBox >
             <img src={search} alt='vote-table' />
           </ImgBox>
         </NavLinkImg>
