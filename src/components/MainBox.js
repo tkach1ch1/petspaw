@@ -3,13 +3,12 @@ import { styled } from '@mui/system';
 import Box from '@mui/material/Box';
 import { makeStyles } from '@mui/styles';
 
-
 const StyledMainBox = styled(Box)({
   borderRadius: '20px',
 });
 
 const useStyles = makeStyles({
-  bgStyle:(props) => ({ backgroundColor: props.backgroundColor }) ,
+  bgStyle: (props) => ({ backgroundColor: props.backgroundColor }),
 });
 
 const MainBox = ({ children, ...props }) => {
@@ -19,9 +18,8 @@ const MainBox = ({ children, ...props }) => {
       {...props}
       className={`${classes.bgStyle}`}
       sx={{
-        width: { lg: '490px', xl: '570px', xxl: '680px', xxxl: '750px', xxxxl: '850px' },
-        height: { lg: '705px', xl: '660px', xxl: '840px', xxxl: '865px', xxxxl: '1010px' },
-    
+        width: { lg: '500px', xl: '570px', xxl: '680px', xxxl: '750px' },
+        height: { lg: '637px', xl: '590px', xxl: '770px', xxxl: '795px' },
       }}
     >
       {children}

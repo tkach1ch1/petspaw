@@ -1,6 +1,6 @@
 import React from 'react';
 import Box from '@mui/material/Box';
-import NavLinkText from './NavLinkText';
+import NavLinkText from './StyledNavLink';
 import vote from '../img/vote-table.png';
 import breeds from '../img/pet-breeds.png';
 import search from '../img/images-search.png';
@@ -22,6 +22,10 @@ const CategoryWrapper = styled(Box)({
   justifyContent: 'center',
 });
 
+// At first in this component and MenuDrawer component I want to output categories through the array iteration via .map method,
+// but, wenn I tryed to do it I had some issue with react-router, I cannot fixed.
+// Syne in this project there are not so many categories, I decided to do it via copy/paste.
+
 const Category = () => {
   return (
     <Box
@@ -37,12 +41,14 @@ const Category = () => {
           backgroundcolor={'#B4B7FF'}
           border={'4px solid rgba(255, 255, 255, 0.6)'}
         >
-          <ImgBox >
+          <ImgBox>
             <img src={vote} alt='vote-table' />
           </ImgBox>
         </NavLinkImg>
 
-        <NavLinkText to='/voting'>Voting</NavLinkText>
+        <NavLinkText to='/voting' padding={'9px 0'} borderradius={'10px'}>
+          Voting
+        </NavLinkText>
       </CategoryWrapper>
 
       <CategoryWrapper>
@@ -56,7 +62,9 @@ const Category = () => {
           </ImgBox>
         </NavLinkImg>
 
-        <NavLinkText to='/breeds'>Breeds</NavLinkText>
+        <NavLinkText to='/breeds' padding={'9px 0'} borderradius={'10px'}>
+          Breeds
+        </NavLinkText>
       </CategoryWrapper>
 
       <CategoryWrapper>
@@ -65,12 +73,14 @@ const Category = () => {
           backgroundcolor={'#FFD280'}
           border={'4px solid rgba(255, 255, 255, 0.6)'}
         >
-          <ImgBox >
+          <ImgBox>
             <img src={search} alt='vote-table' />
           </ImgBox>
         </NavLinkImg>
 
-        <NavLinkText to='/gallery'>Gallery</NavLinkText>
+        <NavLinkText to='/gallery' padding={'9px 0'} borderradius={'10px'}>
+          Gallery
+        </NavLinkText>
       </CategoryWrapper>
     </Box>
   );

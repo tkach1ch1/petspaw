@@ -2,21 +2,24 @@ import React from 'react';
 import Categories from '../components/Categories';
 import Box from '@mui/material/Box';
 import MainBox from '../components/MainBox';
+import PageWrapper from '../components/PageWrapper';
+import Header from '../components/Header';
 
 const Breeds = () => {
   return (
-    <Box
-      sx={{
-        display: { lg: 'flex' },
-        justifyContent: { lg: 'center' },
-        gap: { lg: '20px', xl: '125px' },
-      }}
-    >
-      <Categories />
-      <Box sx={{ display: { xs: 'none', lg: 'block' } }}>
+    <PageWrapper>
+      <Box
+        sx={{
+          display: { xs: 'none', lg: 'block' },
+        }}
+      >
+        <Categories />
+      </Box>
+      <Box>
+        <Header />
         <MainBox backgroundColor={'#ffffff'}></MainBox>
       </Box>
-    </Box>
+    </PageWrapper>
   );
 };
 

@@ -13,7 +13,7 @@ const Categories = () => {
         display: { sm: 'flex' },
         flexDirection: { sm: 'column' },
         alignItems: { sm: 'center' },
-        ml: { lg: '0px', xl: '85px', xxl: '120px' },
+        ml: { lg: '0', xl: '85px', xxl: '120px' },
       }}
     >
       <Box

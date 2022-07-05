@@ -3,14 +3,13 @@ import { NavLink as BaseNavLink } from 'react-router-dom';
 import { styled } from '@mui/system';
 
 const StyledBaseNavLinkText = styled(BaseNavLink)({
-  borderRadius: '10px',
+  fontWeight: '500',
   textDecoration: 'none',
   textAlign: 'center',
   textTransform: 'uppercase',
   backgroundColor: '#ffffff',
   fontSize: '12px',
   letterSpacing: '2px',
-  padding: '9px 0',
   color: 'var(--main-red)',
   '&:hover': {
     color: 'var(--main-red)',
@@ -19,7 +18,7 @@ const StyledBaseNavLinkText = styled(BaseNavLink)({
   },
 });
 
-const NavLinkText = React.forwardRef(({ ...props }, ref) => {
+const StyledNavLink = React.forwardRef(({ ...props }, ref) => {
   let activeStyle = {
     backgroundColor: 'var(--main-red)',
     color: 'white',
@@ -32,8 +31,9 @@ const NavLinkText = React.forwardRef(({ ...props }, ref) => {
         ...props.style,
         ...(isActive ? activeStyle : null),
       })}
+      sx={{padding: props.padding, borderRadius: props.borderradius}}
     />
   );
 });
 
-export default NavLinkText;
+export default StyledNavLink;

@@ -39,7 +39,6 @@ export const theme = createTheme({
       xl: 1280, // 1280x720
       xxl: 1440, // 1440x900
       xxxl: 1850, // 1600x900
-      xxxxl: 1920 //1920x1080
     },
   },
 });
