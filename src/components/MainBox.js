@@ -5,7 +5,12 @@ import { makeStyles } from '@mui/styles';
 
 const StyledMainBox = styled(Box)({
   borderRadius: '20px',
-  padding: '20px'
+  padding: '20px',
+  overflow: 'hidden',
+  overflowY: 'scroll',
+  '::-webkit-scrollbar': {
+    width: 0,
+  },
 });
 
 const useStyles = makeStyles({

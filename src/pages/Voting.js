@@ -7,6 +7,7 @@ import Header from '../components/Header';
 import PageName from '../components/PageName';
 import ChosenImage from '../components/ChosenImage';
 import ChoisesButtons from '../components/ChoisesButtons';
+import InfoCommentVoting from '../components/InfoCommentVoting';
 
 const Voting = () => {
   return (
@@ -23,11 +24,16 @@ const Voting = () => {
         <MainBox backgroundColor={'#ffffff '}>
           <PageName name='Voting' />
           <Box mx={'auto'}>
-          <ChosenImage />
-          <ChoisesButtons />
+            <ChosenImage />
+            <ChoisesButtons />
           </Box>
-          <Box mt={'-36px'}>SomeGext</Box>
-
+          <Box mt={'-32px'}>
+            <InfoCommentVoting />
+            <InfoCommentVoting />
+            <InfoCommentVoting />
+            <InfoCommentVoting />
+            <InfoCommentVoting />
+          </Box>
         </MainBox>
       </Box>
     </PageWrapper>
