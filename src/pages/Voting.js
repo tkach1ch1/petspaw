@@ -4,6 +4,9 @@ import Box from '@mui/material/Box';
 import MainBox from '../components/MainBox';
 import PageWrapper from '../components/PageWrapper';
 import Header from '../components/Header';
+import PageName from '../components/PageName';
+import ChosenImage from '../components/ChosenImage';
+import ChoisesButtons from '../components/ChoisesButtons';
 
 const Voting = () => {
   return (
@@ -17,7 +20,15 @@ const Voting = () => {
       </Box>
       <Box>
         <Header />
-        <MainBox backgroundColor={'#ffffff'}></MainBox>
+        <MainBox backgroundColor={'#ffffff '}>
+          <PageName name='Voting' />
+          <Box mx={'auto'}>
+          <ChosenImage />
+          <ChoisesButtons />
+          </Box>
+          <Box>SomeGext</Box>
+
+        </MainBox>
       </Box>
     </PageWrapper>
   );

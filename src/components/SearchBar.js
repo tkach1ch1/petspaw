@@ -6,17 +6,18 @@ import search from '../img/search.svg';
 import { makeStyles } from '@mui/styles';
 
 const StyledInput = styled('input')({
-  padding: '20px 20px',
+  padding: '17px 20px 16px 20px',
   borderRadius: '20px',
   width: '100%',
   border: '2px solid #ffffff',
+  fontSize: '20px',
 
   '&::placeholder': {
     color: 'var(--gray)',
     fontFamily: 'Jost',
     fontSize: '20px',
     position: 'relative',
-    top: '2px  '
+  
   },
   '&:hover': {
     border: '2px solid var(--light-red)',
@@ -38,16 +39,16 @@ const StyledInput = styled('input')({
 const useStyles = makeStyles((theme) => ({
   [theme.breakpoints.up('lg')]: {
     textFieldStyle: {
-      '&::placeholder' : {
-        fontSize: '18px'
-      }
+      '&::placeholder': {
+        fontSize: '18px',
+      },
     },
   },
   [theme.breakpoints.up('xl')]: {
     textFieldStyle: {
-      '&::placeholder' : {
-        fontSize: '20px'
-      }
+      '&::placeholder': {
+        fontSize: '20px',
+      },
     },
   },
 }));
@@ -55,19 +56,25 @@ const useStyles = makeStyles((theme) => ({
 const StyleImg = styled('img')({
   position: 'absolute',
   right: '10px',
-  top: '9px',
+  top: '10px',
   padding: '10px 10px',
   borderRadius: '10px',
   backgroundColor: 'var(--light-red)',
 });
 
-const SearchBar = (props) => {
+const   SearchBar = (props) => {
   const classes = useStyles();
   return (
     <Box
       sx={{
         display: props.display,
-        width: {md: '430px', lg: '290px', xl: '360px', xxl: '470px', xxxl: '540px' },
+        width: {
+          md: '430px',
+          lg: '290px',
+          xl: '360px',
+          xxl: '470px',
+          xxxl: '540px',
+        },
       }}
       position={'relative'}
     >

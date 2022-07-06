@@ -5,6 +5,7 @@ import { makeStyles } from '@mui/styles';
 
 const StyledMainBox = styled(Box)({
   borderRadius: '20px',
+  padding: '20px'
 });
 
 const useStyles = makeStyles({

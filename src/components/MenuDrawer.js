@@ -11,6 +11,7 @@ const StyledMenuDrawer = styled(Box)({
   right: 0,
   top: 0,
   left: 0,
+  height: '100%',
   backgroundColor: '#F8F8F7',
   padding: '20px',
 });

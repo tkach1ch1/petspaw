@@ -31,7 +31,7 @@ const StyledNavLink = React.forwardRef(({ ...props }, ref) => {
         ...props.style,
         ...(isActive ? activeStyle : null),
       })}
-      sx={{padding: props.padding, borderRadius: props.borderradius}}
+      sx={{ padding: props.padding, borderRadius: props.borderradius }}
     />
   );
 });
