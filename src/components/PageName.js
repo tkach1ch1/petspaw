@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
 import Box from '@mui/material/Box';
 import { styled } from '@mui/system';
 import '../styles/styles.css';
 import arrow from '../img/Arrow.svg';
 import arrowHov from '../img/ArrowHov.svg';
 import PropTypes from 'prop-types';
+import { useHover } from 'usehooks-ts';
 
 const StyledBackButton = styled(Box)({
   padding: '10px 14px',
@@ -16,6 +17,7 @@ const StyledBackButton = styled(Box)({
   cursor: 'pointer',
   '&:hover': {
     backgroundColor: 'var(--main-red)',
+    transition: 'all 0.3s'
   },
 });
 
@@ -31,22 +33,13 @@ const StyledPageName = styled(Box)({
 });
 
 const PageName = (props) => {
-  const [isHovering, setIsHovering] = useState(false);
+  const hoverRef = useRef(null);
+  const isHover = useHover(hoverRef);
 
-  const onHandleMouseEnter = () => {
-    setIsHovering(true);
-  };
-
-  const onHandleMouseLeave = () => {
-    setIsHovering(false);
-  };
   return (
     <Box display={'flex'} gap={'10px'} mb={'20px'}>
-      <StyledBackButton
-        onMouseEnter={onHandleMouseEnter}
-        onMouseLeave={onHandleMouseLeave}
-      >
-        {isHovering ? (
+      <StyledBackButton ref={hoverRef}>
+        {isHover ? (
           <img src={arrowHov} alt='arrowHov' />
         ) : (
           <img src={arrow} alt='arrow' />

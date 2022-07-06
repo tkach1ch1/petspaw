@@ -1,62 +1,102 @@
 import { Box } from '@mui/system';
-import React from 'react';
+import React, { useRef } from 'react';
 import { styled } from '@mui/styles';
 import sad_smile_act from '../img/sad_smile_act.svg';
 import heart_act from '../img/heart_act.svg';
+import heart from '../img/heart.svg';
 import smile_act from '../img/smile_act.svg';
+import smile_green from '../img/smile_green.svg';
+import smile_yellow from '../img/smile_yellow.svg';
+import { useHover } from 'usehooks-ts';
 
-const ButtonsWrapper = styled(Box)({
+const MainWrapper = styled(Box)({
   display: 'flex',
   justifyContent: 'center',
 });
 
-const Box1 = styled(Box)({
-  backgroundColor: '#97EAB9',
+const ButtonsWrapper = styled(Box)({
   display: 'flex',
-  alignItems: 'center',
-  borderRadius: '10px 0 0 10px',
+  gap: '3px',
+  position: 'relative',
+  bottom: '40px',
+  border: '4px solid white',
+  backgroundColor: 'white',
 });
 
-const Box2 = styled(Box)({
-  backgroundColor: '#FF868E',
+const StyledBox = styled(Box)({
   display: 'flex',
   alignItems: 'center',
-});
-
-const Box3 = styled(Box)({
-  backgroundColor: '#FFD280',
-  display: 'flex',
-  alignItems: 'center',
-  borderRadius: '0 10px 10px 0',
+  cursor: 'pointer',
+  '&:hover': {
+    transition: 'all 0.3s',
+  },
 });
 
 const ChoisesButtons = () => {
+  const hoverRefLike = useRef(null);
+  const isHoverLike = useHover(hoverRefLike);
+
+  const hoverRefFav = useRef(null);
+  const isHoverFav = useHover(hoverRefFav);
+
+  const hoverRefDislike = useRef(null);
+  const isHoverDislike = useHover(hoverRefDislike);
+
   return (
-    <ButtonsWrapper>
-      <Box
-        sx={{
-          width: '194px',
-          display: 'flex',
-          gap: '3px',
-          position: 'relative',
-          bottom: '40px',
-          borderRadius: '10px',
-          border: '4px solid white',
-          backgroundColor: 'white',
-          mb: '-36px'
-        }}
-      >
-        <Box1 sx={{ padding: { xs: '15px' } }}>
-          <img src={smile_act} alt='smile' />
-        </Box1>
-        <Box2 sx={{ padding: { xs: '15px' } }}>
-          <img src={heart_act} alt='heart' />
-        </Box2>
-        <Box3 sx={{ padding: { xs: '15px' } }}>
-          <img src={sad_smile_act} alt='sad_smile' />
-        </Box3>
-      </Box>
-    </ButtonsWrapper>
+    <MainWrapper>
+      <ButtonsWrapper sx={{ borderRadius: { xs: '10px', sm: '20px' } }}>
+        <StyledBox
+          sx={{
+            padding: { xs: '15px', sm: '25px' },
+            borderRadius: { xs: '10px 0 0 10px', sm: '20px 0 0 20px' },
+            backgroundColor: '#97EAB9',
+            '&:hover': {
+              backgroundColor: 'rgba(151, 234, 185, 0.3)',
+            },
+          }}
+          ref={hoverRefLike}
+        >
+          {isHoverLike ? (
+            <img src={smile_green} alt='smile' />
+          ) : (
+            <img src={smile_act} alt='smile' />
+          )}
+        </StyledBox>
+        <StyledBox
+          sx={{
+            padding: { xs: '15px', sm: '25px' },
+            backgroundColor: '#FF868E',
+            '&:hover': {
+              backgroundColor: 'rgba(255, 134, 142, 0.3)',
+            },
+          }}
+            ref={hoverRefFav}
+        >
+          {isHoverFav ? (
+            <img src={heart} alt='heart' />
+          ) : (
+            <img src={heart_act} alt='heart' />
+          )}
+        </StyledBox>
+        <StyledBox
+          sx={{
+            padding: { xs: '15px', sm: '25px' },
+            borderRadius: { xs: '0 10px 10px 0', sm: '0 20px 20px 0' },
+            backgroundColor: '#FFD280',
+            '&:hover': {
+              backgroundColor: 'rgba(255, 210, 128, 0.3)',
+            },
+          }}
+            ref={hoverRefDislike}
+        >
+          {isHoverDislike ? (
+            <img src={smile_yellow} alt='sad_smile' />
+          ) : (
+            <img src={sad_smile_act} alt='sad_smile' />
+          )}
+        </StyledBox>
+      </ButtonsWrapper>
+    </MainWrapper>
   );
 };
 

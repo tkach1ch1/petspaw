@@ -26,7 +26,7 @@ const Voting = () => {
           <ChosenImage />
           <ChoisesButtons />
           </Box>
-          <Box>SomeGext</Box>
+          <Box mt={'-36px'}>SomeGext</Box>
 
         </MainBox>
       </Box>
