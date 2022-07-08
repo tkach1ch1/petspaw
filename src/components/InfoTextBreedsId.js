@@ -36,7 +36,7 @@ const InfoTextBreedsId = () => {
     <StyledFieldset>
     <StyledLegend>Basenji</StyledLegend>
       <Box sx={{ padding: { xs: '10px 20px', md: '20px 40px' } }}>
-        <Box mb={'20px'} mt={'-20px'}>
+        <Box mb={'12px'} mt={'-20px'}>
           <TypographyMainTitle  sx={{fontSize: {xs: '16px', md: '20px'}}}>Family companion cat</TypographyMainTitle>
         </Box>
 

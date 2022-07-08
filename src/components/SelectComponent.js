@@ -2,7 +2,7 @@ import { Box, styled } from '@mui/system';
 import React from 'react';
 import arrow_down from '../img/ArrowDown.svg';
 
-const StyledFormControl = styled('select')({
+export const StyledFormControl = styled('select')({
   appearance: 'none',
   width: '100%',
   border: '2px solid transparent',
@@ -27,7 +27,7 @@ const StyledImg = styled('img')({
   cursor: 'pointer',
 });
 
-const SelectComponent = (props) => {
+const SelectComponent = ({...props}) => {
   return (
     <Box sx={{ position: 'relative', width: '100%' }}>
       <StyledFormControl
@@ -40,6 +40,9 @@ const SelectComponent = (props) => {
             xxl: props.widthxxl,
             xxxl: props.widthxxxl,
           },
+          backgroundColor: props.backgroundColor,
+          color: props.color,
+          mb: props.mb
         }}
       >
         {props.firstParam && <option>{props.firstParam}</option>}

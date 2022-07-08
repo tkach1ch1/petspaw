@@ -33,6 +33,8 @@ const Voting = () => {
             <InfoCommentVoting />
             <InfoCommentVoting />
             <InfoCommentVoting />
+            <InfoCommentVoting />
+            <InfoCommentVoting />
           </Box>
         </MainBox>
       </Box>

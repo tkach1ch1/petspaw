@@ -14,7 +14,6 @@ import SearchBar from './SearchBar';
 const StyledLinkHeader = styled(StyledNavLink)({
   padding: '15px',
   display: 'flex',
-  alignItems: 'center',
   borderRadius: '20px',
 });
 
@@ -47,14 +46,12 @@ const Header = () => {
         {/* Like, Favourite, Dislike buttons */}
         <Box sx={{ display: 'flex', gap: '10px', ml: { lg: '10px' } }}>
           <StyledLinkHeader to='/favourites'>
-            {/* <img src={smile_act} alt='heart_act' /> */}
-
-            <img src={smile} alt='heart' />
+            <img src={smile} alt='smile' />
           </StyledLinkHeader>
           <StyledLinkHeader to='/likes'>
             {/* <img src={heart_act} alt='heart_act' /> */}
 
-            <img src={heart} alt='smile' />
+            <img src={heart} alt='heart' />
           </StyledLinkHeader>
           <StyledLinkHeader to='/dislikes'>
             {/* <img src={sad_smile_act} alt='heart_act' /> */}

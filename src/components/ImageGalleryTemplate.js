@@ -33,6 +33,7 @@ const BackBox = styled(Box)({
   top: 0,
   display: 'flex',
   justifyContent: 'center',
+  alignItems: 'center',
   width: '100%',
   height: '100%',
   borderRadius: '20px',
@@ -40,14 +41,14 @@ const BackBox = styled(Box)({
   opacity: 0,
   '&: hover': {
     opacity: 1,
-    transition: 'all 0.3s',
+    transition: 'all 0.4s',
   },
 });
 
 const ToInfoPageButton = styled(Box)({
   position: 'absolute',
-  bottom: '10px',
-  padding: '5px 24px',
+  display: 'flex',
+  justifyContent: 'center',
   backgroundColor: '#ffffff',
   border: 'none',
   color: 'var(--main-red)',
@@ -55,7 +56,7 @@ const ToInfoPageButton = styled(Box)({
   borderRadius: '10px',
 });
 
-const ImageGalleryTemplate = () => {
+const ImageGalleryTemplate = ({ ...props }) => {
   return (
     <StyledGrid
       sx={{
@@ -63,16 +64,18 @@ const ImageGalleryTemplate = () => {
         flexDirection: { xs: 'column' },
       }}
     >
-      <StyledItem sx={{ gridArea: 'a', height: {xs: '205px', md: '100%'} }}>
+      <StyledItem sx={{ gridArea: 'a', height: { xs: '205px', md: '100%' } }}>
         <StyledImg src={foto} alt='foto' />
         <BackBox>
-          <ToInfoPageButton>Abyssinian</ToInfoPageButton>
+          <ToInfoPageButton width={props.width} height={props.height} padding={props.padding} bottom={props.bottom}>
+            {props.param}
+          </ToInfoPageButton>
         </BackBox>
       </StyledItem>
-      <StyledItem sx={{height: {xs: '205px', md: '100%'} }}>
+      <StyledItem sx={{ height: { xs: '205px', md: '100%' } }}>
         <StyledImg src={foto} alt='foto' />
         <BackBox>
-          <ToInfoPageButton>Abyssinian</ToInfoPageButton>
+          <ToInfoPageButton width={props.width} height={props.height} padding={props.padding} bottom={props.bottom}>{props.param}</ToInfoPageButton>
         </BackBox>
       </StyledItem>
       <StyledItem></StyledItem>

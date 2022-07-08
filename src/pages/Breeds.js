@@ -11,8 +11,6 @@ import ImageGalleryTemplate from '../components/ImageGalleryTemplate';
 import SortButtons from '../components/SortButtons';
 import PrevNextButtonsBreeds from '../components/PrevNextButtonsBreeds';
 
-
-
 const names = [
   'Oliver Hansen',
   'Van Henry',
@@ -29,7 +27,6 @@ const names = [
 const limit = ['Limit: 5', 'Limit: 10', 'Limit: 15', 'Limit: 20'];
 
 const Breeds = () => {
- 
   return (
     <PageWrapper>
       <Box
@@ -73,7 +70,7 @@ const Breeds = () => {
               <SortButtons />
             </Box>
           </Box>
-          <ImageGalleryTemplate />
+          <ImageGalleryTemplate param={'Abyssinian'} padding={'5px 24px'} bottom={'10px'} width={'90%'}/>
           <PrevNextButtonsBreeds />
         </MainBox>
       </Box>

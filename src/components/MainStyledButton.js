@@ -5,6 +5,8 @@ import { Box, Typography } from '@mui/material';
 const StyledButton = styled(Box)({
   display: 'flex',
   alignItems: 'center',
+  height: 'fit-content',
+  justifyContent: 'center',
   gap: '15px',
   backgroundColor: 'var(--light-red)',
   color: 'var(--main-red)',
@@ -14,10 +16,11 @@ const StyledButton = styled(Box)({
   borderRadius: '10px',
   letterSpacing: '2px',
   cursor: 'pointer',
+  
   '&:hover': {
     backgroundColor: 'var(--main-red)',
     color: 'white',
-    transition: 'all 0.3s',
+    transition: 'all 0.4s',
   },
 });
 
@@ -25,6 +28,7 @@ export const StyledTypography = styled(Typography)({
   fontSize: '12px',
   fontFamily: 'Jost',
   fontWeight: '500',
+  
 });
 
 const MainStyledButton = React.forwardRef(({ children, ...props }, ref) => {
