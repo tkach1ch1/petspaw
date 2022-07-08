@@ -4,13 +4,16 @@ import MenuIcon from '@mui/icons-material/MenuOutlined';
 import { Box, IconButton } from '@mui/material';
 import '../styles/styles.css';
 import MenuDrawer from './MenuDrawer';
-import PropTypes from 'prop-types';
 
 export const StyledIconButton = styled(IconButton)({
   padding: '10px',
   width: '60px',
   backgroundColor: 'white',
   borderRadius: '20px',
+  '&:hover': {
+    backgroundColor: 'var(--light-red)',
+    transition: 'all 0.3s',
+  },
 });
 
 const BurgerMenu = () => {
@@ -42,12 +45,6 @@ const BurgerMenu = () => {
       {open && <MenuDrawer handleMenuClose={handleMenuClose} />}
     </Box>
   );
-};
-
-BurgerMenu.propTypes = {
-  handleMenuOpen: PropTypes.func,
-  handleMenuClose: PropTypes.func,
-  open: PropTypes.bool,
 };
 
 export default BurgerMenu;

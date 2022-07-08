@@ -7,7 +7,7 @@ import search from '../img/images-search.png';
 import NavLinkImg from './NavLinkImg';
 import { styled } from '@mui/system';
 
-export const ImgBox = styled(Box)({
+const ImgBox = styled(Box)({
   width: '130px',
   height: '190px',
   display: 'flex',
@@ -15,7 +15,7 @@ export const ImgBox = styled(Box)({
   alignItems: 'center',
 });
 
- export const CategoryWrapper = styled(Box)({
+const CategoryWrapper = styled(Box)({
   display: 'flex',
   flexDirection: 'column',
   gap: '10px',
@@ -32,7 +32,7 @@ const Category = () => {
       sx={{
         display: 'flex',
         flexDirection: { xs: 'column', sm: 'row' },
-        justifyContent: {sm: 'center'},
+        justifyContent: { sm: 'center' },
         gap: { xs: '20px', sm: '16px' },
       }}
     >
