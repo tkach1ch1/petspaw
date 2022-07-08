@@ -1,11 +1,11 @@
 import React, { useRef } from 'react';
-import Box from '@mui/material/Box';
 import { styled } from '@mui/system';
 import '../styles/styles.css';
-import arrow from '../img/Arrow.svg';
-import arrowHov from '../img/ArrowHov.svg';
+import Box from '@mui/material/Box';
 import { useHover } from 'usehooks-ts';
 import { useNavigate } from 'react-router-dom';
+import arrow from '../img/Arrow.svg';
+import arrowHov from '../img/ArrowHov.svg';
 
 const StyledBackButton = styled(Box)({
   padding: '10px 14px',
@@ -36,7 +36,7 @@ const PageName = (props) => {
   const hoverRef = useRef(null);
   const isHover = useHover(hoverRef);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   return (
     <Box display={'flex'} gap={'10px'} sx={{ mb: { xs: '10px', sm: '20px' } }}>

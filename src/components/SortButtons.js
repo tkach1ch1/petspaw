@@ -1,10 +1,10 @@
-import { Box } from '@mui/system';
 import React, { useState } from 'react';
+import { Box } from '@mui/system';
+import { styled } from '@mui/material/styles';
 import sortBA from '../img/sortBA.svg';
 import sortAB from '../img/sortAB.svg';
 import sortBA_act from '../img/sortBA_act.svg';
 import sortAB_act from '../img/sortAB_act.svg';
-import { styled } from '@mui/material/styles';
 
 const SortButton = styled(Box)({
   background: 'var(--main-gray)',

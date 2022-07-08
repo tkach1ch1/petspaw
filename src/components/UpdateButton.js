@@ -1,10 +1,10 @@
-import styled from '@emotion/styled';
-import { Box } from '@mui/material';
 import React, { useRef } from 'react';
+import styled from '@emotion/styled';
 import '../styles/styles.css';
+import { useHover } from 'usehooks-ts';
+import { Box } from '@mui/material';
 import update from '../img/update.svg';
 import update_hov from '../img/update_hov.svg';
-import { useHover } from 'usehooks-ts';
 
 const StyledBox = styled(Box)({
   backgroundColor: 'white',

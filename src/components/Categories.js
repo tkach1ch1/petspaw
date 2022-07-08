@@ -1,10 +1,10 @@
 import React from 'react';
-import Box from '@mui/material/Box';
-import { Link } from 'react-router-dom';
-import logo from '../img/Logo.svg';
-import Typography from '@mui/material/Typography';
 import '../styles/styles.css';
+import { Link } from 'react-router-dom';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 import Category from './Category';
+import logo from '../img/Logo.svg';
 
 const Categories = () => {
   return (

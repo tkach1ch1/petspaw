@@ -1,13 +1,13 @@
 import React from 'react';
+import { useHover } from 'usehooks-ts';
+import { Box } from '@mui/material';
 import MainStyledButton, {
   StyledTypography,
 } from '../components/MainStyledButton';
-import { useHover } from 'usehooks-ts';
 import arrow_prev from '../img/arrow_prew.svg';
 import arrow_next from '../img/arrow_next.svg';
 import arrow_prev_hov from '../img/arrow_prew_hov.svg';
 import arrow_next_hov from '../img/arrow_next_hov.svg';
-import { Box } from '@mui/material';
 
 const PrevNextButtonsBreeds = () => {
   const hoverRefPrev = React.createRef();
@@ -16,7 +16,12 @@ const PrevNextButtonsBreeds = () => {
   const hoverRefNext = React.createRef();
   const isHoverNext = useHover(hoverRefNext);
   return (
-    <Box display={{xs: 'none', md: 'flex'}} justifyContent={'center'} gap={'40px'} mt={'15px'}>
+    <Box
+      display={{ xs: 'none', md: 'flex' }}
+      justifyContent={'center'}
+      gap={'40px'}
+      mt={'15px'}
+    >
       <MainStyledButton padding='11px 35px' ref={hoverRefPrev}>
         <Box display={'flex'} alignItems={'center'}>
           {isHoverPrev ? (

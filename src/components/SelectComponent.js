@@ -1,5 +1,5 @@
-import { Box, styled } from '@mui/system';
 import React from 'react';
+import { Box, styled } from '@mui/system';
 import arrow_down from '../img/ArrowDown.svg';
 
 export const StyledFormControl = styled('select')({

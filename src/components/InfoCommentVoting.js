@@ -1,7 +1,7 @@
-import { Box, Typography } from '@mui/material';
 import React from 'react';
 import { styled } from '@mui/styles';
 import '../styles/styles.css';
+import { Box, Typography } from '@mui/material';
 import heart from '../img/heart.svg';
 
 const CommentWrapper = styled(Box)({
@@ -35,15 +35,16 @@ const InfoCommentVoting = () => {
   };
 
   return (
-    <CommentWrapper sx={{ padding: { xs: '15px', sm: 0 } }} mb={'10px'}>
+    <CommentWrapper sx={{ padding: { xs: '15px', sm: 0 }, mb: '10px' }} >
       <Box
         sx={{
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
           padding: { xs: 0, sm: '15px' },
+          mb: '10px'
         }}
-        mb={'10px'}
+        
       >
         <TimeBox>{date()}</TimeBox>
         <Typography

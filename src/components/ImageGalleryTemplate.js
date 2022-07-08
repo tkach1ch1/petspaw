@@ -1,6 +1,6 @@
-import { Box, styled } from '@mui/system';
 import React from 'react';
 import '../styles/styles.css';
+import { Box, styled } from '@mui/system';
 import foto from '../img/image 1.png';
 
 const StyledGrid = styled(Box)({
@@ -55,6 +55,8 @@ const ToInfoPageButton = styled(Box)({
   textAlign: 'center',
   borderRadius: '10px',
 });
+
+//TODO:Think how I can make a code smaller and clearer
 
 const ImageGalleryTemplate = ({ ...props }) => {
   return (

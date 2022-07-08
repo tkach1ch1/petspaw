@@ -1,9 +1,9 @@
 import React from 'react';
 import { styled } from '@mui/styles';
-import Box from '@mui/material/Box';
 import '../styles/styles.css';
-import search from '../img/search.svg';
 import { makeStyles } from '@mui/styles';
+import Box from '@mui/material/Box';
+import search from '../img/search.svg';
 
 const StyledInput = styled('input')({
   padding: '17px 20px 16px 20px',
@@ -17,7 +17,6 @@ const StyledInput = styled('input')({
     fontFamily: 'Jost',
     fontSize: '20px',
     position: 'relative',
-  
   },
   '&:hover': {
     border: '2px solid var(--light-red)',
@@ -62,7 +61,7 @@ const StyleImg = styled('img')({
   backgroundColor: 'var(--light-red)',
 });
 
-const   SearchBar = (props) => {
+const SearchBar = (props) => {
   const classes = useStyles();
   return (
     <Box
@@ -75,6 +74,7 @@ const   SearchBar = (props) => {
           xxl: '470px',
           xxxl: '540px',
         },
+       
       }}
       position={'relative'}
     >

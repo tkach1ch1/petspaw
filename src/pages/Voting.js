@@ -1,6 +1,6 @@
 import React from 'react';
-import Categories from '../components/Categories';
 import Box from '@mui/material/Box';
+import Categories from '../components/Categories';
 import MainBox from '../components/MainBox';
 import PageWrapper from '../components/PageWrapper';
 import Header from '../components/Header';

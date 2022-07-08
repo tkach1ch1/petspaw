@@ -4,6 +4,7 @@ import Box from '@mui/material/Box';
 import MainBox from '../components/MainBox';
 import PageWrapper from '../components/PageWrapper';
 import Header from '../components/Header';
+import PageName from '../components/PageName';
 
 const FavouritesPage = () => {
 
@@ -22,7 +23,9 @@ const FavouritesPage = () => {
       </Box>
       <Box>
         <Header isActivedFav={isActivedFav} />
-        <MainBox backgroundColor={'#ffffff'}></MainBox>
+        <MainBox backgroundColor={'#ffffff'}>
+          <PageName name='Favourites'/>
+        </MainBox>
       </Box>
     </PageWrapper>
   );

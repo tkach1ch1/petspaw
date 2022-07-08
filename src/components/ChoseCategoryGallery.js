@@ -1,8 +1,8 @@
 import React from 'react';
-import SelectComponent from '../components/SelectComponent';
 import styled from '@emotion/styled';
-import Box from '@mui/material/Box';
 import '../styles/styles.css';
+import SelectComponent from '../components/SelectComponent';
+import Box from '@mui/material/Box';
 import { InputLabel } from '@mui/material';
 import UpdateButton from './UpdateButton';
 

@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
 import { Pagination } from 'swiper';
+import 'swiper/css';
 import 'swiper/css/pagination';
 import foto from '../img/image 1.png';
 

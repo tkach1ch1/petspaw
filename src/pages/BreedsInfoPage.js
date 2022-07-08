@@ -1,12 +1,13 @@
 import React from 'react';
-import Categories from '../components/Categories';
+import styled from '@emotion/styled';
+import '../styles/styles.css';
 import Box from '@mui/material/Box';
+import Categories from '../components/Categories';
 import PageWrapper from '../components/PageWrapper';
 import Header from '../components/Header';
 import PageName, { StyledPageName } from '../components/PageName';
 import MainBox from '../components/MainBox';
-import styled from '@emotion/styled';
-import '../styles/styles.css';
+
 import SwiperInfoPage from '../components/SwiperInfoPage';
 import InfoTextBreedsId from '../components/InfoTextBreedsId';
 

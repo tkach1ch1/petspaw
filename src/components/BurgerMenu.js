@@ -1,8 +1,8 @@
-import { styled } from '@mui/system';
 import React, { useState } from 'react';
+import { styled } from '@mui/system';
+import '../styles/styles.css';
 import MenuIcon from '@mui/icons-material/MenuOutlined';
 import { Box, IconButton } from '@mui/material';
-import '../styles/styles.css';
 import MenuDrawer from './MenuDrawer';
 
 export const StyledIconButton = styled(IconButton)({

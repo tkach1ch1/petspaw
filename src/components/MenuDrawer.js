@@ -1,8 +1,8 @@
-import { Box } from '@mui/material';
-import { styled } from '@mui/system';
 import React from 'react';
-import { StyledIconButton } from './BurgerMenu';
+import { styled } from '@mui/system';
+import { Box } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
+import { StyledIconButton } from './BurgerMenu';
 import Category from './Category';
 
 const StyledMenuDrawer = styled(Box)({

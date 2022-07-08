@@ -1,11 +1,11 @@
 import React from 'react';
+import { styled } from '@mui/system';
 import Box from '@mui/material/Box';
 import NavLinkText from './StyledNavLink';
+import NavLinkImg from './NavLinkImg';
 import vote from '../img/vote-table.png';
 import breeds from '../img/pet-breeds.png';
 import search from '../img/images-search.png';
-import NavLinkImg from './NavLinkImg';
-import { styled } from '@mui/system';
 
 const ImgBox = styled(Box)({
   width: '130px',

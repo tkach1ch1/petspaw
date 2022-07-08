@@ -34,14 +34,18 @@ const TypographyDescription = styled(Typography)({
 const InfoTextBreedsId = () => {
   return (
     <StyledFieldset>
+
     <StyledLegend>Basenji</StyledLegend>
+
       <Box sx={{ padding: { xs: '10px 20px', md: '20px 40px' } }}>
+
         <Box mb={'12px'} mt={'-20px'}>
           <TypographyMainTitle  sx={{fontSize: {xs: '16px', md: '20px'}}}>Family companion cat</TypographyMainTitle>
         </Box>
 
         <Box display={{ md: 'flex'}} sx={{ gap: {md: '100px', lg: '30px'} }}>
           <Box flexDirection={{ md: 'column' }} width={{lg: '220px', xl: '250px'}}>
+            
             <TypographyTitle>Temperament:</TypographyTitle>
             <TypographyDescription sx={{ mb: '10px' }}>
               Affectionate, Energetic, Alert, Curious, Playful, Intelligent

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box } from '@mui/system';
-import catPhoto from '../img/image 1.png';
 import { makeStyles } from '@mui/styles';
+import catPhoto from '../img/image 1.png';
 
 const useStyles = makeStyles((theme) => ({
   [theme.breakpoints.up('xs')]: {

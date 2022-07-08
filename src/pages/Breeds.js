@@ -49,28 +49,20 @@ const Breeds = () => {
             }}
           >
             <PageName name='Breeds' />
-            <Box mb={'10px'}>
-              <SelectComponent
-                firstParam='All breeds'
-                arr={names}
-                widthmd='220px'
-                widthxl='117px'
-                widthxxl='226px'
-                widthxxxl='260px'
-              />
+            <Box mb={'10px'} width={'100%'}>
+              <SelectComponent firstParam='All breeds' arr={names} />
             </Box>
-            <Box display={'flex'} gap={'10px'}>
-              <SelectComponent
-                arr={limit}
-                widthmd='135px'
-                widthxl='100px'
-                widthxxl='101px'
-                widthxxxl='135px'
-              />
+            <Box display={'flex'} gap={'10px'} width={'100%'}>
+              <SelectComponent arr={limit} widthxl={'100px'} widthxxl={'100%'}/>
               <SortButtons />
             </Box>
           </Box>
-          <ImageGalleryTemplate param={'Abyssinian'} padding={'5px 24px'} bottom={'10px'} width={'90%'}/>
+          <ImageGalleryTemplate
+            param={'Abyssinian'}
+            padding={'5px 24px'}
+            bottom={'10px'}
+            width={'90%'}
+          />
           <PrevNextButtonsBreeds />
         </MainBox>
       </Box>

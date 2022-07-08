@@ -1,7 +1,7 @@
 import React from 'react';
 import { styled } from '@mui/system';
-import Box from '@mui/material/Box';
 import { makeStyles } from '@mui/styles';
+import Box from '@mui/material/Box';
 
 const StyledMainBox = styled(Box)({
   borderRadius: '20px',

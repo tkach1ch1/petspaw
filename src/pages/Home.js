@@ -1,10 +1,10 @@
 import React from 'react';
-import Categories from '../components/Categories';
-import girlAndPet from '../img/girl-and-pet 1.png';
-import Box from '@mui/material/Box';
 import '../styles/styles.css';
 import { makeStyles, styled } from '@mui/styles';
+import Box from '@mui/material/Box';
+import Categories from '../components/Categories';
 import PageWrapper from '../components/PageWrapper';
+import girlAndPet from '../img/girl-and-pet 1.png';
 
 const useStyles = makeStyles((theme) => ({
   imgSize: {
