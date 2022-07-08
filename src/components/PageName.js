@@ -5,6 +5,7 @@ import '../styles/styles.css';
 import arrow from '../img/Arrow.svg';
 import arrowHov from '../img/ArrowHov.svg';
 import { useHover } from 'usehooks-ts';
+import { useNavigate } from 'react-router-dom';
 
 const StyledBackButton = styled(Box)({
   padding: '10px 14px',
@@ -20,7 +21,7 @@ const StyledBackButton = styled(Box)({
   },
 });
 
-const StyledPageName = styled(Box)({
+export const StyledPageName = styled(Box)({
   backgroundColor: 'var(--main-red)',
   padding: '5px 30px',
   color: 'white',
@@ -35,9 +36,11 @@ const PageName = (props) => {
   const hoverRef = useRef(null);
   const isHover = useHover(hoverRef);
 
+  const navigate = useNavigate()
+
   return (
     <Box display={'flex'} gap={'10px'} sx={{ mb: { xs: '10px', sm: '20px' } }}>
-      <StyledBackButton ref={hoverRef}>
+      <StyledBackButton ref={hoverRef} onClick={() => navigate(-1)}>
         {isHover ? (
           <img src={arrowHov} alt='arrowHov' />
         ) : (

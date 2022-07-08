@@ -7,12 +7,14 @@ import Voting from './pages/Voting';
 import FavouritesPage from './pages/FavouritesPage';
 import LikesPage from './pages/LikesPage';
 import DislikesPage from './pages/DislikesPage';
+import BreedsInfoPage from './pages/BreedsInfoPage';
 
 export const useRoutes = () => {
   return (
     <Routes>
       <Route path='/' element={<Home />} />
       <Route path='breeds' element={<Breeds />} />
+      <Route path='breeds/:id' element={<BreedsInfoPage />} />
       <Route path='gallery' element={<Gallery />} />
       <Route path='voting' element={<Voting />} />
       <Route path='favourites' element={<FavouritesPage />} />

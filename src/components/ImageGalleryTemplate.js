@@ -4,8 +4,16 @@ import '../styles/styles.css';
 import foto from '../img/image 1.png';
 
 const StyledGrid = styled(Box)({
-  display: 'grid',
   gridGap: '20px',
+  gridAutoRows: '150px',
+  gridTemplateColumns: 'repeat(3, 1fr)',
+  gridTemplateAreas: `'a b c'
+                      'a d d'
+                      'e d d'
+                      'f g h'
+                      'i i h'
+                      'i i j'
+                      `,
 });
 
 const StyledItem = styled(Box)({
@@ -37,10 +45,11 @@ const BackBox = styled(Box)({
 });
 
 const ToInfoPageButton = styled(Box)({
-  position: 'absolute', 
+  position: 'absolute',
   bottom: '10px',
   padding: '5px 24px',
   backgroundColor: '#ffffff',
+  border: 'none',
   color: 'var(--main-red)',
   textAlign: 'center',
   borderRadius: '10px',
@@ -50,27 +59,17 @@ const ImageGalleryTemplate = () => {
   return (
     <StyledGrid
       sx={{
-        gridAutoRows: { xs: '207px', md: '150px' },
-        gridTemplateColumns: { xs: '100%', md: 'repeat(3, 1fr)' },
-        gridTemplateAreas: {
-          xs: 'none',
-          md: `'a b c'
-        'a d d'
-        'e d d'
-        'f g h'
-        'i i h'
-        'i i j'
-        `,
-        },
+        display: { xs: 'flex', md: 'grid' },
+        flexDirection: { xs: 'column' },
       }}
     >
-      <StyledItem sx={{ gridArea: 'a' }}>
+      <StyledItem sx={{ gridArea: 'a', height: {xs: '205px', md: '100%'} }}>
         <StyledImg src={foto} alt='foto' />
         <BackBox>
           <ToInfoPageButton>Abyssinian</ToInfoPageButton>
         </BackBox>
       </StyledItem>
-      <StyledItem>
+      <StyledItem sx={{height: {xs: '205px', md: '100%'} }}>
         <StyledImg src={foto} alt='foto' />
         <BackBox>
           <ToInfoPageButton>Abyssinian</ToInfoPageButton>
