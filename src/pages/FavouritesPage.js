@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Categories from '../components/Categories';
 import Box from '@mui/material/Box';
 import MainBox from '../components/MainBox';
 import PageWrapper from '../components/PageWrapper';
 import Header from '../components/Header';
-// import smile_act from '../img/smile_act.svg';
 
 const FavouritesPage = () => {
+
+  const [isActivedFav, setIsActivedFav] = useState(false)
+  useEffect(() =>{
+    setIsActivedFav(true)
+  }, []) 
   return (
     <PageWrapper>
       <Box
@@ -17,7 +21,7 @@ const FavouritesPage = () => {
         <Categories />
       </Box>
       <Box>
-        <Header />
+        <Header isActivedFav={isActivedFav} />
         <MainBox backgroundColor={'#ffffff'}></MainBox>
       </Box>
     </PageWrapper>

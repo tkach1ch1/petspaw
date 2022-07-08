@@ -4,9 +4,9 @@ import StyledNavLink from './StyledNavLink';
 import heart from '../img/heart.svg';
 import smile from '../img/smile.svg';
 import sad_smile from '../img/sad_smile.svg';
-// import heart_act from '../img/heart_act.svg';
-// import smile_act from '../img/smile_act.svg';
-// import sad_smile_act from '../img/sad_smile_act.svg';
+import heart_act from '../img/heart_act.svg';
+import smile_act from '../img/smile_act.svg';
+import sad_smile_act from '../img/sad_smile_act.svg';
 import { styled } from '@mui/styles';
 import BurgerMenu from './BurgerMenu';
 import SearchBar from './SearchBar';
@@ -14,10 +14,11 @@ import SearchBar from './SearchBar';
 const StyledLinkHeader = styled(StyledNavLink)({
   padding: '15px',
   display: 'flex',
+  justifyContent: 'center',
   borderRadius: '20px',
 });
 
-const Header = () => {
+const Header = ({ ...props }) => {
   return (
     <Box
       sx={{
@@ -46,17 +47,26 @@ const Header = () => {
         {/* Like, Favourite, Dislike buttons */}
         <Box sx={{ display: 'flex', gap: '10px', ml: { lg: '10px' } }}>
           <StyledLinkHeader to='/favourites'>
-            <img src={smile} alt='smile' />
+            {props.isActivedFav ? (
+              <img src={smile_act} alt='smile_act' />
+            ) : (
+              <img src={smile} alt='smile' />
+            )}
           </StyledLinkHeader>
-          <StyledLinkHeader to='/likes'>
-            {/* <img src={heart_act} alt='heart_act' /> */}
 
-            <img src={heart} alt='heart' />
+          <StyledLinkHeader to='/likes'>
+            {props.isActivedLike ? (
+              <img src={heart_act} alt='heart_act' />
+            ) : (
+              <img src={heart} alt='heart' />
+            )}
           </StyledLinkHeader>
           <StyledLinkHeader to='/dislikes'>
-            {/* <img src={sad_smile_act} alt='heart_act' /> */}
-
-            <img src={sad_smile} alt='sad_smile' />
+            {props.isActivedDis ? (
+              <img src={sad_smile_act} alt='heart_act' />
+            ) : (
+              <img src={sad_smile} alt='sad_smile' />
+            )}
           </StyledLinkHeader>
         </Box>
       </Box>

@@ -18,7 +18,7 @@ const StyledBaseNavLinkText = styled(BaseNavLink)({
   },
 });
 
-const StyledNavLink = React.forwardRef(({ ...props }, ref) => {
+const StyledNavLink = React.forwardRef(({...props}, ref) => {
   let activeStyle = {
     backgroundColor: 'var(--main-red)',
     color: 'white',
