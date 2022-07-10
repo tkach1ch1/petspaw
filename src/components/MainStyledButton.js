@@ -33,7 +33,7 @@ export const StyledTypography = styled(Typography)({
 
 const MainStyledButton = React.forwardRef(({ children, ...props }, ref) => {
   return (
-    <StyledButton sx={{ padding: props.padding }} ref={ref}>
+    <StyledButton sx={{ padding: props.padding }} ref={ref} onClick={props.onClick}>
       {children}
     </StyledButton>
   );
