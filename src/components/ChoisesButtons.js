@@ -1,6 +1,8 @@
 import React, { useRef } from 'react';
 import { styled } from '@mui/styles';
 import { useHover } from 'usehooks-ts';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchImage } from '../redux/votingPageReducer';
 import { Box } from '@mui/system';
 import sad_smile_act from '../img/sad_smile_act.svg';
 import heart_act from '../img/heart_act.svg';
@@ -8,6 +10,12 @@ import heart from '../img/heart.svg';
 import smile_act from '../img/smile_act.svg';
 import smile_green from '../img/smile_green.svg';
 import smile_yellow from '../img/smile_yellow.svg';
+import {
+  addToAll,
+  addToDislikes,
+  addToFavourites,
+  addToLikes,
+} from '../redux/favLikesDislikesReducer';
 
 const MainWrapper = styled(Box)({
   display: 'flex',
@@ -33,6 +41,10 @@ const StyledBox = styled(Box)({
 });
 
 const ChoisesButtons = () => {
+  const dispatch = useDispatch();
+
+  const fetchImageInfo = useSelector((state) => state.votingPage.image);
+
   const hoverRefLike = useRef(null);
   const isHoverLike = useHover(hoverRefLike);
 
@@ -42,10 +54,68 @@ const ChoisesButtons = () => {
   const hoverRefDislike = useRef(null);
   const isHoverDislike = useHover(hoverRefDislike);
 
+  const nowDate = () => {
+    let dateNow = new Date();
+    let dateNowMinAndSec =
+      dateNow.getMinutes() < 10
+        ? dateNow.getHours() + ':' + 0 + dateNow.getMinutes()
+        : dateNow.getHours() + ':' + dateNow.getMinutes();
+    return dateNowMinAndSec.toString();
+  };
+
+  function getInfoFav() {
+    const newFav = {
+      id: fetchImageInfo[0].id,
+      url: fetchImageInfo[0].url,
+      value: 2,
+      date: nowDate(),
+    };
+
+    return newFav;
+  }
+  function getInfoLikes() {
+    const newFav = {
+      id: fetchImageInfo[0].id,
+      url: fetchImageInfo[0].url,
+      value: 1,
+      date: nowDate(),
+    };
+
+    return newFav;
+  }
+  function getInfoDislikes() {
+    const newFav = {
+      id: fetchImageInfo[0].id,
+      url: fetchImageInfo[0].url,
+      value: 0,
+      date: nowDate(),
+    };
+
+    return newFav;
+  }
+
+  const handleClickFav = () => {
+    dispatch(addToFavourites(getInfoFav()));
+    dispatch(addToAll(getInfoFav()));
+    dispatch(fetchImage());
+  };
+  const handleClickLikes = () => {
+    dispatch(addToLikes(getInfoLikes()));
+    dispatch(addToAll(getInfoLikes()));
+    dispatch(fetchImage());
+  };
+
+  const handleClickDislikes = () => {
+    dispatch(addToDislikes(getInfoDislikes()));
+    dispatch(addToAll(getInfoDislikes()));
+    dispatch(fetchImage());
+  };
+
   return (
     <MainWrapper>
       <ButtonsWrapper sx={{ borderRadius: { xs: '10px', sm: '20px' } }}>
         <StyledBox
+          onClick={handleClickLikes}
           sx={{
             padding: { xs: '15px', sm: '25px' },
             borderRadius: { xs: '10px 0 0 10px', sm: '20px 0 0 20px' },
@@ -63,6 +133,7 @@ const ChoisesButtons = () => {
           )}
         </StyledBox>
         <StyledBox
+          onClick={handleClickFav}
           sx={{
             padding: { xs: '15px', sm: '25px' },
             backgroundColor: '#FF868E',
@@ -70,7 +141,7 @@ const ChoisesButtons = () => {
               backgroundColor: 'rgba(255, 134, 142, 0.3)',
             },
           }}
-            ref={hoverRefFav}
+          ref={hoverRefFav}
         >
           {isHoverFav ? (
             <img src={heart} alt='heart' />
@@ -79,6 +150,7 @@ const ChoisesButtons = () => {
           )}
         </StyledBox>
         <StyledBox
+          onClick={handleClickDislikes}
           sx={{
             padding: { xs: '15px', sm: '25px' },
             borderRadius: { xs: '0 10px 10px 0', sm: '0 20px 20px 0' },
@@ -87,7 +159,7 @@ const ChoisesButtons = () => {
               backgroundColor: 'rgba(255, 210, 128, 0.3)',
             },
           }}
-            ref={hoverRefDislike}
+          ref={hoverRefDislike}
         >
           {isHoverDislike ? (
             <img src={smile_yellow} alt='sad_smile' />

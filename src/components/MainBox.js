@@ -11,6 +11,7 @@ const StyledMainBox = styled(Box)({
   '::-webkit-scrollbar': {
     width: 0,
   },
+  
 });
 
 const useStyles = makeStyles({

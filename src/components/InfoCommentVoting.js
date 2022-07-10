@@ -3,6 +3,8 @@ import { styled } from '@mui/styles';
 import '../styles/styles.css';
 import { Box, Typography } from '@mui/material';
 import heart from '../img/heart.svg';
+import smile_green from '../img/smile_green.svg';
+import smile_yellow from '../img/smile_yellow.svg';
 
 const CommentWrapper = styled(Box)({
   backgroundColor: 'var(--main-gray)',
@@ -26,27 +28,20 @@ const StyleId = styled(Typography)({
   color: 'var(--black)',
 });
 
-const InfoCommentVoting = () => {
-  const date = () => {
-    let now = new Date();
-    return now.getMinutes() < 10
-      ? now.getHours() + ':' + 0 + now.getMinutes()
-      : now.getHours() + ':' + now.getMinutes();
-  };
-
+const InfoCommentVoting = (props) => {
   return (
-    <CommentWrapper sx={{ padding: { xs: '15px', sm: 0 }, mb: '10px' }} >
+    <CommentWrapper sx={{ padding: { xs: '15px', sm: 0 }, mb: '10px' }}>
       <Box
         sx={{
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
           padding: { xs: 0, sm: '15px' },
-          mb: '10px'
+          mb: '10px',
         }}
-        
       >
-        <TimeBox>{date()}</TimeBox>
+        <TimeBox>{props.date}</TimeBox>
+        {/*Text position for tablet and laptop displays */}
         <Typography
           sx={{
             color: 'var(--gray)',
@@ -55,17 +50,25 @@ const InfoCommentVoting = () => {
           }}
         >
           Image ID:
-          <StyleId variant='span'>&nbsp;fQSunHvl8s&nbsp;</StyleId>
-          was added to Favourites
+          <StyleId variant='span'>&nbsp;{props.id}&nbsp;</StyleId>
+          was added to {props.value === 0 ? 'Dislikes' : props.value === 1 ? 'Likes' : 'Favourites'}
         </Typography>
-        <ImgStyle src={heart} alt='sign' />
+        {props.value === 0 ? (
+          <ImgStyle src={smile_yellow} alt='sign' />
+        ) : props.value === 1 ? (
+          <ImgStyle src={smile_green} alt='sign' />
+        ) : (
+          <ImgStyle src={heart} alt='sign' />
+        )}
       </Box>
+
+      {/* Text position for mobile display */}
       <Typography
         sx={{ color: 'var(--gray)', display: { xs: 'block', sm: 'none' } }}
       >
         Image ID:
-        <StyleId variant='span'>&nbsp;fQSunHvl8s&nbsp;</StyleId>
-        was added to Favourites
+        <StyleId variant='span'>&nbsp;{props.id}&nbsp;</StyleId>
+        was added to  {props.value === 0 ? 'Dislikes' : props.value === 1 ? 'Likes' : 'Favourites'}
       </Typography>
     </CommentWrapper>
   );

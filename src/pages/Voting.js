@@ -1,5 +1,6 @@
 import React from 'react';
 import Box from '@mui/material/Box';
+import { useSelector } from 'react-redux';
 import Categories from '../components/Categories';
 import MainBox from '../components/MainBox';
 import PageWrapper from '../components/PageWrapper';
@@ -8,8 +9,13 @@ import PageName from '../components/PageName';
 import ChosenImage from '../components/ChosenImage';
 import ChoisesButtons from '../components/ChoisesButtons';
 import InfoCommentVoting from '../components/InfoCommentVoting';
+import ScrollToTop from '../components/ScrollToTop';
 
 const Voting = () => {
+  const all = useSelector((state) => state.actions.all);
+
+  console.log(all);
+
   return (
     <PageWrapper>
       <Box
@@ -23,19 +29,16 @@ const Voting = () => {
         <Header />
         <MainBox backgroundColor={'#ffffff '}>
           <PageName name='Voting' />
-          <Box mx={'auto'}>
+          <Box sx={{ minHeight: { xs: '200px', md: '400px' } }}>
             <ChosenImage />
-            <ChoisesButtons />
           </Box>
+          <ChoisesButtons />
           <Box mt={'-32px'}>
-            <InfoCommentVoting />
-            <InfoCommentVoting />
-            <InfoCommentVoting />
-            <InfoCommentVoting />
-            <InfoCommentVoting />
-            <InfoCommentVoting />
-            <InfoCommentVoting />
+            {all.map((obj) => (
+              <InfoCommentVoting id={obj.id} key={obj.id}value={obj.value} date={obj.date}/>
+            ))}
           </Box>
+          <ScrollToTop />
         </MainBox>
       </Box>
     </PageWrapper>
