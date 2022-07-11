@@ -16,7 +16,7 @@ const reducers = combineReducers({
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['actions']
+  whitelist: ['actions', 'allBreeds']
 };
 
 const persistedReducer = persistReducer(persistConfig, reducers);

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Box } from '@mui/system';
 import { styled } from '@mui/material/styles';
 import sortBA from '../img/sortBA.svg';
@@ -19,34 +19,18 @@ const SortButton = styled(Box)({
   },
 });
 
-const SortButtons = () => {
-  const [isActiveBA, setIsActiveBA] = useState(false);
-  const [isActiveAB, setIsActiveAB] = useState(false);
-
-  const onClickHandleBA = () => {
-    setIsActiveBA(!isActiveBA);
-    if (isActiveAB) {
-      setIsActiveAB(false);
-    }
-  };
-  const onClickHandleAB = () => {
-    setIsActiveAB(!isActiveAB);
-    if (isActiveBA) {
-      setIsActiveBA(false);
-    }
-  };
-
+const SortButtons = (props) => {
   return (
     <Box display={'flex'} gap={'10px'}>
-      <SortButton onClick={onClickHandleBA}>
-        {isActiveBA ? (
+      <SortButton onClick={props.onClickBA}>
+        {props.valueBA ? (
           <img src={sortBA_act} alt='sortBA_act' />
         ) : (
           <img src={sortBA} alt='sortBA' />
         )}
       </SortButton>
-      <SortButton onClick={onClickHandleAB}>
-        {isActiveAB ? (
+      <SortButton onClick={props.onClickAB}>
+        {props.valueAB ? (
           <img src={sortAB_act} alt='sortAB_act' />
         ) : (
           <img src={sortAB} alt='sortAB' />

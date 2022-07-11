@@ -31,24 +31,26 @@ const TypographyDescription = styled(Typography)({
   color: 'var(--gray)',
 });
 
-const InfoTextBreedsId = () => {
+const InfoTextBreedsId = (props) => {
   return (
     <StyledFieldset>
-
-    <StyledLegend>Basenji</StyledLegend>
+      <StyledLegend>{props.name}</StyledLegend>
 
       <Box sx={{ padding: { xs: '10px 20px', md: '20px 40px' } }}>
-
-        <Box mb={'12px'} mt={'-20px'}>
-          <TypographyMainTitle  sx={{fontSize: {xs: '16px', md: '20px'}}}>Family companion cat</TypographyMainTitle>
+        <Box mb={'12px'} sx={{mt: {xs: '-20px', md: '-30px'}}}>
+          <TypographyMainTitle sx={{ fontSize: { xs: '16px', md: '20px' } }}>
+            Family companion cat
+          </TypographyMainTitle>
         </Box>
 
-        <Box display={{ md: 'flex'}} sx={{ gap: {md: '100px', lg: '30px'} }}>
-          <Box flexDirection={{ md: 'column' }} width={{lg: '220px', xl: '250px'}}>
-            
+        <Box display={{ md: 'flex' }} sx={{ gap: { md: '30px', lg: '30px' } }}>
+          <Box
+            flexDirection={{ md: 'column' }}
+            width={{ lg: '220px', xl: '250px' }}
+          >
             <TypographyTitle>Temperament:</TypographyTitle>
             <TypographyDescription sx={{ mb: '10px' }}>
-              Affectionate, Energetic, Alert, Curious, Playful, Intelligent
+              {props.temperament}
             </TypographyDescription>
           </Box>
           <Box flexDirection={{ md: 'column' }}>
@@ -61,7 +63,7 @@ const InfoTextBreedsId = () => {
             >
               <TypographyTitle>Origin:</TypographyTitle>
               <TypographyDescription sx={{ mb: '10px' }}>
-                United States
+                {props.origin}
               </TypographyDescription>
             </Box>
 
@@ -74,7 +76,7 @@ const InfoTextBreedsId = () => {
             >
               <TypographyTitle>Weight:</TypographyTitle>
               <TypographyDescription sx={{ mb: '10px' }}>
-                5 - 7 kgs
+                {props.weight} kg
               </TypographyDescription>
             </Box>
 
@@ -87,10 +89,9 @@ const InfoTextBreedsId = () => {
             >
               <TypographyTitle>Life span:</TypographyTitle>
               <TypographyDescription sx={{ mb: '10px' }}>
-                10 - 12 years
+                {props.life_span} years
               </TypographyDescription>
             </Box>
-
           </Box>
         </Box>
       </Box>

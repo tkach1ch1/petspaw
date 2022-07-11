@@ -10,9 +10,10 @@ const StyledImg = styled('img')({
   width: '100%',
   height: '100%',
   objectFit: 'cover',
+  borderRadius: '20px'
 });
 
-const SwiperInfoPage = () => {
+const SwiperInfoPage = (props) => {
   const pagination = {
     clickable: true,
   };
@@ -20,17 +21,9 @@ const SwiperInfoPage = () => {
   return (
     <Swiper slidesPerView={1} pagination={pagination} modules={[Pagination]}>
       <SwiperSlide>
-        <StyledImg src={foto} alt='foto' />
+        <StyledImg src={props.image} alt='foto' />
       </SwiperSlide>
-      <SwiperSlide>
-        <StyledImg src={foto} alt='foto' />
-      </SwiperSlide>
-      <SwiperSlide>
-        <StyledImg src={foto} alt='foto' />
-      </SwiperSlide>
-      <SwiperSlide>
-        <StyledImg src={foto} alt='foto' />
-      </SwiperSlide>
+      
     </Swiper>
   );
 };

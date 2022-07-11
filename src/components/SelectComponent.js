@@ -40,6 +40,9 @@ const SelectComponent = ({ ...props }) => {
   return (
     <Box sx={{ position: 'relative', width: '100%' }}>
       <StyledFormControl
+        onChange={props.onChange}
+        onClick={props.onClick}
+        value={props.value}
         sx={{
           width: {
             xs: '100%',

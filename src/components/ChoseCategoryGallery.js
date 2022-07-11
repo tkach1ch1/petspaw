@@ -61,19 +61,19 @@ const ChoseCategoryGallery = () => {
           color='var(--black)'
           mb='10px'
         />
-        <StyledInputLabel>Type</StyledInputLabel>
+        <StyledInputLabel>Breed</StyledInputLabel>
         <SelectComponent
-          arr={type}
+          arr={breed}
+          firstParam='None'
           backgroundColor='white'
           color='var(--black)'
           mb='10px'
         />
       </Box>
       <Box sx={{ width: { xs: '100%', sm: '50%' } }}>
-        <StyledInputLabel>Breed</StyledInputLabel>
+        <StyledInputLabel>Type</StyledInputLabel>
         <SelectComponent
-          arr={breed}
-          firstParam='None'
+          arr={type}
           backgroundColor='white'
           color='var(--black)'
           mb='10px'

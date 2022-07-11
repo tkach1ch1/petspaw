@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Categories from '../components/Categories';
 import Box from '@mui/material/Box';
 import MainBox from '../components/MainBox';
@@ -26,6 +26,33 @@ const Breeds = () => {
   useEffect(() => {
     dispatch(fetchBreeds());
   }, [dispatch]);
+
+  const [breed, setBreed] = useState('');
+  const [isActiveBA, setIsActiveBA] = useState(false);
+  const [isActiveAB, setIsActiveAB] = useState(true);
+
+  const onClickHandleBA = () => {
+    setIsActiveBA(true);
+    if (isActiveAB) {
+      setIsActiveAB(false);
+    }
+  };
+  const onClickHandleAB = () => {
+    setIsActiveAB(true);
+    if (isActiveBA) {
+      setIsActiveBA(false);
+    }
+  };
+
+  const onHandleBreedsChange = (event) => {
+    setBreed(event.target.value);
+  };
+
+  const onHandleClick = () => {
+    if (breed === 'All breeds') {
+      setBreed('');
+    }
+  };
 
   return (
     <PageWrapper>
@@ -55,6 +82,9 @@ const Breeds = () => {
                 arr={allBreeds}
                 status={breedsStatus}
                 error={breedsError}
+                onChange={onHandleBreedsChange}
+                onClick={onHandleClick}
+                value={breed}
               />
             </Box>
             <Box display={'flex'} gap={'10px'} width={'100%'}>
@@ -63,16 +93,21 @@ const Breeds = () => {
                 widthxl={'100px'}
                 widthxxl={'100%'}
               />
-              <SortButtons />
+              <SortButtons
+                onClickBA={onClickHandleBA}
+                onClickAB={onClickHandleAB}
+                valueBA={isActiveBA}
+                valueAB={isActiveAB}
+              />
             </Box>
           </Box>
           <ImageGalleryTemplate
-            padding={'5px 24px'}
-            bottom={'10px'}
-            width={'90%'}
             arr={allBreeds}
             status={breedsStatus}
             error={breedsError}
+            selectedBreed={breed}
+            valueBA={isActiveBA}
+            valueAB={isActiveAB}
           />
           <PrevNextButtonsBreeds />
           <ScrollToTop />
