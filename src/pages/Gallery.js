@@ -12,6 +12,7 @@ import ImageGalleryTemplate from '../components/ImageGalleryTemplate';
 
 import heart from '../img/heart.svg';
 import ModalUpload from '../components/ModalUpload';
+import ScrollToTop from '../components/ScrollToTop';
 
 const Gallery = () => {
   return (
@@ -49,6 +50,7 @@ const Gallery = () => {
             height={'40px'}
             padding={'10px'}
           />
+          <ScrollToTop />
         </MainBox>
       </Box>
     </PageWrapper>

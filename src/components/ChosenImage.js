@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const StyledCircularProgress = styled(CircularProgress)({
+export const StyledCircularProgress = styled(CircularProgress)({
   position: 'absolute',
   color: 'var(--light-red)',
 });

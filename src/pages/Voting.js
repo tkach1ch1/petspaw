@@ -13,9 +13,6 @@ import ScrollToTop from '../components/ScrollToTop';
 
 const Voting = () => {
   const all = useSelector((state) => state.actions.all);
-
-  console.log(all);
-
   return (
     <PageWrapper>
       <Box
@@ -35,7 +32,12 @@ const Voting = () => {
           <ChoisesButtons />
           <Box mt={'-32px'}>
             {all.map((obj) => (
-              <InfoCommentVoting id={obj.id} key={obj.id}value={obj.value} date={obj.date}/>
+              <InfoCommentVoting
+                id={obj.id}
+                key={obj.id}
+                value={obj.value}
+                date={obj.date}
+              />
             ))}
           </Box>
           <ScrollToTop />

@@ -1,9 +1,11 @@
 import React from 'react';
 import '../styles/styles.css';
 import { Box, styled } from '@mui/system';
-import foto from '../img/image 1.png';
+import { StyledCircularProgress } from '../components/ChosenImage';
+import notfound from '../img/notfound.png';
 
 const StyledGrid = styled(Box)({
+  position: 'relative',
   gridGap: '20px',
   gridAutoRows: '150px',
   gridTemplateColumns: 'repeat(3, 1fr)',
@@ -21,11 +23,6 @@ const StyledItem = styled(Box)({
   position: 'relative',
   borderRadius: '20px',
   cursor: 'pointer',
-});
-
-const StyledImg = styled('img')({
-  width: '100%',
-  height: '100%',
 });
 
 const BackBox = styled(Box)({
@@ -56,9 +53,69 @@ const ToInfoPageButton = styled(Box)({
   borderRadius: '10px',
 });
 
-//TODO:Think how I can make a code smaller and clearer
+const StyledImg = styled('img')({
+  width: '100%',
+  height: '100%',
+  borderRadius: '20px',
+});
 
 const ImageGalleryTemplate = ({ ...props }) => {
+  const array = props.arr;
+
+  // const newArray = {...array}
+
+  // newArray[30].image = {
+  //     url: 'https://upload.wikimedia.org/wikipedia/commons/5/5c/British_burmese_-_Andel_Alois_at_Cat_show.JPG',
+  //   };
+  // array[41] = {
+  //   url: 'https://www.thegreatcat.org/wp-content/uploads/2020/05/Malayan-Cat.jpg',
+  // };
+
+  // console.log(newArray[30]);
+
+  let content;
+
+  if (props.status === 'loading') {
+    content = (
+      <StyledCircularProgress
+        sx={{
+          top: { xs: '150px', md: '200px', lg: '180px', xxxl: '250px' },
+          right: {
+            md: '300px',
+            lg: '190px',
+            xl: '220px',
+            xxl: '280px',
+            xxxl: '310px',
+          },
+        }}
+        size={'100px'}
+      />
+    );
+  } else if (props.status === 'succeeded') {
+    content = array.map((elem) => (
+      <StyledItem key={elem.id} sx={{ height: { xs: '205px', md: '100%' } }}>
+        {elem.image ? (
+          <StyledImg src={elem.image.url} alt={elem.name} />
+        ) : (
+          <StyledImg src={notfound} alt='Not found' />
+        )}
+
+        <BackBox>
+          <ToInfoPageButton
+            width={props.width}
+            height={props.height}
+            padding={props.padding}
+            bottom={props.bottom}
+          >
+            {elem.name}
+          </ToInfoPageButton>
+        </BackBox>
+      </StyledItem>
+    ));
+  } else if (props.status === 'failed') {
+    content = <div>{props.error}</div>;
+  }
+
   return (
     <StyledGrid
       sx={{
@@ -66,18 +123,26 @@ const ImageGalleryTemplate = ({ ...props }) => {
         flexDirection: { xs: 'column' },
       }}
     >
-      <StyledItem sx={{ gridArea: 'a', height: { xs: '205px', md: '100%' } }}>
+      {content}
+      {/* <StyledItem sx={{ gridArea: 'a', height: { xs: '205px', md: '100%' } }}>
         <StyledImg src={foto} alt='foto' />
         <BackBox>
           <ToInfoPageButton width={props.width} height={props.height} padding={props.padding} bottom={props.bottom}>
             {props.param}
           </ToInfoPageButton>
         </BackBox>
-      </StyledItem>
-      <StyledItem sx={{ height: { xs: '205px', md: '100%' } }}>
+      </StyledItem> */}
+      {/* <StyledItem sx={{ height: { xs: '205px', md: '100%' } }}>
         <StyledImg src={foto} alt='foto' />
         <BackBox>
-          <ToInfoPageButton width={props.width} height={props.height} padding={props.padding} bottom={props.bottom}>{props.param}</ToInfoPageButton>
+          <ToInfoPageButton
+            width={props.width}
+            height={props.height}
+            padding={props.padding}
+            bottom={props.bottom}
+          >
+            {props.param}
+          </ToInfoPageButton>
         </BackBox>
       </StyledItem>
       <StyledItem></StyledItem>
@@ -87,7 +152,7 @@ const ImageGalleryTemplate = ({ ...props }) => {
       <StyledItem sx={{ gridArea: 'h' }}></StyledItem>
       <StyledItem></StyledItem>
       <StyledItem sx={{ gridArea: 'i' }}></StyledItem>
-      <StyledItem></StyledItem>
+      <StyledItem></StyledItem> */}
     </StyledGrid>
   );
 };

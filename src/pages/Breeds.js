@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Categories from '../components/Categories';
 import Box from '@mui/material/Box';
 import MainBox from '../components/MainBox';
@@ -10,23 +10,23 @@ import '../styles/styles.css';
 import ImageGalleryTemplate from '../components/ImageGalleryTemplate';
 import SortButtons from '../components/SortButtons';
 import PrevNextButtonsBreeds from '../components/PrevNextButtonsBreeds';
-
-const names = [
-  'Oliver Hansen',
-  'Van Henry',
-  'April Tucker',
-  'Ralph Hubbard',
-  'Omar Alexander',
-  'Carlos Abbott',
-  'Miriam Wagner',
-  'Bradley Wilkerson',
-  'Virginia Andrews',
-  'Kelly Snyder',
-];
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchBreeds } from '../redux/allBreedsReducer';
+import ScrollToTop from '../components/ScrollToTop';
 
 const limit = ['Limit: 5', 'Limit: 10', 'Limit: 15', 'Limit: 20'];
 
 const Breeds = () => {
+  const allBreeds = useSelector((state) => state.allBreeds.breeds);
+  const breedsStatus = useSelector((state) => state.allBreeds.status);
+  const breedsError = useSelector((state) => state.allBreeds.error);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchBreeds());
+  }, [dispatch]);
+
   return (
     <PageWrapper>
       <Box
@@ -50,20 +50,32 @@ const Breeds = () => {
           >
             <PageName name='Breeds' />
             <Box mb={'10px'} width={'100%'}>
-              <SelectComponent firstParam='All breeds' arr={names} />
+              <SelectComponent
+                firstParam='All breeds'
+                arr={allBreeds}
+                status={breedsStatus}
+                error={breedsError}
+              />
             </Box>
             <Box display={'flex'} gap={'10px'} width={'100%'}>
-              <SelectComponent arr={limit} widthxl={'100px'} widthxxl={'100%'}/>
+              <SelectComponent
+                arr={limit}
+                widthxl={'100px'}
+                widthxxl={'100%'}
+              />
               <SortButtons />
             </Box>
           </Box>
           <ImageGalleryTemplate
-            param={'Abyssinian'}
             padding={'5px 24px'}
             bottom={'10px'}
             width={'90%'}
+            arr={allBreeds}
+            status={breedsStatus}
+            error={breedsError}
           />
           <PrevNextButtonsBreeds />
+          <ScrollToTop />
         </MainBox>
       </Box>
     </PageWrapper>
