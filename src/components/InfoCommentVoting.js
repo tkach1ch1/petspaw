@@ -30,14 +30,16 @@ const StyleId = styled(Typography)({
 
 const InfoCommentVoting = (props) => {
   return (
-    <CommentWrapper sx={{ padding: { xs: '15px', sm: 0 }, mb: '10px' }}>
+    <CommentWrapper
+      sx={{ padding: { xs: '15px', sm: 0 }, mb: '10px' }}
+      mt={'20px'}
+    >
       <Box
         sx={{
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
           padding: { xs: 0, sm: '15px' },
-          mb: '10px',
         }}
       >
         <TimeBox>{props.date}</TimeBox>
@@ -51,7 +53,12 @@ const InfoCommentVoting = (props) => {
         >
           Image ID:
           <StyleId variant='span'>&nbsp;{props.id}&nbsp;</StyleId>
-          was added to {props.value === 0 ? 'Dislikes' : props.value === 1 ? 'Likes' : 'Favourites'}
+          {props.votingValue ? 'was added to ' : 'was removed from '}
+          {props.value === 0
+            ? 'Dislikes'
+            : props.value === 1
+            ? 'Likes'
+            : 'Favourites'}
         </Typography>
         {props.value === 0 ? (
           <ImgStyle src={smile_yellow} alt='sign' />
@@ -68,7 +75,12 @@ const InfoCommentVoting = (props) => {
       >
         Image ID:
         <StyleId variant='span'>&nbsp;{props.id}&nbsp;</StyleId>
-        was added to  {props.value === 0 ? 'Dislikes' : props.value === 1 ? 'Likes' : 'Favourites'}
+        was added to
+        {props.value === 0
+          ? 'Dislikes'
+          : props.value === 1
+          ? 'Likes'
+          : 'Favourites'}
       </Typography>
     </CommentWrapper>
   );

@@ -6,12 +6,13 @@ import GridItem from '../components/GridItem';
 import { Box } from '@mui/system';
 
 const NoItemBox = styled(Box)({
-  position: 'absolute',
+  position: 'relative',
+  display: 'flex',
+  alignItems: 'center',
   width: '100%',
   padding: '18px 20px',
   backgroundColor: 'var(--main-gray)',
   color: 'var(--gray)',
-  height: 'fit-content',
   borderRadius: '10px',
 });
 
@@ -22,18 +23,25 @@ const GridPageLoyaut = (props) => {
   //      Favourites: '2'
 
   return (
-    <StyledGrid
-      sx={{
-        display: { xs: 'flex', md: 'grid' },
-        flexDirection: { xs: 'column' },
-      }}
-    >
-      {props.arr.map((elem) => (
-        <GridItem key={elem.id} id={elem.id} imageUrl={elem.url} favValue={elem.value === 2 && true} />
-      ))}
+    <div>
+      <StyledGrid
+        sx={{
+          display: { xs: 'flex', md: 'grid' },
+          flexDirection: { xs: 'column' },
+        }}
+      >
+        {props.arr.map((elem) => (
+          <GridItem
+            key={elem.id}
+            id={elem.id}
+            imageUrl={elem.url}
+            favValue={elem.value === 2 && true}
+          />
+        ))}
+      </StyledGrid>
 
       {props.arr.length === 0 && <NoItemBox>No item found</NoItemBox>}
-    </StyledGrid>
+    </div>
   );
 };
 

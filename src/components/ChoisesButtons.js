@@ -54,7 +54,7 @@ const ChoisesButtons = () => {
   const hoverRefDislike = useRef(null);
   const isHoverDislike = useHover(hoverRefDislike);
 
-  const nowDate = () => {
+   const nowDate = () => {
     let dateNow = new Date();
     let dateNowMinAndSec =
       dateNow.getMinutes() < 10

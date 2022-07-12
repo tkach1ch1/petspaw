@@ -17,7 +17,6 @@ const LikesPage = () => {
     setIsActivedLike(true);
   }, []);
 
-  console.log(allLikes);
   return (
     <PageWrapper>
       <Box

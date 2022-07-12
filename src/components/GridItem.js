@@ -5,6 +5,10 @@ import notfound from '../img/notfound.png';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addBreedsId } from '../redux/allBreedsReducer';
+import {
+  addToRemovedFav,
+  removeFavourites,
+} from '../redux/favLikesDislikesReducer';
 import heart from '../img/heart.svg';
 
 const StyledItem = styled(Box)({
@@ -89,6 +93,25 @@ const GridItem = (props) => {
     dispatch(addBreedsId(props.id));
   };
 
+  const nowDate = () => {
+    let dateNow = new Date();
+    let dateNowMinAndSec =
+      dateNow.getMinutes() < 10
+        ? dateNow.getHours() + ':' + 0 + dateNow.getMinutes()
+        : dateNow.getHours() + ':' + dateNow.getMinutes();
+    return dateNowMinAndSec.toString();
+  };
+
+  const removedFavInfo = {
+    id: props.id,
+    date: nowDate(),
+  };
+
+  const onHandleClickFav = () => {
+    dispatch(removeFavourites(props.id));
+    dispatch(addToRemovedFav(removedFavInfo));
+  };
+
   return (
     <StyledItem key={props.id} sx={{ height: { xs: '205px', md: '100%' } }}>
       {props.imageUrl ? (
@@ -108,7 +131,10 @@ const GridItem = (props) => {
       )}
 
       {props.favValue && (
-        <AddToFavourites sx={{ display: 'flex', alignItems: 'center' }}>
+        <AddToFavourites
+          sx={{ display: 'flex', alignItems: 'center' }}
+          onClick={onHandleClickFav}
+        >
           <StyledInfoButton sx={{ padding: '10px' }}>
             <img src={heart} alt='heart' />
           </StyledInfoButton>

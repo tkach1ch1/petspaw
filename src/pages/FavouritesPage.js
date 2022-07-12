@@ -7,17 +7,19 @@ import PageWrapper from '../components/PageWrapper';
 import Header from '../components/Header';
 import PageName from '../components/PageName';
 import GridPageLoyaut from '../components/GridPageLoyaut';
+import InfoCommentVoting from '../components/InfoCommentVoting'
 
 const FavouritesPage = () => {
   const [isActivedFav, setIsActivedFav] = useState(false);
 
   const allFav = useSelector((state) => state.actions.favourites);
+  const removedFav = useSelector((state) => state.actions.removedFav);
+
+  console.log(removedFav);
 
   useEffect(() => {
     setIsActivedFav(true);
   }, []);
-
-console.log(allFav.value)
 
   return (
     <PageWrapper>
@@ -33,6 +35,14 @@ console.log(allFav.value)
         <MainBox backgroundColor={'#ffffff'}>
           <PageName name='Favourites' />
           <GridPageLoyaut arr={allFav} />
+          {removedFav.length !== 0 &&
+            removedFav.map((elem) => (
+              <InfoCommentVoting
+                id={elem.id}
+                key={Math.floor(Math.random(10) * 100000)}
+                date={elem.date}
+              />
+            ))}
         </MainBox>
       </Box>
     </PageWrapper>

@@ -37,6 +37,7 @@ const Voting = () => {
                 key={obj.id}
                 value={obj.value}
                 date={obj.date}
+                votingValue={'voting'}
               />
             ))}
           </Box>
