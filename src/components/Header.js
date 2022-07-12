@@ -46,16 +46,16 @@ const Header = ({ ...props }) => {
 
         {/* Like, Favourite, Dislike buttons */}
         <Box sx={{ display: 'flex', gap: '10px', ml: { lg: '10px' } }}>
-          <StyledLinkHeader to='/favourites'>
-            {props.isActivedFav ? (
+          <StyledLinkHeader to='/likes'>
+            {props.isActivedLike ? (
               <img src={smile_act} alt='smile_act' />
             ) : (
               <img src={smile} alt='smile' />
             )}
           </StyledLinkHeader>
 
-          <StyledLinkHeader to='/likes'>
-            {props.isActivedLike ? (
+          <StyledLinkHeader to='/favourites'>
+            {props.isActivedFav ? (
               <img src={heart_act} alt='heart_act' />
             ) : (
               <img src={heart} alt='heart' />

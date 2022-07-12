@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addBreedsId } from '../redux/allBreedsReducer';
 
-
 const StyledInfoButton = styled(Box)({
   position: 'absolute',
   display: 'flex',
@@ -29,7 +28,6 @@ const StyledImg = styled('img')({
 
 const LinkToInfoPage = styled(Link)({
   textDecoration: 'none',
-
   position: 'absolute',
   top: 0,
   display: 'flex',
@@ -51,13 +49,29 @@ const StyledItem = styled(Box)({
   position: 'relative',
   borderRadius: '20px',
   cursor: 'pointer',
+  '&:nth-of-type(10n+1)': {
+    gridColumnEnd: 'span 1',
+    gridRowEnd: 'span 2',
+  },
+  '&:nth-of-type(10n+8)': {
+    gridColumnEnd: 'span 1',
+    gridRowEnd: 'span 2',
+  },
+  '&:nth-of-type(10n+4)': {
+    gridColumnEnd: 'span 2',
+    gridRowEnd: 'span 2',
+  },
+  '&:nth-of-type(10n+9)': {
+    gridColumnEnd: 'span 2',
+    gridRowEnd: 'span 2',
+  },
 });
 
 const GridItem = (props) => {
-    const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const onHandleClick = () => {
-    dispatch(addBreedsId(props.id))
+    dispatch(addBreedsId(props.id));
   };
   return (
     <StyledItem key={props.id} sx={{ height: { xs: '205px', md: '100%' } }}>
@@ -68,9 +82,7 @@ const GridItem = (props) => {
       )}
 
       <LinkToInfoPage to={props.id} onClick={onHandleClick}>
-        <StyledInfoButton >
-          {props.name}
-        </StyledInfoButton>
+        <StyledInfoButton>{props.name}</StyledInfoButton>
       </LinkToInfoPage>
     </StyledItem>
   );

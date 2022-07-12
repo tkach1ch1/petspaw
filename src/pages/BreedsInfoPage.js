@@ -42,7 +42,7 @@ const BreedsInfoPage = () => {
                 </StyledId>
               </Box>
 
-              <SwiperInfoPage image={elem.image.url} />
+              <SwiperInfoPage image={elem.imgage && elem.image.url} />
 
               <InfoTextBreedsId
                 name={elem.name}

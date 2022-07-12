@@ -4,14 +4,20 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import foto from '../img/image 1.png';
+import notfound from '../img/notfound.png';
 
 const StyledImg = styled('img')({
   width: '100%',
   height: '100%',
   objectFit: 'cover',
-  borderRadius: '20px'
+  borderRadius: '20px',
 });
+
+const StyledImgNotFound = styled('img')({
+  width: '100%', 
+  height: '450px', 
+  borderRadius: '20px'
+})
 
 const SwiperInfoPage = (props) => {
   const pagination = {
@@ -21,9 +27,12 @@ const SwiperInfoPage = (props) => {
   return (
     <Swiper slidesPerView={1} pagination={pagination} modules={[Pagination]}>
       <SwiperSlide>
-        <StyledImg src={props.image} alt='foto' />
+        {props.image ? (
+          <StyledImg src={props.image} alt='foto' />
+        ) : (
+          <StyledImgNotFound src={notfound} alt='Not found' />
+        )}
       </SwiperSlide>
-      
     </Swiper>
   );
 };
