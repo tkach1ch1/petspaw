@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Categories from '../components/Categories';
 import Box from '@mui/material/Box';
 import MainBox from '../components/MainBox';
@@ -10,7 +11,6 @@ import '../styles/styles.css';
 import ImageGalleryTemplateBreeds from '../components/ImageGalleryTemplateBreeds';
 import SortButtons from '../components/SortButtons';
 import PrevNextButtonsBreeds from '../components/PrevNextButtonsBreeds';
-import { useDispatch, useSelector } from 'react-redux';
 import { fetchBreeds } from '../redux/allBreedsReducer';
 import ScrollToTop from '../components/ScrollToTop';
 

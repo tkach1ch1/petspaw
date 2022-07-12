@@ -1,19 +1,29 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import '../styles/styles.css';
+import { useDispatch, useSelector } from 'react-redux';
 import Box from '@mui/material/Box';
 import Categories from '../components/Categories';
 import MainBox from '../components/MainBox';
 import PageWrapper from '../components/PageWrapper';
 import Header from '../components/Header';
 import PageName from '../components/PageName';
-
 import ChoseCategoryGallery from '../components/ChoseCategoryGallery';
-// import ImageGalleryTemplate from '../components/ImageGalleryTemplate';
-// import heart from '../img/heart.svg';
 import ModalUpload from '../components/ModalUpload';
 import ScrollToTop from '../components/ScrollToTop';
+import ImageGalleryTemplateGallery from '../components/ImageGalleryTemlateGallery';
+import { fetchImages } from '../redux/allImagesGalleryReducer';
 
 const Gallery = () => {
+  const allImages = useSelector((state) => state.allImages.images);
+  const imagesStatus = useSelector((state) => state.allImages.status);
+  const imagesError = useSelector((state) => state.allImages.error);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchImages());
+  }, [dispatch]);
+
   return (
     <PageWrapper>
       <Box
@@ -43,12 +53,11 @@ const Gallery = () => {
 
           <ChoseCategoryGallery />
 
-          {/* <ImageGalleryTemplate
-            param={<img src={heart} alt='heart' />}
-            width={'40px'}
-            height={'40px'}
-            padding={'10px'}
-          /> */}
+          <ImageGalleryTemplateGallery
+            arr={allImages}
+            status={imagesStatus}
+            error={imagesError}
+          />
           <ScrollToTop />
         </MainBox>
       </Box>

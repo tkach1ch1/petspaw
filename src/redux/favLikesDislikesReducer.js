@@ -18,10 +18,10 @@ const favLikesDislikesReducer = createSlice({
       state.favourites.push(action.payload);
     },
     removeFavourites: (state, action) => {
-      state.favourites.splice(
-        state.favourites.findIndex(() => action.payload),
-        1
+      let index = state.favourites.findIndex(
+        (elem) => elem.id === action.payload
       );
+      index > -1 && state.favourites.splice(index, 1);
     },
     addToRemovedFav: (state, action) => {
       state.removedFav.unshift(action.payload);

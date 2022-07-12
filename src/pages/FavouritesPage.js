@@ -7,7 +7,7 @@ import PageWrapper from '../components/PageWrapper';
 import Header from '../components/Header';
 import PageName from '../components/PageName';
 import GridPageLoyaut from '../components/GridPageLoyaut';
-import InfoCommentVoting from '../components/InfoCommentVoting'
+import InfoCommentVoting from '../components/InfoCommentVoting';
 
 const FavouritesPage = () => {
   const [isActivedFav, setIsActivedFav] = useState(false);
@@ -15,7 +15,7 @@ const FavouritesPage = () => {
   const allFav = useSelector((state) => state.actions.favourites);
   const removedFav = useSelector((state) => state.actions.removedFav);
 
-  console.log(removedFav);
+  console.log(allFav)
 
   useEffect(() => {
     setIsActivedFav(true);

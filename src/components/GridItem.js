@@ -3,13 +3,15 @@ import styled from '@emotion/styled';
 import { Box } from '@mui/system';
 import notfound from '../img/notfound.png';
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addBreedsId } from '../redux/allBreedsReducer';
 import {
+  addToFavourites,
   addToRemovedFav,
   removeFavourites,
 } from '../redux/favLikesDislikesReducer';
 import heart from '../img/heart.svg';
+import filled_heart from '../img/filled_heart.svg';
 
 const StyledItem = styled(Box)({
   backgroundColor: '#C4C4C4',
@@ -87,6 +89,8 @@ const AddToFavourites = styled(Box)({
 });
 
 const GridItem = (props) => {
+  const allFav = useSelector((state) => state.actions.favourites);
+
   const dispatch = useDispatch();
 
   const onHandleClick = () => {
@@ -107,9 +111,19 @@ const GridItem = (props) => {
     date: nowDate(),
   };
 
+  const addToFavBody = {
+    id: props.id,
+    url: props.imageUrl,
+    value: 2,
+  };
+
   const onHandleClickFav = () => {
-    dispatch(removeFavourites(props.id));
-    dispatch(addToRemovedFav(removedFavInfo));
+    let index = allFav.findIndex((elem) => elem.id === props.id);
+    index > -1
+      ? dispatch(removeFavourites(props.id))
+      : dispatch(addToFavourites(addToFavBody));
+
+    // : dispatch(addToRemovedFav(removedFavInfo))
   };
 
   return (
@@ -130,14 +144,20 @@ const GridItem = (props) => {
         </LinkToInfoPage>
       )}
 
-      {props.favValue && (
+      {(props.favValue || props.galleryValue) && (
         <AddToFavourites
           sx={{ display: 'flex', alignItems: 'center' }}
           onClick={onHandleClickFav}
         >
-          <StyledInfoButton sx={{ padding: '10px' }}>
-            <img src={heart} alt='heart' />
-          </StyledInfoButton>
+          {allFav.find((elem) => elem.id === props.id) ? (
+            <StyledInfoButton sx={{ padding: '10px' }}>
+              <img src={filled_heart} alt='filled_heart' />
+            </StyledInfoButton>
+          ) : (
+            <StyledInfoButton sx={{ padding: '10px' }}>
+              <img src={heart} alt='heart' />
+            </StyledInfoButton>
+          )}
         </AddToFavourites>
       )}
     </StyledItem>
