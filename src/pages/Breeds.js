@@ -7,7 +7,7 @@ import Header from '../components/Header';
 import PageName from '../components/PageName';
 import SelectComponent from '../components/SelectComponent';
 import '../styles/styles.css';
-import ImageGalleryTemplate from '../components/ImageGalleryTemplate';
+import ImageGalleryTemplateBreeds from '../components/ImageGalleryTemplateBreeds';
 import SortButtons from '../components/SortButtons';
 import PrevNextButtonsBreeds from '../components/PrevNextButtonsBreeds';
 import { useDispatch, useSelector } from 'react-redux';
@@ -101,7 +101,7 @@ const Breeds = () => {
               />
             </Box>
           </Box>
-          <ImageGalleryTemplate
+          <ImageGalleryTemplateBreeds
             arr={allBreeds}
             status={breedsStatus}
             error={breedsError}

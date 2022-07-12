@@ -26,7 +26,7 @@ const MainBox = ({ children, ...props }) => {
       className={`${classes.bgStyle}`}
       sx={{
         width: { lg: '500px', xl: '570px', xxl: '680px', xxxl: '750px' },
-        height: { lg: '637px', xl: '590px', xxl: '770px', xxxl: '795px' },
+        height: {xs: '300px', lg: '637px', xl: '590px', xxl: '770px', xxxl: '795px' },
       }}
     >
       {children}

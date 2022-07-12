@@ -8,9 +8,8 @@ import Header from '../components/Header';
 import PageName from '../components/PageName';
 
 import ChoseCategoryGallery from '../components/ChoseCategoryGallery';
-import ImageGalleryTemplate from '../components/ImageGalleryTemplate';
-
-import heart from '../img/heart.svg';
+// import ImageGalleryTemplate from '../components/ImageGalleryTemplate';
+// import heart from '../img/heart.svg';
 import ModalUpload from '../components/ModalUpload';
 import ScrollToTop from '../components/ScrollToTop';
 
@@ -44,12 +43,12 @@ const Gallery = () => {
 
           <ChoseCategoryGallery />
 
-          <ImageGalleryTemplate
+          {/* <ImageGalleryTemplate
             param={<img src={heart} alt='heart' />}
             width={'40px'}
             height={'40px'}
             padding={'10px'}
-          />
+          /> */}
           <ScrollToTop />
         </MainBox>
       </Box>

@@ -1,10 +1,10 @@
 import React from 'react';
 import '../styles/styles.css';
 import { Box, styled } from '@mui/system';
-import { StyledCircularProgress } from '../components/ChosenImage';
+import { StyledCircularProgress } from './ChosenImage';
 import GridItem from './GridItem';
 
-const StyledGrid = styled(Box)({
+export const StyledGrid = styled(Box)({
   position: 'relative',
   gridGap: '20px',
   gridAutoRows: '150px',
@@ -12,7 +12,7 @@ const StyledGrid = styled(Box)({
   gridTemplateColumns: 'repeat(3, 1fr)',
 });
 
-const ImageGalleryTemplate = ({ ...props }) => {
+const ImageGalleryTemplateBreeds = ({ ...props }) => {
   const array = props.arr;
 
   let content;
@@ -41,8 +41,8 @@ const ImageGalleryTemplate = ({ ...props }) => {
               id={elem.id}
               key={elem.id}
               name={elem.name}
-              image={elem.image}
               imageUrl={elem.image && elem.image.url}
+              breedsValue={'breeds'}
             />
           ))
         : props.selectedBreed === '' && props.valueBA
@@ -52,7 +52,7 @@ const ImageGalleryTemplate = ({ ...props }) => {
                 id={elem.id}
                 key={elem.id}
                 name={elem.name}
-                image={elem.image}
+                breedsValue={'breeds'}
                 imageUrl={elem.image && elem.image.url}
               />
             ))
@@ -64,7 +64,7 @@ const ImageGalleryTemplate = ({ ...props }) => {
                 id={elem.id}
                 key={elem.id}
                 name={elem.name}
-                image={elem.image}
+                breedsValue={'breeds'}
                 imageUrl={elem.image.url}
               />
             ));
@@ -84,4 +84,4 @@ const ImageGalleryTemplate = ({ ...props }) => {
   );
 };
 
-export default ImageGalleryTemplate;
+export default ImageGalleryTemplateBreeds;
