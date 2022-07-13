@@ -41,7 +41,6 @@ const SelectComponent = ({ ...props }) => {
     <Box sx={{ position: 'relative', width: '100%' }}>
       <StyledFormControl
         onChange={props.onChange}
-        onClick={props.onClick}
         value={props.value}
         sx={{
           width: {
@@ -61,7 +60,12 @@ const SelectComponent = ({ ...props }) => {
         {props.status
           ? content
           : props.arr.map((elem) => (
-              <option key={Math.floor(Math.random(10) * 10000)}>{elem}</option>
+              <option
+                key={Math.floor(Math.random(10) * 100000)}
+                value={elem.value}
+              >
+                {elem.name}
+              </option>
             ))}
       </StyledFormControl>
       <StyledImg src={arrow_down} alt='arrow_down' />

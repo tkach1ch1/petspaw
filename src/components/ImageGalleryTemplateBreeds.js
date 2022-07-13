@@ -21,7 +21,7 @@ const ImageGalleryTemplateBreeds = ({ ...props }) => {
     content = (
       <StyledCircularProgress
         sx={{
-          top: { xs: '150px', md: '200px', lg: '180px', xxxl: '250px' },
+          top: { xs: '150px', md: '250px', lg: '180px', xxxl: '250px' },
           right: {
             md: '300px',
             lg: '190px',

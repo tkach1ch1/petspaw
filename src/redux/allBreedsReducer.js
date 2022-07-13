@@ -12,8 +12,8 @@ const allBreedsReducer = createSlice({
   },
   reducers: {
     addBreedsId: (state, action) => {
-        state.breedsId = action.payload
-    }
+      state.breedsId = action.payload;
+    },
   },
   extraReducers(builder) {
     builder
@@ -31,7 +31,7 @@ const allBreedsReducer = createSlice({
   },
 });
 
-export const {addBreedsId} = allBreedsReducer.actions
+export const { addBreedsId } = allBreedsReducer.actions;
 
 export const fetchBreeds = createAsyncThunk(
   'allBreeds/fetchBreeds',

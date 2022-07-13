@@ -15,8 +15,6 @@ const FavouritesPage = () => {
   const allFav = useSelector((state) => state.actions.favourites);
   const removedFav = useSelector((state) => state.actions.removedFav);
 
-  console.log(allFav)
-
   useEffect(() => {
     setIsActivedFav(true);
   }, []);

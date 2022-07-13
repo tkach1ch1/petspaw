@@ -1,10 +1,13 @@
-import React, { useRef } from 'react';
+import React, { useContext, useRef } from 'react';
 import styled from '@emotion/styled';
 import '../styles/styles.css';
+import { useDispatch } from 'react-redux';
 import { useHover } from 'usehooks-ts';
 import { Box } from '@mui/material';
 import update from '../img/update.svg';
 import update_hov from '../img/update_hov.svg';
+import { fetchImages } from '../redux/allImagesGalleryReducer';
+import Context from './context';
 
 const StyledBox = styled(Box)({
   backgroundColor: 'white',
@@ -22,6 +25,10 @@ const UpdateButton = ({ ...props }) => {
   const hoverRef = useRef(null);
   const isHover = useHover(hoverRef);
 
+  const dispatch = useDispatch();
+
+  const value = useContext(Context)
+
   return (
     <StyledBox
       ref={hoverRef}
@@ -29,6 +36,9 @@ const UpdateButton = ({ ...props }) => {
       width={props.width}
       height={props.height}
       padding={props.padding}
+      onClick={() =>
+        dispatch(fetchImages(value))
+      }
     >
       {isHover ? (
         <img src={update_hov} alt='update_hov' />

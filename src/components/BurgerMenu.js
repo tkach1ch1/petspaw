@@ -16,6 +16,8 @@ export const StyledIconButton = styled(IconButton)({
   },
 });
 
+//NOTE: Burger menu button
+
 const BurgerMenu = () => {
   const [open, setOpen] = useState(false);
 

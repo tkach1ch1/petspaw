@@ -9,12 +9,13 @@ import arrow_next from '../img/arrow_next.svg';
 import arrow_prev_hov from '../img/arrow_prew_hov.svg';
 import arrow_next_hov from '../img/arrow_next_hov.svg';
 
-const PrevNextButtonsBreeds = () => {
+const PrevNextButtonsBreeds = (props) => {
   const hoverRefPrev = React.createRef();
   const isHoverPrev = useHover(hoverRefPrev);
 
   const hoverRefNext = React.createRef();
   const isHoverNext = useHover(hoverRefNext);
+
   return (
     <Box
       display={{ xs: 'none', md: 'flex' }}

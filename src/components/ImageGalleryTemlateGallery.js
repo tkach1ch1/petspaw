@@ -15,8 +15,6 @@ export const StyledGrid = styled(Box)({
 const ImageGalleryTemplateGallery = ({ ...props }) => {
   const array = props.arr;
 
-  console.log(array);
-
   let content;
 
   if (props.status === 'loading') {
@@ -37,7 +35,12 @@ const ImageGalleryTemplateGallery = ({ ...props }) => {
     );
   } else if (props.status === 'succeeded') {
     content = array.map((elem) => (
-      <GridItem id={elem.id} key={elem.id} imageUrl={elem.url} galleryValue={'gallery'} />
+      <GridItem
+        id={Math.floor(Math.random() * 100000)}
+        key={elem.id}
+        imageUrl={elem.url}
+        galleryValue={'gallery'}
+      />
     ));
   } else if (props.status === 'failed') {
     content = <div>{props.error}</div>;

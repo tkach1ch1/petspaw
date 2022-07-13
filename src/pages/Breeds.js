@@ -48,11 +48,9 @@ const Breeds = () => {
     setBreed(event.target.value);
   };
 
-  const onHandleClick = () => {
-    if (breed === 'All breeds') {
-      setBreed('');
-    }
-  };
+  if (breed === 'All breeds') {
+    setBreed('');
+  }
 
   return (
     <PageWrapper>
@@ -83,7 +81,6 @@ const Breeds = () => {
                 status={breedsStatus}
                 error={breedsError}
                 onChange={onHandleBreedsChange}
-                onClick={onHandleClick}
                 value={breed}
               />
             </Box>

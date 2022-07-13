@@ -120,10 +120,9 @@ const GridItem = (props) => {
   const onHandleClickFav = () => {
     let index = allFav.findIndex((elem) => elem.id === props.id);
     index > -1
-      ? dispatch(removeFavourites(props.id))
+      ? dispatch(removeFavourites(props.id)) &&
+        dispatch(addToRemovedFav(removedFavInfo))
       : dispatch(addToFavourites(addToFavBody));
-
-    // : dispatch(addToRemovedFav(removedFavInfo))
   };
 
   return (

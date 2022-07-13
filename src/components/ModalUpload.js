@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { useHover } from 'usehooks-ts';
 import styled from '@emotion/styled';
 import '../styles/styles.css';
-import { Box, IconButton, Modal } from '@mui/material';
+import { useDispatch, useSelector } from 'react-redux';
+import { Box, IconButton, Modal, Typography } from '@mui/material';
 import MainStyledButton, {
   StyledTypography,
 } from '../components/MainStyledButton';
@@ -11,12 +12,21 @@ import CloseIcon from '@mui/icons-material/Close';
 import upload from '../img/upload.svg';
 import upload_hov from '../img/upload_hov.svg';
 
+import ModalUploadBox from './ModalUploadBox';
+import { uploadImage } from '../redux/allImagesGalleryReducer';
+import { StyledPageName } from './PageName';
+
 const StyledModalBox = styled(Box)({
   outline: 'none',
   border: 'none',
   padding: '20px',
   position: 'absolute',
   backgroundColor: 'var(--main-gray)',
+  overflow: 'hidden',
+  overflowY: 'scroll',
+  '::-webkit-scrollbar': {
+    width: 0,
+  },
 });
 
 const CloseButton = styled(IconButton)({
@@ -33,6 +43,39 @@ const CloseButton = styled(IconButton)({
   },
 });
 
+export const MainTypography = styled(Typography)({
+  fontWeight: '500',
+  marginBottom: '10px',
+});
+
+export const SubTypography = styled(Typography)({
+  fontSize: '20px',
+  color: 'var(--gray)',
+});
+
+const StyledLink = styled('a')({
+  color: 'var(--main-red)',
+  textDecoration: 'none',
+  cursor: 'pointer',
+  '&:hover': {
+    opacity: '0.6',
+    transition: 'all 0.3s',
+  },
+});
+
+const UploadButton = styled(StyledPageName)({
+  width: 'fit-content',
+  fontSize: '12px',
+  padding: '12px 30px',
+  borderRadius: '10px',
+  fontWeight: '400',
+  cursor: 'pointer',
+  '&:hover': {
+    opacity: '0.8',
+    transition: 'all 0.4s'
+  },
+});
+
 const ModalUpload = () => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -40,6 +83,19 @@ const ModalUpload = () => {
 
   const hoverRef = React.createRef();
   const isHover = useHover(hoverRef);
+
+  const [file, setFile] = useState('');
+
+  const onHandleFileChange = (event) => {
+    setFile(event.target.value);
+  };
+
+  const dispatch = useDispatch();
+
+  const onHandleFileClick = () => {
+    dispatch(uploadImage({ file }));
+    setFile('')
+  };
 
   return (
     <Box>
@@ -87,8 +143,48 @@ const ModalUpload = () => {
             <CloseIcon sx={{ fontSize: '38px', color: 'var(--main-red)' }} />
           </CloseButton>
 
-          <Box display={'flex'} flexDirection={'column'}>
-            
+          <Box
+            display={'flex'}
+            flexDirection={'column'}
+            alignItems={'center'}
+            mt={'100px'}
+            position={'relative'}
+          >
+            <Box mb={'40px'}>
+              <MainTypography sx={{ fontSize: { md: '36px' } }}>
+                Upload a .jpg or .png Cat Image
+              </MainTypography>
+              <SubTypography>
+                Any uploads must comply with the{' '}
+                <StyledLink
+                  href='https://thecatapi.com/privacy'
+                  target='_blank'
+                >
+                  upload guidelines
+                </StyledLink>{' '}
+                or face deletion.
+              </SubTypography>
+            </Box>
+
+            <ModalUploadBox value={file} onChange={onHandleFileChange} />
+
+            <Box mt={'340px'}>
+              {file === '' ? (
+                <SubTypography>No file selected</SubTypography>
+              ) : (
+                <Box
+                  display={'flex'}
+                  flexDirection={'column'}
+                  alignItems={'center'}
+                  gap={'20px'}
+                >
+                  <SubTypography>Image File Name: {file} </SubTypography>
+                  <UploadButton onClick={onHandleFileClick} style={{}}>
+                    Upload photo
+                  </UploadButton>
+                </Box>
+              )}
+            </Box>
           </Box>
         </StyledModalBox>
       </Modal>

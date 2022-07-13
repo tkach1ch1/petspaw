@@ -20,7 +20,7 @@ export const useRoutes = () => {
       <Route path='favourites' element={<FavouritesPage />} />
       <Route path='likes' element={<LikesPage />} />
       <Route path='dislikes' element={<DislikesPage />} />
-      <Route path='*' element={<Navigate to='/' replace />} />
+      <Route path='*' element={<Navigate to='/' />} />
     </Routes>
   );
 };
