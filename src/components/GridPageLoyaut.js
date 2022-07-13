@@ -16,6 +16,8 @@ const NoItemBox = styled(Box)({
   borderRadius: '10px',
 });
 
+//NOTE: GridBox for Liked/Dislikes/Favourites Page
+
 const GridPageLoyaut = (props) => {
   //NOTE: Value for every categorie:
   //      Likes: '1'

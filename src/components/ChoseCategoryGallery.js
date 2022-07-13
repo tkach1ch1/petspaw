@@ -42,6 +42,9 @@ const arrayType = [
   { name: 'Animated', value: 'gif' },
 ];
 
+//NOTE: Categories on Gallery page
+
+//OnChange controll for all select categories states
 const ChoseCategoryGallery = (props) => {
   const allBreeds = useSelector((state) => state.allBreeds.breeds);
 
@@ -57,6 +60,8 @@ const ChoseCategoryGallery = (props) => {
     props.setType(event.target.value);
   };
 
+  //To find in API images on certain breed, not breed name but breed id is needed
+  //Comparing all breed names in array and onChange value to find a match and sending breed id from founded match breed.
   const onHandleBreedChange = (event) => {
     props.setBreed(event.target.value);
     if (allBreeds.find((elem) => elem.name === event.target.value)) {
@@ -64,8 +69,7 @@ const ChoseCategoryGallery = (props) => {
         (elem) => elem.name === event.target.value
       );
       props.setBreedId(foundBreed.id);
-    } else props.setBreedId(' ')
-    
+    } else props.setBreedId('');
   };
 
   return (
@@ -75,6 +79,7 @@ const ChoseCategoryGallery = (props) => {
       gap={{ xs: 0, sm: '20px' }}
     >
       <Box sx={{ width: { xs: '100%', sm: '50%' } }}>
+        {/* Order categorie */}
         <StyledInputLabel>Order</StyledInputLabel>
         <SelectComponent
           arr={arrOrder}
@@ -84,6 +89,7 @@ const ChoseCategoryGallery = (props) => {
           value={props.order}
           onChange={onHandleOrderChange}
         />
+        {/* Breed categorie */}
         <StyledInputLabel>Breed</StyledInputLabel>
         <SelectComponent
           arr={allBreeds}
@@ -96,6 +102,7 @@ const ChoseCategoryGallery = (props) => {
         />
       </Box>
       <Box sx={{ width: { xs: '100%', sm: '50%' } }}>
+        {/* Type categorie */}
         <StyledInputLabel>Type</StyledInputLabel>
         <SelectComponent
           arr={arrayType}
@@ -105,7 +112,7 @@ const ChoseCategoryGallery = (props) => {
           value={props.type}
           onChange={onHandleTypeChange}
         />
-
+        {/* Limit categorie */}
         <StyledInputLabel>Limit</StyledInputLabel>
         <Box display={'flex'} gap={'10px'}>
           <SelectComponent
@@ -116,6 +123,7 @@ const ChoseCategoryGallery = (props) => {
             value={props.limit}
             onChange={onHandleLimitChange}
           />
+          {/* Button that refreshes images from API  */}
           <UpdateButton
             displayXS={'none'}
             displaySM={'flex'}

@@ -14,16 +14,17 @@ const StyledImg = styled('img')({
 });
 
 const StyledImgNotFound = styled('img')({
-  width: '100%', 
-  height: '450px', 
-  borderRadius: '20px'
-})
+  width: '100%',
+  height: '450px',
+  borderRadius: '20px',
+});
+
+//NOTE: Swiper on BreedsInfoPage
 
 const SwiperInfoPage = (props) => {
   const pagination = {
     clickable: true,
   };
-
   return (
     <Swiper slidesPerView={1} pagination={pagination} modules={[Pagination]}>
       <SwiperSlide>

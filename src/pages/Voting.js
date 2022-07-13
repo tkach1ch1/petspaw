@@ -31,6 +31,7 @@ const Voting = () => {
           </Box>
           <ChoisesButtons />
           <Box mt={'-32px'}>
+            {/* Shows info about actions user did on VotingPage */}
             {all.map((obj) => (
               <InfoCommentVoting
                 id={obj.id}

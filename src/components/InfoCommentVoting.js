@@ -28,6 +28,8 @@ const StyleId = styled(Typography)({
   color: 'var(--black)',
 });
 
+//NOTE: Info about action that user did on VotingPage
+
 const InfoCommentVoting = (props) => {
   return (
     <CommentWrapper

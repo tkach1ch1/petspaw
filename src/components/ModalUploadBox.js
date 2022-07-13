@@ -2,8 +2,8 @@ import React from 'react';
 import '../styles/styles.css';
 import styled from '@emotion/styled';
 import { Box, Button } from '@mui/material';
-import unpload_bg from '../img/upload-bg.png';
 import { MainTypography, SubTypography } from './ModalUpload';
+import unpload_bg from '../img/upload-bg.png';
 
 const UploadBox = styled(Button)({
   position: 'absolute',

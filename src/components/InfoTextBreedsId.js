@@ -31,6 +31,8 @@ const TypographyDescription = styled(Typography)({
   color: 'var(--gray)',
 });
 
+//NOTE: BreeedInfoPage on witch user come from BreedsPage by clicking on certain breed
+
 const InfoTextBreedsId = (props) => {
   return (
     <StyledFieldset>

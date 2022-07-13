@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import '../styles/styles.css';
 import { useDispatch, useSelector } from 'react-redux';
+import { fetchImages } from '../redux/allImagesGalleryReducer';
+import Context from '../components/context';
 import Box from '@mui/material/Box';
+
 import Categories from '../components/Categories';
 import MainBox from '../components/MainBox';
 import PageWrapper from '../components/PageWrapper';
@@ -11,21 +14,22 @@ import ChoseCategoryGallery from '../components/ChoseCategoryGallery';
 import ModalUpload from '../components/ModalUpload';
 import ScrollToTop from '../components/ScrollToTop';
 import ImageGalleryTemplateGallery from '../components/ImageGalleryTemlateGallery';
-import { fetchImages } from '../redux/allImagesGalleryReducer';
-import Context from '../components/context';
 
 const Gallery = () => {
   const allImages = useSelector((state) => state.allImages.images);
   const imagesStatus = useSelector((state) => state.allImages.status);
   const imagesError = useSelector((state) => state.allImages.error);
 
+  //All states for select categories on GalleryPage
   const [limit, setLimit] = useState(5);
   const [order, setOrder] = useState('RANDOM');
   const [type, setType] = useState('jpg,png,gif');
   const [breed, setBreed] = useState('');
   const [breedId, setBreedId] = useState('');
+
   const dispatch = useDispatch();
 
+  //Fetching images from API based on selected categories
   useEffect(() => {
     dispatch(fetchImages({ limit, order, type, breedId }));
   }, [dispatch, limit, order, type, breedId]);

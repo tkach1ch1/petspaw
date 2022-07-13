@@ -15,6 +15,7 @@ const FavouritesPage = () => {
   const allFav = useSelector((state) => state.actions.favourites);
   const removedFav = useSelector((state) => state.actions.removedFav);
 
+  //Change categorie sign in header on Active
   useEffect(() => {
     setIsActivedFav(true);
   }, []);
@@ -33,6 +34,7 @@ const FavouritesPage = () => {
         <MainBox backgroundColor={'#ffffff'}>
           <PageName name='Favourites' />
           <GridPageLoyaut arr={allFav} />
+          {/* If image was remover from FavPage shows some info about this action */}
           {removedFav.length !== 0 &&
             removedFav.map((elem) => (
               <InfoCommentVoting

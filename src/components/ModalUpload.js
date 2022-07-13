@@ -1,20 +1,19 @@
 import React, { useState } from 'react';
 import { useHover } from 'usehooks-ts';
+import { useDispatch } from 'react-redux';
 import styled from '@emotion/styled';
 import '../styles/styles.css';
-import { useDispatch, useSelector } from 'react-redux';
 import { Box, IconButton, Modal, Typography } from '@mui/material';
 import MainStyledButton, {
   StyledTypography,
 } from '../components/MainStyledButton';
 import CloseIcon from '@mui/icons-material/Close';
+import ModalUploadBox from './ModalUploadBox';
+import { StyledPageName } from './PageName';
 
+import { uploadImage } from '../redux/allImagesGalleryReducer';
 import upload from '../img/upload.svg';
 import upload_hov from '../img/upload_hov.svg';
-
-import ModalUploadBox from './ModalUploadBox';
-import { uploadImage } from '../redux/allImagesGalleryReducer';
-import { StyledPageName } from './PageName';
 
 const StyledModalBox = styled(Box)({
   outline: 'none',
@@ -72,11 +71,16 @@ const UploadButton = styled(StyledPageName)({
   cursor: 'pointer',
   '&:hover': {
     opacity: '0.8',
-    transition: 'all 0.4s'
+    transition: 'all 0.4s',
   },
 });
 
+//NOTE: Modal window on GalleryPage by clicking Upload
+
 const ModalUpload = () => {
+  const dispatch = useDispatch();
+
+  // Open / Close modal window
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -84,17 +88,16 @@ const ModalUpload = () => {
   const hoverRef = React.createRef();
   const isHover = useHover(hoverRef);
 
+  // File upload
   const [file, setFile] = useState('');
 
   const onHandleFileChange = (event) => {
     setFile(event.target.value);
   };
 
-  const dispatch = useDispatch();
-
   const onHandleFileClick = () => {
     dispatch(uploadImage({ file }));
-    setFile('')
+    setFile('');
   };
 
   return (

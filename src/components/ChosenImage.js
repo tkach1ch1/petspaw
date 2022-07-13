@@ -37,6 +37,8 @@ const ChosenImage = () => {
 
   let content;
 
+  //NOTE: Taking image from API and showing it on Voting page
+
   if (imageStatus === 'loading') {
     content = (
       <StyledCircularProgress sx={{ top: { xs: '50px', md: '150px' } }} />

@@ -88,6 +88,8 @@ const AddToFavourites = styled(Box)({
   },
 });
 
+//NOTE: Grid item in GridBox
+
 const GridItem = (props) => {
   const allFav = useSelector((state) => state.actions.favourites);
 
@@ -117,24 +119,28 @@ const GridItem = (props) => {
     value: 2,
   };
 
+  //NOTE: Adding and removing image from Favourites page
   const onHandleClickFav = () => {
     let index = allFav.findIndex((elem) => elem.id === props.id);
     index > -1
-      ? dispatch(removeFavourites(props.id)) &&
-        dispatch(addToRemovedFav(removedFavInfo))
-      : dispatch(addToFavourites(addToFavBody));
+      ? dispatch(removeFavourites(props.id)) && // if image already in Fav remove it
+        dispatch(addToRemovedFav(removedFavInfo)) // shows action info about removed image on Fav page
+      : dispatch(addToFavourites(addToFavBody)); // if image isn't in Fav adds it
   };
 
   return (
     <StyledItem key={props.id} sx={{ height: { xs: '205px', md: '100%' } }}>
       {props.imageUrl ? (
-        <StyledImg src={props.imageUrl} alt={props.name || 'foto'} />
+        <StyledImg src={props.imageUrl} alt={props.name || 'foto'} /> //Grid item box image we are taking from API
       ) : (
         <StyledImg src={notfound} alt='Not found' />
       )}
 
+      {/* NOTE: On Breeds page user is able to go to BreedsInfoPage on grid item box
+      click */}
       {props.breedsValue && (
         <LinkToInfoPage to={props.id} onClick={onHandleClick}>
+          {' '}
           <StyledInfoButton
             sx={{ padding: '5px 24px', width: '90%', bottom: '10px' }}
           >
@@ -143,6 +149,8 @@ const GridItem = (props) => {
         </LinkToInfoPage>
       )}
 
+      {/* NOTE: On Fav page or Gallery page user is able to add or remove image on grid
+      item box click */}
       {(props.favValue || props.galleryValue) && (
         <AddToFavourites
           sx={{ display: 'flex', alignItems: 'center' }}

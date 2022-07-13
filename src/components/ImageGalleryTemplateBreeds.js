@@ -12,6 +12,8 @@ export const StyledGrid = styled(Box)({
   gridTemplateColumns: 'repeat(3, 1fr)',
 });
 
+//NOTE: Grid for BreedsPage
+
 const ImageGalleryTemplateBreeds = ({ ...props }) => {
   const array = props.arr;
 
@@ -35,6 +37,7 @@ const ImageGalleryTemplateBreeds = ({ ...props }) => {
     );
   } else if (props.status === 'succeeded') {
     content =
+      // Sorted Breeds from A to B
       props.selectedBreed === '' && props.valueAB
         ? array.map((elem) => (
             <GridItem
@@ -45,7 +48,8 @@ const ImageGalleryTemplateBreeds = ({ ...props }) => {
               breedsValue={'breeds'}
             />
           ))
-        : props.selectedBreed === '' && props.valueBA
+        : // Sorted Breeds from B to A
+        props.selectedBreed === '' && props.valueBA
         ? array
             .map((elem) => (
               <GridItem
@@ -57,6 +61,7 @@ const ImageGalleryTemplateBreeds = ({ ...props }) => {
               />
             ))
             .reverse()
+            //Filtering Breeds to find one selected breed in selected breed categorie
         : array
             .filter((elem) => elem.name === props.selectedBreed)
             .map((elem) => (

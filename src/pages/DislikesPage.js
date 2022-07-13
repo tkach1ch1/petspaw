@@ -13,6 +13,7 @@ const DislikesPage = () => {
 
   const allDislikes = useSelector((state) => state.actions.dislikes);
 
+  //Change categorie sign in header on Active
   useEffect(() => {
     setIsActivedDis(true);
   }, []);

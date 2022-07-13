@@ -27,9 +27,12 @@ const StyledImg = styled('img')({
   cursor: 'pointer',
 });
 
+//NOTE: Select categories on Breeds- and GalleryPage
+
 const SelectComponent = ({ ...props }) => {
   let content;
 
+  // When taking categories value async from API
   if (props.status === 'succeeded') {
     content = props.arr.map((elem) => (
       <option key={elem.id}>{elem.name}</option>
@@ -59,6 +62,7 @@ const SelectComponent = ({ ...props }) => {
         {props.firstParam && <option>{props.firstParam}</option>}
         {props.status
           ? content
+          // When taking categories sync from self-written array 
           : props.arr.map((elem) => (
               <option
                 key={Math.floor(Math.random(10) * 100000)}

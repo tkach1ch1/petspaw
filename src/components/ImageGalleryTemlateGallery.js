@@ -12,6 +12,8 @@ export const StyledGrid = styled(Box)({
   gridTemplateColumns: 'repeat(3, 1fr)',
 });
 
+//NOTE: Grid for GalleryPage
+
 const ImageGalleryTemplateGallery = ({ ...props }) => {
   const array = props.arr;
 

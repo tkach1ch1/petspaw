@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Categories from '../components/Categories';
+import '../styles/styles.css';
 import Box from '@mui/material/Box';
+import { fetchBreeds } from '../redux/allBreedsReducer';
+
+import Categories from '../components/Categories';
 import MainBox from '../components/MainBox';
 import PageWrapper from '../components/PageWrapper';
 import Header from '../components/Header';
 import PageName from '../components/PageName';
 import SelectComponent from '../components/SelectComponent';
-import '../styles/styles.css';
 import ImageGalleryTemplateBreeds from '../components/ImageGalleryTemplateBreeds';
 import SortButtons from '../components/SortButtons';
 import PrevNextButtonsBreeds from '../components/PrevNextButtonsBreeds';
-import { fetchBreeds } from '../redux/allBreedsReducer';
 import ScrollToTop from '../components/ScrollToTop';
 
 const limit = ['Limit: 5', 'Limit: 10', 'Limit: 15', 'Limit: 20'];
@@ -23,11 +24,23 @@ const Breeds = () => {
 
   const dispatch = useDispatch();
 
+  //Fetches all breeds from API
   useEffect(() => {
     dispatch(fetchBreeds());
   }, [dispatch]);
 
+  //State and actions for breed select
   const [breed, setBreed] = useState('');
+
+  const onHandleBreedsChange = (event) => {
+    setBreed(event.target.value);
+  };
+
+  if (breed === 'All breeds') {
+    setBreed('');
+  }
+
+  //States and actions for sort buttons
   const [isActiveBA, setIsActiveBA] = useState(false);
   const [isActiveAB, setIsActiveAB] = useState(true);
 
@@ -43,14 +56,6 @@ const Breeds = () => {
       setIsActiveBA(false);
     }
   };
-
-  const onHandleBreedsChange = (event) => {
-    setBreed(event.target.value);
-  };
-
-  if (breed === 'All breeds') {
-    setBreed('');
-  }
 
   return (
     <PageWrapper>
@@ -75,6 +80,7 @@ const Breeds = () => {
           >
             <PageName name='Breeds' />
             <Box mb={'10px'} width={'100%'}>
+              {/* Breed select categorie */}
               <SelectComponent
                 firstParam='All breeds'
                 arr={allBreeds}
@@ -85,11 +91,13 @@ const Breeds = () => {
               />
             </Box>
             <Box display={'flex'} gap={'10px'} width={'100%'}>
+              {/* Limit breeds on page select categorie */}
               <SelectComponent
                 arr={limit}
                 widthxl={'100px'}
                 widthxxl={'100%'}
               />
+              {/* Sort buttons */}
               <SortButtons
                 onClickBA={onClickHandleBA}
                 onClickAB={onClickHandleAB}
@@ -98,6 +106,7 @@ const Breeds = () => {
               />
             </Box>
           </Box>
+          {/* GridBox with all placed breeds that are fetching from API */}
           <ImageGalleryTemplateBreeds
             arr={allBreeds}
             status={breedsStatus}
@@ -106,6 +115,7 @@ const Breeds = () => {
             valueBA={isActiveBA}
             valueAB={isActiveAB}
           />
+
           <PrevNextButtonsBreeds />
           <ScrollToTop />
         </MainBox>

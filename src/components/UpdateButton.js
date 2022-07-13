@@ -21,6 +21,8 @@ const StyledBox = styled(Box)({
   },
 });
 
+//NOTE: Update button on GalleryPage in order to refresh images from API
+
 const UpdateButton = ({ ...props }) => {
   const hoverRef = useRef(null);
   const isHover = useHover(hoverRef);

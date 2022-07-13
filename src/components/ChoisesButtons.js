@@ -40,6 +40,8 @@ const StyledBox = styled(Box)({
   },
 });
 
+//NOTE: On Voting page user can choose between three buttons and add onClick choosen image to likes/favourites/dislikes page
+
 const ChoisesButtons = () => {
   const dispatch = useDispatch();
 
@@ -62,6 +64,7 @@ const ChoisesButtons = () => {
         : dateNow.getHours() + ':' + dateNow.getMinutes();
     return dateNowMinAndSec.toString();
   };
+
 
   function getInfoFav() {
     const newFav = {
@@ -93,6 +96,11 @@ const ChoisesButtons = () => {
 
     return newFav;
   }
+
+  //On one of three buttons click action
+  //At first the image will be added to separate array in order to show it on certain page (likes/dis/fav)
+  //Then the image will be added to main array where all actions are stacking to show them in the InfoCommentVoting component
+  //The last one dispatch reloaded the image
 
   const handleClickFav = () => {
     dispatch(addToFavourites(getInfoFav()));

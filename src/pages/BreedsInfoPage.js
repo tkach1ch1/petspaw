@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import '../styles/styles.css';
 import { useSelector } from 'react-redux';
 import Box from '@mui/material/Box';
+
 import Categories from '../components/Categories';
 import PageWrapper from '../components/PageWrapper';
 import Header from '../components/Header';
@@ -14,6 +15,8 @@ import InfoTextBreedsId from '../components/InfoTextBreedsId';
 const StyledId = styled(StyledPageName)({
   height: 'fit-content',
 });
+
+//NOTE:Gives info about certain breed that was chosen on BreedsPage
 
 const BreedsInfoPage = () => {
   const allBreeds = useSelector((state) => state.allBreeds.breeds);

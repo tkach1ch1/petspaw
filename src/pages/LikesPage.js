@@ -13,6 +13,7 @@ const LikesPage = () => {
 
   const allLikes = useSelector((state) => state.actions.likes);
 
+  //Change categorie sign in header on Active
   useEffect(() => {
     setIsActivedLike(true);
   }, []);
