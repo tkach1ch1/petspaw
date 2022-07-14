@@ -69,6 +69,8 @@ const StyledImg = styled('img')({
   width: '100%',
   height: '100%',
   borderRadius: '20px',
+  objectFit: 'fill',
+
 });
 
 const AddToFavourites = styled(Box)({
@@ -95,7 +97,7 @@ const GridItem = (props) => {
 
   const dispatch = useDispatch();
 
-  const onHandleClick = () => {
+  const onHandleItemClick = () => {
     dispatch(addBreedsId(props.id));
   };
 
@@ -139,7 +141,7 @@ const GridItem = (props) => {
       {/* NOTE: On Breeds page user is able to go to BreedsInfoPage on grid item box
       click */}
       {props.breedsValue && (
-        <LinkToInfoPage to={props.id} onClick={onHandleClick}>
+        <LinkToInfoPage to={props.id} onClick={onHandleItemClick}>
           {' '}
           <StyledInfoButton
             sx={{ padding: '5px 24px', width: '90%', bottom: '10px' }}

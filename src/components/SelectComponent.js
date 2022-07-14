@@ -62,8 +62,8 @@ const SelectComponent = ({ ...props }) => {
         {props.firstParam && <option>{props.firstParam}</option>}
         {props.status
           ? content
-          // When taking categories sync from self-written array 
-          : props.arr.map((elem) => (
+          : // When taking categories sync from self-written array
+            props.arr.map((elem) => (
               <option
                 key={Math.floor(Math.random(10) * 100000)}
                 value={elem.value}

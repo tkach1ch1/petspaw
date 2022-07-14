@@ -8,8 +8,8 @@ import notfound from '../img/notfound.png';
 
 const StyledImg = styled('img')({
   width: '100%',
-  height: '100%',
-  objectFit: 'cover',
+  height: '360px',
+  objectFit: 'fill',
   borderRadius: '20px',
 });
 
@@ -27,13 +27,15 @@ const SwiperInfoPage = (props) => {
   };
   return (
     <Swiper slidesPerView={1} pagination={pagination} modules={[Pagination]}>
-      <SwiperSlide>
-        {props.image ? (
-          <StyledImg src={props.image} alt='foto' />
+      {props.allImagesById.map((elem) =>
+        elem.url ? (
+          <SwiperSlide key={elem.id}>
+            <StyledImg src={elem.url} alt='foto' />
+          </SwiperSlide>
         ) : (
           <StyledImgNotFound src={notfound} alt='Not found' />
-        )}
-      </SwiperSlide>
+        )
+      )}
     </Swiper>
   );
 };

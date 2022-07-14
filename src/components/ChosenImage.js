@@ -3,19 +3,8 @@ import styled from '@emotion/styled';
 import '../styles/styles.css';
 import { fetchImage } from '../redux/votingPageReducer';
 import { Box } from '@mui/system';
-import { makeStyles } from '@mui/styles';
 import { useDispatch, useSelector } from 'react-redux';
 import { CircularProgress } from '@mui/material';
-
-const useStyles = makeStyles((theme) => ({
-  [theme.breakpoints.up('xs')]: {
-    imgSize: {
-      width: '100%',
-      height: 'auto',
-      borderRadius: '20px',
-    },
-  },
-}));
 
 export const StyledCircularProgress = styled(CircularProgress)({
   position: 'absolute',
@@ -28,8 +17,6 @@ const ChosenImage = () => {
   const imageVoting = useSelector((state) => state.votingPage.image);
   const imageStatus = useSelector((state) => state.votingPage.status);
   const imageError = useSelector((state) => state.votingPage.error);
-
-  const classes = useStyles();
 
   useEffect(() => {
     dispatch(fetchImage());
@@ -49,7 +36,12 @@ const ChosenImage = () => {
         src={elem.url}
         key={elem.id}
         alt='cat_photo'
-        className={`${classes.imgSize}`}
+        style={{
+          width: '100%',
+          height: '360px',
+          objectFit: 'fill',
+          borderRadius: '20px',
+        }}
       />
     ));
   } else if (imageStatus === 'failed') {

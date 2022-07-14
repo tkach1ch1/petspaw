@@ -30,7 +30,7 @@ const Voting = () => {
             <ChosenImage />
           </Box>
           <ChoisesButtons />
-          <Box mt={'-32px'}>
+          <Box mt={'-80px'}>
             {/* Shows info about actions user did on VotingPage */}
             {all.map((obj) => (
               <InfoCommentVoting

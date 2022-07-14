@@ -9,7 +9,7 @@ const StyledFieldset = styled('fieldset')({
 });
 
 const StyledLegend = styled('legend')({
-  fontSize: '20px',
+  fontSize: '36px',
   fontWeight: '500',
   padding: '16px 20px',
   textAlign: 'center',

@@ -26,7 +26,7 @@ const ButtonsWrapper = styled(Box)({
   display: 'flex',
   gap: '3px',
   position: 'relative',
-  bottom: '40px',
+  bottom: '80px',
   border: '4px solid white',
   backgroundColor: 'white',
 });
