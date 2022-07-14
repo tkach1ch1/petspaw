@@ -37,6 +37,9 @@ const allBreedsReducer = createSlice({
         state.status = 'succeeded';
         state.breeds = action.payload;
       })
+      .addCase(fetchImagesByBreedsId.pending, (state) => {
+        state.status = 'loading';
+      })
       .addCase(fetchImagesByBreedsId.fulfilled, (state, action) => {
         state.status = 'succeeded';
         state.imagesById = action.payload;

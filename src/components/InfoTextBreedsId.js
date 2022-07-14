@@ -39,7 +39,7 @@ const InfoTextBreedsId = (props) => {
       <StyledLegend>{props.name}</StyledLegend>
 
       <Box sx={{ padding: { xs: '10px 20px', md: '20px 40px' } }}>
-        <Box mb={'12px'} sx={{mt: {xs: '-20px', md: '-30px'}}}>
+        <Box mb={'12px'} sx={{ mt: { xs: '-20px', md: '-30px' } }}>
           <TypographyMainTitle sx={{ fontSize: { xs: '16px', md: '20px' } }}>
             Family companion cat
           </TypographyMainTitle>

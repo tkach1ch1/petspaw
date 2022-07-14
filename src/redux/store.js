@@ -7,12 +7,14 @@ import allImagesGalleryReducer from './allImagesGalleryReducer';
 import favLikesDislikesReducer from './favLikesDislikesReducer';
 import votingPageReducer from './votingPageReducer';
 import allBreedsReducer from './allBreedsReducer';
+import searchReducer from './searchReducer';
 
 const reducers = combineReducers({
   votingPage: votingPageReducer,
   actions: favLikesDislikesReducer,
   allBreeds: allBreedsReducer,
   allImages: allImagesGalleryReducer,
+  search: searchReducer,
 });
 
 const persistConfig = {

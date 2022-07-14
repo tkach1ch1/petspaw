@@ -53,6 +53,8 @@ const ImageGalleryTemplateGallery = ({ ...props }) => {
       sx={{
         display: { xs: 'flex', md: 'grid' },
         flexDirection: { xs: 'column' },
+        position: 'relative', 
+        justifyContent: 'center'
       }}
     >
       {content}

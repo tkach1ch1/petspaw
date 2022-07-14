@@ -8,6 +8,7 @@ import FavouritesPage from './pages/FavouritesPage';
 import LikesPage from './pages/LikesPage';
 import DislikesPage from './pages/DislikesPage';
 import BreedsInfoPage from './pages/BreedsInfoPage';
+import SearchPage from './pages/SearchPage';
 
 export const useRoutes = () => {
   return (
@@ -20,6 +21,8 @@ export const useRoutes = () => {
       <Route path='favourites' element={<FavouritesPage />} />
       <Route path='likes' element={<LikesPage />} />
       <Route path='dislikes' element={<DislikesPage />} />
+      <Route path='search' element={<SearchPage />} />
+      <Route path='search/:id' element={<BreedsInfoPage />} />
       <Route path='*' element={<Navigate to='/' />} />
     </Routes>
   );

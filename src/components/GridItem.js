@@ -133,14 +133,14 @@ const GridItem = (props) => {
   return (
     <StyledItem key={props.id} sx={{ height: { xs: '205px', md: '100%' } }}>
       {props.imageUrl ? (
-        <StyledImg src={props.imageUrl} alt={props.name || 'foto'} /> //Grid item box image we are taking from API
+        <StyledImg src={props.imageUrl} alt={props.name || 'foto'} /> // Grid item box image we are taking from API
       ) : (
         <StyledImg src={notfound} alt='Not found' />
       )}
 
-      {/* NOTE: On Breeds page user is able to go to BreedsInfoPage on grid item box
+      {/* NOTE: On Breeds or Search page user is able to go to BreedsInfoPage on grid item box
       click */}
-      {props.breedsValue && (
+      {(props.breedsValue || props.searchValue) && (
         <LinkToInfoPage to={props.id} onClick={onHandleItemClick}>
           {' '}
           <StyledInfoButton

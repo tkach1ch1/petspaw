@@ -12,6 +12,7 @@ import MainBox from '../components/MainBox';
 import SwiperInfoPage from '../components/SwiperInfoPage';
 import InfoTextBreedsId from '../components/InfoTextBreedsId';
 import { fetchImagesByBreedsId } from '../redux/allBreedsReducer';
+import { StyledCircularProgress } from '../components/ChosenImage';
 
 const StyledId = styled(StyledPageName)({
   height: 'fit-content',
@@ -22,6 +23,8 @@ const StyledId = styled(StyledPageName)({
 const BreedsInfoPage = () => {
   const allBreeds = useSelector((state) => state.allBreeds.breeds);
   const allImagesById = useSelector((state) => state.allBreeds.imagesById);
+  const imagesStatus = useSelector((state) => state.allBreeds.status);
+
   const breedId = useSelector((state) => state.allBreeds.breedsId);
 
   const breedInfo = allBreeds.filter((elem) => elem.id === breedId);
@@ -31,6 +34,21 @@ const BreedsInfoPage = () => {
   useEffect(() => {
     dispatch(fetchImagesByBreedsId({ breedId }));
   }, [dispatch, breedId]);
+
+  let content;
+
+  if (imagesStatus === 'loading') {
+    content = (
+      <StyledCircularProgress
+        sx={{
+          top: { xs: '50px', md: '120px' },
+        }}
+        size={'100px'}
+      />
+    );
+  } else if (imagesStatus === 'succeeded') {
+    content = <SwiperInfoPage allImagesById={allImagesById} />;
+  }
 
   return (
     <div>
@@ -52,8 +70,14 @@ const BreedsInfoPage = () => {
                   {elem.id}
                 </StyledId>
               </Box>
-
-              <SwiperInfoPage allImagesById={elem.image && allImagesById} />
+              <Box
+                sx={{ height: { xs: '170px', sm: '220px', md: '360px' } }}
+                position={'relative'}
+                display={'flex'}
+                justifyContent={'center'}
+              >
+                {content}
+              </Box>
 
               <InfoTextBreedsId
                 name={elem.name}

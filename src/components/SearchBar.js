@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { styled } from '@mui/styles';
 import '../styles/styles.css';
+import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { makeStyles } from '@mui/styles';
 import Box from '@mui/material/Box';
-import search from '../img/search.svg';
+import search_sign from '../img/search.svg';
+import { addSearchInput } from '../redux/searchReducer';
 
 const StyledInput = styled('input')({
   padding: '17px 20px 16px 20px',
@@ -59,9 +63,29 @@ const StyleImg = styled('img')({
   padding: '10px 10px',
   borderRadius: '10px',
   backgroundColor: 'var(--light-red)',
+  cursor: 'pointer',
 });
 
 const SearchBar = (props) => {
+  const [search, setSearch] = useState('');
+
+  const dispatch = useDispatch();
+
+  //Form controll
+  const onHandleSearchChange = (event) => {
+    setSearch(event.target.value);
+  };
+
+  let navigate = useNavigate();
+
+  //On Enter click navigate to SearchPage and addes value from SearcBar to state
+  const onHandleKeyPress = (target) => {
+    if (target.charCode === 13) {
+      navigate('/search');
+    }
+    dispatch(addSearchInput(search));
+  };
+
   const classes = useStyles();
   return (
     <Box
@@ -74,16 +98,19 @@ const SearchBar = (props) => {
           xxl: '470px',
           xxxl: '540px',
         },
-       
       }}
       position={'relative'}
+      onChange={onHandleSearchChange}
+      onKeyPress={onHandleKeyPress}
     >
       <StyledInput
         type='text'
         placeholder='Search for breeds by name'
         className={`${classes.textFieldStyle}`}
       />
-      <StyleImg src={search} alt='search_sign' />
+      <Link to='/search' onClick={() => dispatch(addSearchInput(search))}>
+        <StyleImg src={search_sign} alt='search_sign' />
+      </Link>
     </Box>
   );
 };
