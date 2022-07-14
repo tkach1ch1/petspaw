@@ -37,9 +37,9 @@ const GridPageLoyaut = (props) => {
             key={elem.id}
             id={elem.id}
             imageUrl={elem.url || (elem.image && elem.image.url)}
-            name={elem.name}
+            name={props.searchValue && elem.name}
             favValue={elem.value === 2 && true}
-            searchValue={'search'}
+            searchValue={props.searchValue}
           />
         ))}
       </StyledGrid>

@@ -23,8 +23,6 @@ const SearchPage = () => {
     } else setResult([]);
   }, [allBreeds, searchInput]);
 
-  console.log(result);
-
   return (
     <PageWrapper>
       <Box
@@ -60,7 +58,7 @@ const SearchPage = () => {
               </Typography>
             </Box>
           ))}
-          <GridPageLoyaut arr={result} />
+          <GridPageLoyaut arr={result} searchValue={'search'}/>
         </MainBox>
       </Box>
     </PageWrapper>

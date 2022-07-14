@@ -44,11 +44,9 @@ const CloseButton = styled(IconButton)({
 
 export const MainTypography = styled(Typography)({
   fontWeight: '500',
-  marginBottom: '10px',
 });
 
 export const SubTypography = styled(Typography)({
-  fontSize: '20px',
   color: 'var(--gray)',
 });
 
@@ -63,7 +61,6 @@ const StyledLink = styled('a')({
 });
 
 const UploadButton = styled(StyledPageName)({
-  width: 'fit-content',
   fontSize: '12px',
   padding: '12px 30px',
   borderRadius: '10px',
@@ -129,8 +126,8 @@ const ModalUpload = () => {
             },
             height: {
               xs: '100%',
-              md: 'auto',
-              lg: '705px',
+              md: '970px',
+              lg: '710px',
               xl: '660px',
               xxl: '840px',
               xxxl: '865px',
@@ -150,14 +147,21 @@ const ModalUpload = () => {
             display={'flex'}
             flexDirection={'column'}
             alignItems={'center'}
-            mt={'100px'}
+            mt={{ xs: '100px', md: '100px', xl: '60px', xxl: '100px' }}
             position={'relative'}
           >
-            <Box mb={'40px'}>
-              <MainTypography sx={{ fontSize: { md: '36px' } }}>
+            <Box mb={'40px'} textAlign={'center'}>
+              <MainTypography
+                sx={{
+                  fontSize: { xs: '20px', md: '36px', lg: '26px', xxl: '36px' },
+                  mb: '20px',
+                }}
+              >
                 Upload a .jpg or .png Cat Image
               </MainTypography>
-              <SubTypography>
+              <SubTypography
+                sx={{ fontSize: { xs: '20px', lg: '18px', xxl: '20px' } }}
+              >
                 Any uploads must comply with the{' '}
                 <StyledLink
                   href='https://thecatapi.com/privacy'
@@ -171,18 +175,44 @@ const ModalUpload = () => {
 
             <ModalUploadBox value={file} onChange={onHandleFileChange} />
 
-            <Box mt={'340px'}>
+            <Box
+              mt={{
+                xs: '200px',
+                sm: '270px',
+                md: '340px',
+                lg: '270px',
+                xl: '260px',
+                xxl: '340px',
+              }}
+            >
               {file === '' ? (
-                <SubTypography>No file selected</SubTypography>
+                <SubTypography sx={{ fontSize: '20px' }}>
+                  No file selected
+                </SubTypography>
               ) : (
                 <Box
                   display={'flex'}
                   flexDirection={'column'}
                   alignItems={'center'}
                   gap={'20px'}
+                  textAlign={'center'}
                 >
-                  <SubTypography>Image File Name: {file} </SubTypography>
-                  <UploadButton onClick={onHandleFileClick} style={{}}>
+                  <SubTypography
+                    sx={{
+                      fontSize: {
+                        xs: '16px',
+                        md: '20px',
+                        lg: '16px',
+                        xl: '20px',
+                      },
+                    }}
+                  >
+                    Image File Name: {file}{' '}
+                  </SubTypography>
+                  <UploadButton
+                    sx={{ width: { xs: '100%', sm: 'fit-content' } }}
+                    onClick={onHandleFileClick}
+                  >
                     Upload photo
                   </UploadButton>
                 </Box>

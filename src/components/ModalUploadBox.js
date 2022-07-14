@@ -1,6 +1,6 @@
 import React from 'react';
 import '../styles/styles.css';
-import styled from '@emotion/styled';
+import { makeStyles, styled } from '@mui/styles';
 import { Box, Button } from '@mui/material';
 import { MainTypography, SubTypography } from './ModalUpload';
 import unpload_bg from '../img/upload-bg.png';
@@ -9,17 +9,32 @@ const UploadBox = styled(Button)({
   position: 'absolute',
   left: 0,
   width: '100%',
-  height: '320px',
   textTransform: 'none',
   border: '2px dashed var(--light-red)',
   borderRadius: '20px',
-  padding: '20px 40px',
 
   backgroundColor: 'white',
   cursor: 'pointer',
 });
 
+const ImgBox = styled(Box)({
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+});
+
+const useStyles = makeStyles((theme) => ({
+  imgSize: {
+    [theme.breakpoints.down('sm')]: {
+      width: '100px',
+      height: '100px',
+    },
+  },
+}));
+
 const ModalUploadBox = (props) => {
+  const classes = useStyles();
+
   return (
     <Box>
       <Box onChange={props.onChange}>
@@ -30,34 +45,68 @@ const ModalUploadBox = (props) => {
           type='file'
         />
         <label htmlFor='raised-button-file' style={{ mb: '20px' }}>
-          <UploadBox variant='raised' component='div'>
+          <UploadBox
+            variant='raised'
+            component='div'
+            sx={{ padding: { xs: '10px 30px', sm: '20px 40px' } }}
+          >
             {props.value === '' ? (
-              <Box
+              <ImgBox
                 sx={{
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
+                  height: {
+                    xs: '170px',
+                    sm: '240px',
+                    md: '320px',
+                    lg: '240px',
+                    xl: '240px',
+                    xxl: '320px',
+                  },
                 }}
               >
-                <img src={unpload_bg} alt={'foto'} style={{ margin: '60px' }} />
+                <img
+                  src={unpload_bg}
+                  alt={'foto'}
+                  className={classes.imgSize}
+                />
                 <Box
                   display={'flex'}
-                  alignItems={'flex-start'}
+                  flexDirection={{ xs: 'column', sm: 'row' }}
                   gap={'5px'}
                   position={'absolute'}
                 >
-                  <MainTypography sx={{ fontSize: '20px' }}>
-                    Drag here
-                  </MainTypography>
-                  <SubTypography>your file or</SubTypography>
-                  <MainTypography sx={{ fontSize: '20px' }}>
-                    Click here
-                  </MainTypography>
-                  <SubTypography>to upload</SubTypography>
+                  <Box sx={{ display: 'flex', gap: '5px' }}>
+                    <MainTypography sx={{ fontSize: '20px' }}>
+                      Drag here
+                    </MainTypography>
+                    <SubTypography sx={{ fontSize: '20px' }}>
+                      your file or
+                    </SubTypography>
+                  </Box>
+                  <Box sx={{ display: 'flex', gap: '5px' }}>
+                    <MainTypography sx={{ fontSize: '20px' }}>
+                      Click here
+                    </MainTypography>
+                    <SubTypography sx={{ fontSize: '20px' }}>
+                      to upload
+                    </SubTypography>
+                  </Box>
                 </Box>{' '}
-              </Box>
+              </ImgBox>
             ) : (
-              <img src={props.value} alt={'uploaded_foto'} />
+              <ImgBox
+                sx={{
+                  height: {
+                    xs: '170px',
+                    sm: '240px',
+                    md: '320px',
+                    lg: '240px',
+                    xl: '240px',
+                    xxl: '320px',
+                  },
+                }}
+              >
+                <img src={props.value} alt={'uploaded_foto'} />
+              </ImgBox>
             )}
           </UploadBox>
         </label>
