@@ -30,10 +30,11 @@ export const theme = createTheme({
     },
   },
   breakpoints: {
-    keys: ['xs', 'sm', 'md', 'lg', 'xl', 'xxl', 'xxxl'],
+    keys: ['xs', 'sm', 'sg', 'md', 'lg', 'xl', 'xxl', 'xxxl'],
     values: {
       xs: 0, // min-width for mobile devices
       sm: 480, // min-width for tablets
+      sg: 550,
       md: 768, // min-width for small screens, laptops
       lg: 1024, // 1024x768
       xl: 1280, // 1280x720

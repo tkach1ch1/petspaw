@@ -33,7 +33,7 @@ Moreover there is an opportunity to add images from gallery to favourites only i
 ### Scripts
 Inside the project, you can run some built-in commands:
 
-npm start or yarn start
+==npm start or yarn start==
 
 To start the project local in development mode.
 
@@ -41,7 +41,7 @@ Open http://localhost:3000 to view it in the browser.
 
 The page will automatically reload if you make changes to the code. You will see the build errors and lint warnings in the console.
 
-npm run build or yarn build
+==npm run build or yarn build==
 
 Builds the app for production to the build folder. It correctly bundles React in production mode and optimizes the build for the best performance.
 

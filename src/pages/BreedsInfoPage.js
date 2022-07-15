@@ -25,8 +25,6 @@ const BreedsInfoPage = () => {
   const allImagesById = useSelector((state) => state.allBreeds.imagesById);
   const imagesStatus = useSelector((state) => state.allBreeds.status);
 
-  console.log(allBreeds);
-
   const breedId = useSelector((state) => state.allBreeds.breedsId);
 
   const breedInfo = allBreeds.filter((elem) => elem.id === breedId);

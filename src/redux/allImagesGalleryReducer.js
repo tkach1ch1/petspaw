@@ -9,7 +9,10 @@ const allImagesGalleryReducer = createSlice({
   name: 'gallery',
   initialState: {
     images: [],
-    status: 'idle',
+    uploadedImage: {},
+    imageAnalysis: [],
+    statusGallery: 'idle',
+    statusUpload: 'idle',
     error: 'null',
     limit: 5,
   },
@@ -24,15 +27,30 @@ const allImagesGalleryReducer = createSlice({
   extraReducers(builder) {
     builder
       .addCase(fetchImages.pending, (state) => {
-        state.status = 'loading';
+        state.statusGallery = 'loading';
       })
       .addCase(fetchImages.fulfilled, (state, action) => {
-        state.status = 'succeeded';
+        state.statusGallery = 'succeeded';
         state.images = action.payload;
       })
       .addCase(fetchImages.rejected, (state, action) => {
-        state.status = 'failed';
+        state.statusGallery = 'failed';
         state.error = action.error.message;
+      })
+      .addCase(uploadImage.pending, (state) => {
+        state.statusUpload = 'loading';
+      })
+      .addCase(uploadImage.fulfilled, (state, action) => {
+        state.statusUpload = 'succeeded';
+        state.uploadedImage = action.payload;
+      })
+      .addCase(uploadImage.rejected, (state, action) => {
+        state.statusUpload = 'failed';
+        state.error = action.error.message;
+      })
+      .addCase(loadImageAnaylsis.fulfilled, (state, action) => {
+        state.statusUpload = 'succeeded';
+        state.imageAnalysis = action.payload;
       });
   },
 });
@@ -73,6 +91,17 @@ export const uploadImage = createAsyncThunk(
     });
 
     return response.data;
+  }
+);
+
+export const loadImageAnaylsis = createAsyncThunk(
+  'gallery/loadImageAnaylsis',
+  async ({ image_id }) => {
+    let response = await axios.get(
+      'https://api.thecatapi.com/v1/images/' + image_id + '/analysis'
+    );
+
+    return response.data[0].labels;
   }
 );
 

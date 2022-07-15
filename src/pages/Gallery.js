@@ -17,7 +17,7 @@ import ImageGalleryTemplateGallery from '../components/ImageGalleryTemlateGaller
 
 const Gallery = () => {
   const allImages = useSelector((state) => state.allImages.images);
-  const imagesStatus = useSelector((state) => state.allImages.status);
+  const imagesStatus = useSelector((state) => state.allImages.statusGallery);
   const imagesError = useSelector((state) => state.allImages.error);
 
   //All states for select categories on GalleryPage

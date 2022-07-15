@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHover } from 'usehooks-ts';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from '@emotion/styled';
 import '../styles/styles.css';
 import { Box, IconButton, Modal, Typography } from '@mui/material';
@@ -10,8 +10,15 @@ import MainStyledButton, {
 import CloseIcon from '@mui/icons-material/Close';
 import ModalUploadBox from './ModalUploadBox';
 import { StyledPageName } from './PageName';
+import { StyledCircularProgress } from './ChosenImage';
 
-import { uploadImage } from '../redux/allImagesGalleryReducer';
+import success from '../img/success-20.svg';
+import error from '../img/error-20.svg';
+
+import {
+  loadImageAnaylsis,
+  uploadImage,
+} from '../redux/allImagesGalleryReducer';
 import upload from '../img/upload.svg';
 import upload_hov from '../img/upload_hov.svg';
 
@@ -72,6 +79,17 @@ const UploadButton = styled(StyledPageName)({
   },
 });
 
+const InfoUploadBox = styled(Box)({
+  width: '100%',
+  padding: '18px 30px',
+  backgroundColor: 'white',
+  color: 'var(--gray)',
+  borderRadius: '10px',
+  marginTop: '20px',
+  display: 'flex',
+  gap: '10px'
+});
+
 //NOTE: Modal window on GalleryPage by clicking Upload
 
 const ModalUpload = () => {
@@ -89,26 +107,95 @@ const ModalUpload = () => {
   const [file, setFile] = useState(null);
   const [fileURL, setFileURL] = useState(null);
 
-  //Get image URL
+  //Get image file
   const getFile = (event) => {
     let reader = new FileReader();
     reader.onload = function () {
       setFileURL(reader.result);
-      setFile(event.target.value);
+      setFile(event.target.files[0]);
     };
     reader.readAsDataURL(event.target.files[0]);
   };
 
+  // Get file form controll
   const onHandleFileChange = (event) => {
     getFile(event);
   };
 
-  //Send image URL to API
+  // This flag is useful in order to show or remove a success or fail upload message
+  const [isUploaded, setIsUploaded] = useState(false);
+
+  // Send image URL to API in order to API could proof, if it is a cat image or not
   const onHandleFileClick = () => {
-    dispatch(uploadImage({ fileURL }));
-    setFile(null);
-    setFileURL(null);
+    dispatch(uploadImage({ file }));
+    setIsUploaded(true);
   };
+
+  const uploadedImage = useSelector((state) => state.allImages.uploadedImage);
+
+  // Taking from API an object with proofed image we have to send there and sending image_id for analysis in API
+  let image_id = uploadedImage.id;
+
+  useEffect(() => {
+    dispatch(loadImageAnaylsis({ image_id }));
+  }, [dispatch, image_id]);
+
+  // The object with analysis info we can use for example to categorize our shared image in certain categories
+  // But I'm using it to check a response from API and then show success or fail upload message
+  const imageAnalysis = useSelector((state) => state.allImages.imageAnalysis);
+  const imageStatus = useSelector((state) => state.allImages.statusUpload);
+
+  let content;
+
+  if (imageStatus === 'loading') {
+    content = (
+      <StyledCircularProgress
+        sx={{
+          top: {
+            xs: '450px',
+            sm: '500px',
+            md: '550px',
+            lg: '470px',
+            xxl: '550px',
+            xxxl: '550px',
+          },
+        }}
+        size={'50px'}
+        color='secondary'
+      />
+    );
+  } else if (imageStatus === 'succeeded' && isUploaded) {
+    content = (
+      <InfoUploadBox>
+        <img src={success} alt='success' />
+        <Typography>Thanks for the Upload - Cat found!</Typography>
+      </InfoUploadBox>
+    );
+  } else if (imageStatus === 'failed') {
+    content = (
+      <InfoUploadBox>
+        <img src={error} alt='success' />
+        <Typography>No Cat found - Try a different one</Typography>
+      </InfoUploadBox>
+    );
+  }
+
+  // Clear image upload box
+  useEffect(() => {
+    if (imageStatus === 'succeeded') {
+      setFileURL(null);
+      setFile(null);
+    }
+  }, [imageStatus]);
+
+  // Remove success/fail upload message
+  useEffect(() => {
+    setTimeout(() => {
+      if (imageAnalysis.length > 0) {
+        setIsUploaded(false);
+      }
+    }, 4000);
+  }, [imageAnalysis]);
 
   return (
     <Box>
@@ -160,6 +247,7 @@ const ModalUpload = () => {
             display={'flex'}
             flexDirection={'column'}
             alignItems={'center'}
+            justifyContent={'center'}
             mt={{ xs: '100px', md: '100px', xl: '60px', xxl: '100px' }}
             position={'relative'}
           >
@@ -216,21 +304,24 @@ const ModalUpload = () => {
                         xs: '16px',
                         md: '20px',
                         lg: '16px',
-                        xl: '20px',
+                        xl: '16px',
                       },
                     }}
                   >
-                    Image File Name: {file}{' '}
+                    Image File Name: {file && file.name}
                   </SubTypography>
-                  <UploadButton
-                    sx={{ width: { xs: '100%', sm: 'fit-content' } }}
-                    onClick={onHandleFileClick}
-                  >
-                    Upload photo
-                  </UploadButton>
+                  {imageStatus !== 'loading' && (
+                    <UploadButton
+                      sx={{ width: { xs: '100%', sm: 'fit-content' } }}
+                      onClick={onHandleFileClick}
+                    >
+                      Upload photo
+                    </UploadButton>
+                  )}
                 </Box>
               )}
             </Box>
+            {content}
           </Box>
         </StyledModalBox>
       </Modal>

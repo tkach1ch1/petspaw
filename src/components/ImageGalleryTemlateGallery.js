@@ -23,7 +23,13 @@ const ImageGalleryTemplateGallery = ({ ...props }) => {
     content = (
       <StyledCircularProgress
         sx={{
-          top: { xs: '150px', md: '200px', lg: '180px', xxxl: '250px' },
+          top: {
+            xs: '150px',
+            md: '200px',
+            lg: '100px',
+            xxl: '200px',
+            xxxl: '200px',
+          },
           right: {
             md: '300px',
             lg: '190px',
@@ -45,10 +51,7 @@ const ImageGalleryTemplateGallery = ({ ...props }) => {
         galleryValue={'gallery'}
       />
     ));
-  } else if (props.status === 'failed') {
-    content = <div>{props.error}</div>;
   }
-
   return (
     <StyledGrid
       sx={{

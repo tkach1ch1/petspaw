@@ -75,10 +75,10 @@ const ChoseCategoryGallery = (props) => {
   return (
     <StyledBox
       display={'flex'}
-      flexDirection={{ xs: 'column', sm: 'row' }}
-      gap={{ xs: 0, sm: '20px' }}
+      flexDirection={{ xs: 'column', sg: 'row' }}
+      gap={{ xs: 0, sg: '20px' }}
     >
-      <Box sx={{ width: { xs: '100%', sm: '50%' } }}>
+      <Box sx={{ width: { xs: '100%', sg: '50%' } }}>
         {/* Order categorie */}
         <StyledInputLabel>Order</StyledInputLabel>
         <SelectComponent
@@ -101,7 +101,7 @@ const ChoseCategoryGallery = (props) => {
           onChange={onHandleBreedChange}
         />
       </Box>
-      <Box sx={{ width: { xs: '100%', sm: '50%' } }}>
+      <Box sx={{ width: { xs: '100%', sg: '50%' } }}>
         {/* Type categorie */}
         <StyledInputLabel>Type</StyledInputLabel>
         <SelectComponent
