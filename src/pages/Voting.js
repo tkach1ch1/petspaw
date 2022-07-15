@@ -13,6 +13,8 @@ import ScrollToTop from '../components/ScrollToTop';
 
 const Voting = () => {
   const all = useSelector((state) => state.actions.all);
+  const imageStatus = useSelector((state) => state.votingPage.status);
+
   return (
     <PageWrapper>
       <Box
@@ -26,11 +28,11 @@ const Voting = () => {
         <Header />
         <MainBox backgroundColor={'#ffffff '}>
           <PageName name='Voting' />
-          <Box sx={{ minHeight: { xs: '200px', md: '400px' } }}>
+          <Box sx={{ minHeight: { xs: '200px', sm: '250px', md: '400px' } }}>
             <ChosenImage />
           </Box>
-          <ChoisesButtons />
-          <Box mt={'-80px'}>
+          {imageStatus !== 'loading' && <ChoisesButtons />}
+          <Box mt={{xs: '-75px', sm: '-55px'   ,md: '-80px'}}>
             {/* Shows info about actions user did on VotingPage */}
             {all.map((obj) => (
               <InfoCommentVoting

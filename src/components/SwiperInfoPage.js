@@ -8,7 +8,8 @@ import notfound from '../img/notfound.png';
 
 const StyledImg = styled('img')({
   width: '100%',
-  objectFit: 'fill',
+  objectFit: 'cover',
+  objectPosition: 'center',
   borderRadius: '20px',
 });
 

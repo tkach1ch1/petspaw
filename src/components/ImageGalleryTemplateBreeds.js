@@ -33,6 +33,7 @@ const ImageGalleryTemplateBreeds = ({ ...props }) => {
           },
         }}
         size={'100px'}
+        color='secondary'
       />
     );
   } else if (props.status === 'succeeded') {
@@ -61,8 +62,8 @@ const ImageGalleryTemplateBreeds = ({ ...props }) => {
               />
             ))
             .reverse()
-            //Filtering Breeds to find one selected breed in selected breed categorie
-        : array
+        : //Filtering Breeds to find one selected breed in selected breed categorie
+          array
             .filter((elem) => elem.name === props.selectedBreed)
             .map((elem) => (
               <GridItem

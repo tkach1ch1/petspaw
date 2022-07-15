@@ -12,7 +12,6 @@ const UploadBox = styled(Button)({
   textTransform: 'none',
   border: '2px dashed var(--light-red)',
   borderRadius: '20px',
-
   backgroundColor: 'white',
   cursor: 'pointer',
 });
@@ -23,11 +22,21 @@ const ImgBox = styled(Box)({
   alignItems: 'center',
 });
 
+const StyledImg = styled('img')({
+  objectFit: 'contain',
+});
+
 const useStyles = makeStyles((theme) => ({
   imgSize: {
     [theme.breakpoints.down('sm')]: {
       width: '100px',
       height: '100px',
+    },
+  },
+  addedImgSize: {
+    [theme.breakpoints.up('xs')]: {
+      width: '100%',
+      height: '100%',
     },
   },
 }));
@@ -45,12 +54,8 @@ const ModalUploadBox = (props) => {
           type='file'
         />
         <label htmlFor='raised-button-file' style={{ mb: '20px' }}>
-          <UploadBox
-            variant='raised'
-            component='div'
-            sx={{ padding: { xs: '10px 30px', sm: '20px 40px' } }}
-          >
-            {props.value === '' ? (
+          <UploadBox variant='raised' component='div'>
+            {props.files === null ? (
               <ImgBox
                 sx={{
                   height: {
@@ -103,9 +108,15 @@ const ModalUploadBox = (props) => {
                     xl: '240px',
                     xxl: '320px',
                   },
+                  padding: { xs: '10px 20px', sm: '20px 40px' },
                 }}
               >
-                <img src={props.value} alt={'uploaded_foto'} />
+                {/* Uploaded image I have styled with object-fit: contain. Although this is contrary to the design layout but on this way an proportions of any picture will be saved and it will be easier for API to analyse an image for upload. */}
+                <StyledImg
+                  src={props.files}
+                  alt={'uploaded_foto'}
+                  className={classes.addedImgSize}
+                />
               </ImgBox>
             )}
           </UploadBox>

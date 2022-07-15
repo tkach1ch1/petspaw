@@ -86,15 +86,28 @@ const ModalUpload = () => {
   const isHover = useHover(hoverRef);
 
   // File upload
-  const [file, setFile] = useState('');
+  const [file, setFile] = useState(null);
+  const [fileURL, setFileURL] = useState(null);
 
-  const onHandleFileChange = (event) => {
-    setFile(event.target.value);
+  //Get image URL
+  const getFile = (event) => {
+    let reader = new FileReader();
+    reader.onload = function () {
+      setFileURL(reader.result);
+      setFile(event.target.value);
+    };
+    reader.readAsDataURL(event.target.files[0]);
   };
 
+  const onHandleFileChange = (event) => {
+    getFile(event);
+  };
+
+  //Send image URL to API
   const onHandleFileClick = () => {
-    dispatch(uploadImage({ file }));
-    setFile('');
+    dispatch(uploadImage({ fileURL }));
+    setFile(null);
+    setFileURL(null);
   };
 
   return (
@@ -130,7 +143,7 @@ const ModalUpload = () => {
               lg: '710px',
               xl: '660px',
               xxl: '840px',
-              xxxl: '865px',
+              xxxl: '870px',
             },
             right: { xs: 0, lg: 0, xxxl: '210px' },
             left: { xs: 0, lg: 'auto' },
@@ -173,7 +186,7 @@ const ModalUpload = () => {
               </SubTypography>
             </Box>
 
-            <ModalUploadBox value={file} onChange={onHandleFileChange} />
+            <ModalUploadBox files={fileURL} onChange={onHandleFileChange} />
 
             <Box
               mt={{
@@ -185,7 +198,7 @@ const ModalUpload = () => {
                 xxl: '340px',
               }}
             >
-              {file === '' ? (
+              {file === null ? (
                 <SubTypography sx={{ fontSize: '20px' }}>
                   No file selected
                 </SubTypography>

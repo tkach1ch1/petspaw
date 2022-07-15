@@ -25,6 +25,8 @@ const BreedsInfoPage = () => {
   const allImagesById = useSelector((state) => state.allBreeds.imagesById);
   const imagesStatus = useSelector((state) => state.allBreeds.status);
 
+  console.log(allBreeds);
+
   const breedId = useSelector((state) => state.allBreeds.breedsId);
 
   const breedInfo = allBreeds.filter((elem) => elem.id === breedId);
@@ -44,6 +46,7 @@ const BreedsInfoPage = () => {
           top: { xs: '50px', md: '120px' },
         }}
         size={'100px'}
+        color='secondary'
       />
     );
   } else if (imagesStatus === 'succeeded') {

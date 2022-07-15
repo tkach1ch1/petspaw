@@ -1,18 +1,33 @@
 import React, { useEffect } from 'react';
-import styled from '@emotion/styled';
+import { makeStyles, styled } from '@mui/styles';
 import '../styles/styles.css';
 import { fetchImage } from '../redux/votingPageReducer';
 import { Box } from '@mui/system';
 import { useDispatch, useSelector } from 'react-redux';
 import { CircularProgress } from '@mui/material';
 
+const useStyles = makeStyles((theme) => ({
+  imgSize: {
+    [theme.breakpoints.up('xs')]: {
+      height: '170px',
+    },
+    [theme.breakpoints.up('sm')]: {
+      height: '250px',
+    },
+    [theme.breakpoints.up('md')]: {
+      height: '360px',
+    },
+  },
+}));
+
 export const StyledCircularProgress = styled(CircularProgress)({
   position: 'absolute',
-  color: 'var(--light-red)',
 });
 
 const ChosenImage = () => {
   const dispatch = useDispatch();
+
+  const classes = useStyles();
 
   const imageVoting = useSelector((state) => state.votingPage.image);
   const imageStatus = useSelector((state) => state.votingPage.status);
@@ -28,7 +43,11 @@ const ChosenImage = () => {
 
   if (imageStatus === 'loading') {
     content = (
-      <StyledCircularProgress sx={{ top: { xs: '50px', md: '150px' } }} />
+      <StyledCircularProgress
+        sx={{ top: { xs: '90px', md: '90px' } }}
+        size={'100px'}
+        color='secondary'
+      />
     );
   } else if (imageStatus === 'succeeded') {
     content = imageVoting.map((elem) => (
@@ -38,10 +57,11 @@ const ChosenImage = () => {
         alt='cat_photo'
         style={{
           width: '100%',
-          height: '360px',
-          objectFit: 'fill',
+          objectFit: 'cover',
+          objectPosition: 'center',
           borderRadius: '20px',
         }}
+        className={classes.imgSize}
       />
     ));
   } else if (imageStatus === 'failed') {

@@ -28,12 +28,7 @@ const PrevNextButtonsBreeds = () => {
   };
 
   return (
-    <Box
-      display={'flex'}
-      justifyContent={'center'}
-      mt={'150px'}
-      gap={'40px'}
-    >
+    <Box display={'flex'} mt={{xs: '50px',  xxl: '150px'}} justifyContent={'center'} gap={{xs: '20px', sm: '40px'}}>
       <MainStyledButton padding='11px 35px' ref={hoverRefPrev}>
         <Box display={'flex'} alignItems={'center'}>
           {isHoverPrev ? (

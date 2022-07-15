@@ -69,8 +69,8 @@ const StyledImg = styled('img')({
   width: '100%',
   height: '100%',
   borderRadius: '20px',
-  objectFit: 'fill',
-
+  objectFit: 'cover',
+  objectPosition: 'center',
 });
 
 const AddToFavourites = styled(Box)({

@@ -88,7 +88,7 @@ const Breeds = () => {
         </Box>
         <Box>
           <Header />
-          <MainBox backgroundColor={'#ffffff'}  position={'relative'}>
+          <MainBox backgroundColor={'#ffffff'} position={'relative'}>
             <Box
               sx={{
                 display: { md: 'flex', lg: 'block', xl: 'flex' },
@@ -137,8 +137,8 @@ const Breeds = () => {
               valueBA={isActiveBA}
               valueAB={isActiveAB}
             />
+            {breedsStatus !== 'loading' && <PrevNextButtonsBreeds />}
 
-            <PrevNextButtonsBreeds />
             <ScrollToTop />
           </MainBox>
         </Box>

@@ -33,6 +33,7 @@ const ImageGalleryTemplateGallery = ({ ...props }) => {
           },
         }}
         size={'100px'}
+        color='secondary'
       />
     );
   } else if (props.status === 'succeeded') {
@@ -53,8 +54,8 @@ const ImageGalleryTemplateGallery = ({ ...props }) => {
       sx={{
         display: { xs: 'flex', md: 'grid' },
         flexDirection: { xs: 'column' },
-        position: 'relative', 
-        justifyContent: 'center'
+        position: 'relative',
+        justifyContent: 'center',
       }}
     >
       {content}

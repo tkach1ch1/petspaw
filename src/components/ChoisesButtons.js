@@ -26,7 +26,6 @@ const ButtonsWrapper = styled(Box)({
   display: 'flex',
   gap: '3px',
   position: 'relative',
-  bottom: '80px',
   border: '4px solid white',
   backgroundColor: 'white',
 });
@@ -56,7 +55,7 @@ const ChoisesButtons = () => {
   const hoverRefDislike = useRef(null);
   const isHoverDislike = useHover(hoverRefDislike);
 
-   const nowDate = () => {
+  const nowDate = () => {
     let dateNow = new Date();
     let dateNowMinAndSec =
       dateNow.getMinutes() < 10
@@ -64,7 +63,6 @@ const ChoisesButtons = () => {
         : dateNow.getHours() + ':' + dateNow.getMinutes();
     return dateNowMinAndSec.toString();
   };
-
 
   function getInfoFav() {
     const newFav = {
@@ -121,7 +119,9 @@ const ChoisesButtons = () => {
 
   return (
     <MainWrapper>
-      <ButtonsWrapper sx={{ borderRadius: { xs: '10px', sm: '20px' } }}>
+      <ButtonsWrapper
+        sx={{ borderRadius: { xs: '10px', sm: '20px' }, bottom: {xs: '65px', sm: '45px', md: '80px'} }}
+      >
         <StyledBox
           onClick={handleClickLikes}
           sx={{
