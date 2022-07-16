@@ -101,7 +101,7 @@ const ModalUploadBox = (props) => {
                   padding: { xs: '10px 20px', sm: '20px 40px' },
                 }}
               >
-                {/* Uploaded image I have styled with object-fit: contain. Although this is contrary to the design layout but on this way an proportions of any picture will be saved and it will be easier for API to analyse an image for upload. */}
+                {/* Uploaded image I have styled with object-fit: contain to make an image more clearer. Although this is contrary to the design layout, where image width should be 100% of upload box, but on this way the proportions of any picture will be saved and it will be easier then for API to analyse an image for upload*/}
                 <StyledImg
                   src={props.files}
                   alt={'uploaded_foto'}
