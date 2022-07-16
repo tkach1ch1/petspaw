@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useHover } from 'usehooks-ts';
+import { useHover } from 'react-haiku';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from '@emotion/styled';
 import '../styles/styles.css';
@@ -9,11 +9,7 @@ import MainStyledButton, {
 } from '../components/MainStyledButton';
 import CloseIcon from '@mui/icons-material/Close';
 import ModalUploadBox from './ModalUploadBox';
-import { StyledPageName } from './PageName';
-import { StyledCircularProgress } from './ChosenImage';
 
-import success from '../img/success-20.svg';
-import error from '../img/error-20.svg';
 
 import {
   loadImageAnaylsis,
@@ -21,6 +17,9 @@ import {
 } from '../redux/allImagesGalleryReducer';
 import upload from '../img/upload.svg';
 import upload_hov from '../img/upload_hov.svg';
+import ModalUploadInfo from './ModalUploadInfo';
+import ModalUploadFileInfo from './ModalUploadFileInfo';
+import ModalUploadAsyncContent from './ModalUploadAsyncContent';
 
 const StyledModalBox = styled(Box)({
   outline: 'none',
@@ -57,38 +56,7 @@ export const SubTypography = styled(Typography)({
   color: 'var(--gray)',
 });
 
-const StyledLink = styled('a')({
-  color: 'var(--main-red)',
-  textDecoration: 'none',
-  cursor: 'pointer',
-  '&:hover': {
-    opacity: '0.6',
-    transition: 'all 0.3s',
-  },
-});
 
-const UploadButton = styled(StyledPageName)({
-  fontSize: '12px',
-  padding: '12px 30px',
-  borderRadius: '10px',
-  fontWeight: '400',
-  cursor: 'pointer',
-  '&:hover': {
-    opacity: '0.8',
-    transition: 'all 0.4s',
-  },
-});
-
-const InfoUploadBox = styled(Box)({
-  width: '100%',
-  padding: '18px 30px',
-  backgroundColor: 'white',
-  color: 'var(--gray)',
-  borderRadius: '10px',
-  marginTop: '20px',
-  display: 'flex',
-  gap: '10px'
-});
 
 //NOTE: Modal window on GalleryPage by clicking Upload
 
@@ -100,8 +68,7 @@ const ModalUpload = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const hoverRef = React.createRef();
-  const isHover = useHover(hoverRef);
+  const { hovered, ref } = useHover();
 
   // File upload
   const [file, setFile] = useState(null);
@@ -142,43 +109,9 @@ const ModalUpload = () => {
 
   // The object with analysis info we can use for example to categorize our shared image in certain categories
   // But I'm using it to check a response from API and then show success or fail upload message
+
   const imageAnalysis = useSelector((state) => state.allImages.imageAnalysis);
   const imageStatus = useSelector((state) => state.allImages.statusUpload);
-
-  let content;
-
-  if (imageStatus === 'loading') {
-    content = (
-      <StyledCircularProgress
-        sx={{
-          top: {
-            xs: '450px',
-            sm: '500px',
-            md: '550px',
-            lg: '470px',
-            xxl: '550px',
-            xxxl: '550px',
-          },
-        }}
-        size={'50px'}
-        color='secondary'
-      />
-    );
-  } else if (imageStatus === 'succeeded' && isUploaded) {
-    content = (
-      <InfoUploadBox>
-        <img src={success} alt='success' />
-        <Typography>Thanks for the Upload - Cat found!</Typography>
-      </InfoUploadBox>
-    );
-  } else if (imageStatus === 'failed') {
-    content = (
-      <InfoUploadBox>
-        <img src={error} alt='success' />
-        <Typography>No Cat found - Try a different one</Typography>
-      </InfoUploadBox>
-    );
-  }
 
   // Clear image upload box
   useEffect(() => {
@@ -199,9 +132,9 @@ const ModalUpload = () => {
 
   return (
     <Box>
-      <MainStyledButton padding='11px 35px' ref={hoverRef} onClick={handleOpen}>
+      <MainStyledButton padding='11px 35px' ref={ref} onClick={handleOpen}>
         <Box display={'flex'}>
-          {isHover ? (
+          {hovered ? (
             <img src={upload_hov} alt='upload_hov' />
           ) : (
             <img src={upload} alt='upload' />
@@ -214,6 +147,7 @@ const ModalUpload = () => {
         aria-labelledby='modal-modal-title'
         aria-describedby='modal-modal-description'
         open={open}
+        onClose={handleClose}
       >
         <StyledModalBox
           sx={{
@@ -251,77 +185,16 @@ const ModalUpload = () => {
             mt={{ xs: '100px', md: '100px', xl: '60px', xxl: '100px' }}
             position={'relative'}
           >
-            <Box mb={'40px'} textAlign={'center'}>
-              <MainTypography
-                sx={{
-                  fontSize: { xs: '20px', md: '36px', lg: '26px', xxl: '36px' },
-                  mb: '20px',
-                }}
-              >
-                Upload a .jpg or .png Cat Image
-              </MainTypography>
-              <SubTypography
-                sx={{ fontSize: { xs: '20px', lg: '18px', xxl: '20px' } }}
-              >
-                Any uploads must comply with the{' '}
-                <StyledLink
-                  href='https://thecatapi.com/privacy'
-                  target='_blank'
-                >
-                  upload guidelines
-                </StyledLink>{' '}
-                or face deletion.
-              </SubTypography>
-            </Box>
+            <ModalUploadInfo />
 
             <ModalUploadBox files={fileURL} onChange={onHandleFileChange} />
 
-            <Box
-              mt={{
-                xs: '200px',
-                sm: '270px',
-                md: '340px',
-                lg: '270px',
-                xl: '260px',
-                xxl: '340px',
-              }}
-            >
-              {file === null ? (
-                <SubTypography sx={{ fontSize: '20px' }}>
-                  No file selected
-                </SubTypography>
-              ) : (
-                <Box
-                  display={'flex'}
-                  flexDirection={'column'}
-                  alignItems={'center'}
-                  gap={'20px'}
-                  textAlign={'center'}
-                >
-                  <SubTypography
-                    sx={{
-                      fontSize: {
-                        xs: '16px',
-                        md: '20px',
-                        lg: '16px',
-                        xl: '16px',
-                      },
-                    }}
-                  >
-                    Image File Name: {file && file.name}
-                  </SubTypography>
-                  {imageStatus !== 'loading' && (
-                    <UploadButton
-                      sx={{ width: { xs: '100%', sm: 'fit-content' } }}
-                      onClick={onHandleFileClick}
-                    >
-                      Upload photo
-                    </UploadButton>
-                  )}
-                </Box>
-              )}
-            </Box>
-            {content}
+            <ModalUploadFileInfo
+              file={file}
+              imageStatus={imageStatus}
+              onClick={onHandleFileClick}
+            />
+            <ModalUploadAsyncContent isUploaded={isUploaded} />
           </Box>
         </StyledModalBox>
       </Modal>

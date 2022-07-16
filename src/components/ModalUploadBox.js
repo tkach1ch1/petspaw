@@ -1,20 +1,10 @@
 import React from 'react';
 import '../styles/styles.css';
 import { makeStyles, styled } from '@mui/styles';
-import { Box, Button } from '@mui/material';
+import { Box } from '@mui/material';
 import { MainTypography, SubTypography } from './ModalUpload';
 import unpload_bg from '../img/upload-bg.png';
-
-const UploadBox = styled(Button)({
-  position: 'absolute',
-  left: 0,
-  width: '100%',
-  textTransform: 'none',
-  border: '2px dashed var(--light-red)',
-  borderRadius: '20px',
-  backgroundColor: 'white',
-  cursor: 'pointer',
-});
+import UploadBox from './UploadBox';
 
 const ImgBox = styled(Box)({
   display: 'flex',
@@ -54,7 +44,7 @@ const ModalUploadBox = (props) => {
           type='file'
         />
         <label htmlFor='raised-button-file' style={{ mb: '20px' }}>
-          <UploadBox variant='raised' component='div'>
+          <UploadBox>
             {props.files === null ? (
               <ImgBox
                 sx={{
@@ -62,8 +52,8 @@ const ModalUploadBox = (props) => {
                     xs: '170px',
                     sm: '240px',
                     md: '320px',
-                    lg: '240px',
-                    xl: '240px',
+                    lg: '200px',
+                    xl: '220px',
                     xxl: '320px',
                   },
                 }}
@@ -104,8 +94,8 @@ const ModalUploadBox = (props) => {
                     xs: '170px',
                     sm: '240px',
                     md: '320px',
-                    lg: '240px',
-                    xl: '240px',
+                    lg: '200px',
+                    xl: '220px',
                     xxl: '320px',
                   },
                   padding: { xs: '10px 20px', sm: '20px 40px' },
