@@ -63,12 +63,13 @@ export const fetchAllBreeds = createAsyncThunk(
 
 export const fetchLimitBreeds = createAsyncThunk(
   'allBreeds/fetchLimitBreeds',
-  async ({ limit }) => {
+  async ({ limit, breedPage }) => {
     axios.defaults.headers.common['x-api-key'] =
       'd9d3b448-0ba6-42b0-bc87-0efa97515132';
 
     let query_params = {
       limit,
+      page: breedPage,
     };
     const response = await axios.get(getAllBreeds, { params: query_params });
     return response.data;

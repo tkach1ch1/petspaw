@@ -14,7 +14,6 @@ import heart from '../img/heart.svg';
 import filled_heart from '../img/filled_heart.svg';
 
 const StyledItem = styled(Box)({
-  backgroundColor: '#C4C4C4',
   position: 'relative',
   borderRadius: '20px',
   cursor: 'pointer',
@@ -69,8 +68,6 @@ const StyledImg = styled('img')({
   width: '100%',
   height: '100%',
   borderRadius: '20px',
-  objectFit: 'cover',
-  objectPosition: 'center',
 });
 
 const AddToFavourites = styled(Box)({
@@ -133,7 +130,13 @@ const GridItem = (props) => {
   return (
     <StyledItem key={props.id} sx={{ height: { xs: '205px', md: '100%' } }}>
       {props.imageUrl ? (
-        <StyledImg src={props.imageUrl} alt={props.name || 'foto'} /> // Grid item box image we are taking from API
+        // Grid item box image we are taking from API
+
+        <StyledImg
+          src={props.imageUrl}
+          alt={props.name || 'foto'}
+          style={{ objectFit: 'cover', objectPosition: 'center 10%' }}
+        />
       ) : (
         <StyledImg src={notfound} alt='Not found' />
       )}

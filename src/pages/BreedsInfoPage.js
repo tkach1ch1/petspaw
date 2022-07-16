@@ -29,6 +29,8 @@ const BreedsInfoPage = () => {
 
   const breedInfo = allBreeds.filter((elem) => elem.id === breedId);
 
+  console.log(allImagesById)
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -47,7 +49,7 @@ const BreedsInfoPage = () => {
         color='secondary'
       />
     );
-  } else if (imagesStatus === 'succeeded') {
+  } else if (imagesStatus === 'succeeded' && allImagesById.length > 0) {
     content = <SwiperInfoPage allImagesById={allImagesById} />;
   }
 
@@ -67,7 +69,7 @@ const BreedsInfoPage = () => {
             <MainBox backgroundColor={'#ffffff'}>
               <Box display={'flex'} gap={'10px'} mb={'10px'}>
                 <PageName name='Breeds' />
-                <StyledId sx={{ padding: { xs: '5px 20px', md: '5px 30px' } }}>
+                <StyledId sx={{ padding: { xs: '5px 17px', md: '5px 30px' } }}>
                   {elem.id}
                 </StyledId>
               </Box>

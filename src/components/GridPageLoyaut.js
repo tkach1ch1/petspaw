@@ -34,7 +34,7 @@ const GridPageLoyaut = (props) => {
       >
         {props.arr.map((elem) => (
           <GridItem
-            key={elem.id}
+            key={Math.floor(Math.random() * 10000)}
             id={elem.id}
             imageUrl={elem.url || (elem.image && elem.image.url)}
             name={props.searchValue && elem.name}

@@ -6,8 +6,8 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { makeStyles } from '@mui/styles';
 import Box from '@mui/material/Box';
-import search_sign from '../img/search.svg';
 import { addSearchInput } from '../redux/searchReducer';
+import search_sign from '../img/search.svg';
 
 const StyledInput = styled('input')({
   padding: '17px 20px 16px 20px',
@@ -78,12 +78,20 @@ const SearchBar = (props) => {
 
   let navigate = useNavigate();
 
-  //On Enter click navigate to SearchPage and addes value from SearcBar to state
+  // On Enter click if search bar input istn't empty navigate to SearchPage and addes value from SearchBar to state
+  // Else if user is already on SearchPage only changes the value of the input state
   const onHandleKeyPress = (target) => {
-    if (target.charCode === 13) {
+    if (target.charCode === 13 && search !== '') {
       navigate('/search');
+      dispatch(addSearchInput(search.trim()));
+    } else if (target.charCode === 13) {
+      dispatch(addSearchInput(search.trim()));
     }
-    dispatch(addSearchInput(search));
+  };
+
+  const onHandleClick = () => {
+    navigate('/search');
+    dispatch(addSearchInput(search.trim()));
   };
 
   const classes = useStyles();
@@ -108,7 +116,7 @@ const SearchBar = (props) => {
         placeholder='Search for breeds by name'
         className={`${classes.textFieldStyle}`}
       />
-      <Link to='/search' onClick={() => dispatch(addSearchInput(search))}>
+      <Link to='/search' onClick={onHandleClick}>
         <StyleImg src={search_sign} alt='search_sign' />
       </Link>
     </Box>

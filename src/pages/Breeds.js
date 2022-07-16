@@ -43,7 +43,7 @@ const Breeds = () => {
     dispatch(fetchAllBreeds());
   }, [dispatch]);
 
-  //Fetches limited breeds from API
+  //Fetches limited breeds from API dependes on selected limit value
   useEffect(() => {
     dispatch(fetchLimitBreeds({ limit }));
   }, [dispatch, limit]);
@@ -130,14 +130,16 @@ const Breeds = () => {
             </Box>
             {/* GridBox with all placed breeds that are fetching from API */}
             <ImageGalleryTemplateBreeds
-              arr={limitedBreeds}
+              limitedBreedsArray={limitedBreeds}
               status={breedsStatus}
               error={breedsError}
               selectedBreed={breed}
               valueBA={isActiveBA}
               valueAB={isActiveAB}
             />
-            {breedsStatus !== 'loading' && <PrevNextButtonsBreeds />}
+            {breed === '' && breedsStatus !== 'loading' && (
+              <PrevNextButtonsBreeds limit={limit}/>
+            )}
 
             <ScrollToTop />
           </MainBox>

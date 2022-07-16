@@ -2,7 +2,7 @@ import React from 'react';
 import { styled } from '@mui/system';
 import { Box, Typography } from '@mui/material';
 
-const StyledButton = styled(Box)({
+export const StyledButton = styled(Box)({
   display: 'flex',
   alignItems: 'center',
   height: 'fit-content',

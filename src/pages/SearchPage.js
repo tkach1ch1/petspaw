@@ -16,11 +16,17 @@ const SearchPage = () => {
   const allBreeds = useSelector((state) => state.allBreeds.breeds);
   const searchInput = useSelector((state) => state.search.searchInput);
 
+
+  // Takes search input from search bar, looks for a match and then returns all found breeds
   useEffect(() => {
-    if (allBreeds.find((elem) => elem.name === searchInput)) {
-      let foundResult = allBreeds.find((elem) => elem.name === searchInput);
-      setResult([foundResult]);
-    } else setResult([]);
+    if (searchInput !== '') {
+      let foundResult = allBreeds.filter((elem) =>
+        elem.name.toLowerCase().startsWith(searchInput.toLowerCase())
+      );
+      setResult(foundResult);
+    } else if (searchInput === '') {
+      setResult([]);
+    }
   }, [allBreeds, searchInput]);
 
   return (
@@ -37,28 +43,27 @@ const SearchPage = () => {
         <MainBox backgroundColor={'#ffffff'}>
           <PageName name='Search' />
 
-          {result.map((elem) => (
-            <Box
-              display={'flex'}
-              gap={'5px'}
-              mb={'20px'}
-              key={Math.floor(Math.random(10) * 10000)}
+          <Box
+            display={'flex'}
+            gap={'5px'}
+            mb={'20px'}
+            key={Math.floor(Math.random(10) * 10000)}
+          >
+            <Typography sx={{ fontSize: '20px', color: 'var(--gray)' }}>
+              Search result for:
+            </Typography>
+            <Typography
+              sx={{
+                fontSize: '20px',
+                color: 'var(--black)',
+                fontWeight: '500',
+              }}
             >
-              <Typography sx={{ fontSize: '20px', color: 'var(--gray)' }}>
-                Search result for:
-              </Typography>
-              <Typography
-                sx={{
-                  fontSize: '20px',
-                  color: 'var(--black)',
-                  fontWeight: '500',
-                }}
-              >
-                {elem.name}
-              </Typography>
-            </Box>
-          ))}
-          <GridPageLoyaut arr={result} searchValue={'search'}/>
+              {searchInput}
+            </Typography>
+          </Box>
+
+          <GridPageLoyaut arr={result} searchValue={'search'} />
         </MainBox>
       </Box>
     </PageWrapper>

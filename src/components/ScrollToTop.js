@@ -1,17 +1,16 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import '../styles/styles.css'
+import '../styles/styles.css';
 import { Box, Fab, Fade, useScrollTrigger } from '@mui/material';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 
-
 const StyledToTopButton = styled(Fab)({
-    backgroundColor: 'var(--main-gray)',
-    '&:hover' : {
-        opacity: '0.7',
-        transition: 'all 0.4s'
-    }
-})
+  backgroundColor: 'var(--main-gray)',
+  '&:hover': {
+    opacity: '0.7',
+    transition: 'all 0.4s',
+  },
+});
 
 const ScrollToTop = () => {
   const trigger = useScrollTrigger({
@@ -21,7 +20,7 @@ const ScrollToTop = () => {
   });
 
   const handleClick = () => {
-    window.scrollTo(0, 0)
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   };
   return (
     <Fade in={trigger}>

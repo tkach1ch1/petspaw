@@ -8,6 +8,7 @@ import favLikesDislikesReducer from './favLikesDislikesReducer';
 import votingPageReducer from './votingPageReducer';
 import allBreedsReducer from './allBreedsReducer';
 import searchReducer from './searchReducer';
+import breedsPageReducer from './breedsPageReducer';
 
 const reducers = combineReducers({
   votingPage: votingPageReducer,
@@ -15,12 +16,13 @@ const reducers = combineReducers({
   allBreeds: allBreedsReducer,
   allImages: allImagesGalleryReducer,
   search: searchReducer,
+  breedPage: breedsPageReducer,
 });
 
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['actions', 'allBreeds'],
+  whitelist: ['actions', 'allBreeds', 'search'],
 };
 
 const persistedReducer = persistReducer(persistConfig, reducers);

@@ -1,6 +1,8 @@
 import React from 'react';
 import '../styles/styles.css';
 import { Box, styled } from '@mui/system';
+import { useSelector } from 'react-redux';
+
 import { StyledCircularProgress } from './ChosenImage';
 import GridItem from './GridItem';
 
@@ -15,7 +17,9 @@ export const StyledGrid = styled(Box)({
 //NOTE: Grid for BreedsPage
 
 const ImageGalleryTemplateBreeds = ({ ...props }) => {
-  const array = props.arr;
+  const allBreeds = useSelector((state) => state.allBreeds.breeds);
+
+  const arrayLimited = props.limitedBreedsArray;
 
   let content;
 
@@ -40,7 +44,7 @@ const ImageGalleryTemplateBreeds = ({ ...props }) => {
     content =
       // Sorted Breeds from A to B
       props.selectedBreed === '' && props.valueAB
-        ? array.map((elem) => (
+        ? arrayLimited.map((elem) => (
             <GridItem
               id={elem.id}
               key={elem.id}
@@ -51,7 +55,7 @@ const ImageGalleryTemplateBreeds = ({ ...props }) => {
           ))
         : // Sorted Breeds from B to A
         props.selectedBreed === '' && props.valueBA
-        ? array
+        ? arrayLimited
             .map((elem) => (
               <GridItem
                 id={elem.id}
@@ -63,7 +67,7 @@ const ImageGalleryTemplateBreeds = ({ ...props }) => {
             ))
             .reverse()
         : //Filtering Breeds to find one selected breed in selected breed categorie
-          array
+          allBreeds
             .filter((elem) => elem.name === props.selectedBreed)
             .map((elem) => (
               <GridItem
