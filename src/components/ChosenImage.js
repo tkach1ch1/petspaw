@@ -13,7 +13,7 @@ const ImgStyle = styled('img')`
   ${(props) => props.theme.breakpoints.up('sm')} {
     height: 250px;
   }
-  ${(props) => props.theme.breakpoints.down('md')} {
+  ${(props) => props.theme.breakpoints.up('md')} {
     height: 360px;
   }
 `;
