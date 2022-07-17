@@ -5,6 +5,7 @@ import { Pagination } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import notfound from '../img/notfound.png';
+import '../styles/styles.css';
 
 const StyledImg = styled('img')({
   width: '100%',

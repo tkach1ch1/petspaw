@@ -138,7 +138,7 @@ const Breeds = () => {
               valueAB={isActiveAB}
             />
             {breed === '' && breedsStatus !== 'loading' && (
-              <PrevNextButtonsBreeds limit={limit}/>
+              <PrevNextButtonsBreeds limit={limit} />
             )}
 
             <ScrollToTop />
