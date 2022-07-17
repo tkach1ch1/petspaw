@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import '../styles/styles.css';
 import { makeStyles, styled } from '@mui/styles';
+import { useDropzone } from 'react-dropzone';
 import { Box } from '@mui/material';
 import { MainTypography, SubTypography } from './ModalUpload';
 import unpload_bg from '../img/upload-bg.png';
 import UploadBox from './UploadBox';
+import Context from './context';
 
 const ImgBox = styled(Box)({
   display: 'flex',
@@ -34,10 +36,15 @@ const useStyles = makeStyles((theme) => ({
 const ModalUploadBox = (props) => {
   const classes = useStyles();
 
+  const { onDrop } = useContext(Context);
+
+  const { getRootProps, getInputProps } = useDropzone({ onDrop });
+
   return (
     <Box>
-      <Box onChange={props.onChange}>
+      <Box onChange={props.onChange} {...getRootProps()}>
         <input
+          {...getInputProps()}
           accept='image/*'
           style={{ display: 'none' }}
           id='raised-button-file'

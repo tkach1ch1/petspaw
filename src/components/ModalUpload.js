@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useHover } from 'react-haiku';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from '@emotion/styled';
@@ -10,7 +10,6 @@ import MainStyledButton, {
 import CloseIcon from '@mui/icons-material/Close';
 import ModalUploadBox from './ModalUploadBox';
 
-
 import {
   loadImageAnaylsis,
   uploadImage,
@@ -20,6 +19,7 @@ import upload_hov from '../img/upload_hov.svg';
 import ModalUploadInfo from './ModalUploadInfo';
 import ModalUploadFileInfo from './ModalUploadFileInfo';
 import ModalUploadAsyncContent from './ModalUploadAsyncContent';
+import Context from './context';
 
 const StyledModalBox = styled(Box)({
   outline: 'none',
@@ -56,8 +56,6 @@ export const SubTypography = styled(Typography)({
   color: 'var(--gray)',
 });
 
-
-
 //NOTE: Modal window on GalleryPage by clicking Upload
 
 const ModalUpload = () => {
@@ -74,7 +72,19 @@ const ModalUpload = () => {
   const [file, setFile] = useState(null);
   const [fileURL, setFileURL] = useState(null);
 
-  //Get image file
+  //Get image file on Drag
+  const onDrop = useCallback((acceptedFiles) => {
+    acceptedFiles.forEach((file) => {
+      const reader = new FileReader();
+      reader.onload = function () {
+        setFileURL(URL.createObjectURL(file));
+        setFile(file);
+      };
+      reader.readAsArrayBuffer(file);
+    });
+  }, []);
+
+  //Get image file on Click
   const getFile = (event) => {
     let reader = new FileReader();
     reader.onload = function () {
@@ -131,74 +141,76 @@ const ModalUpload = () => {
   }, [imageAnalysis]);
 
   return (
-    <Box>
-      <MainStyledButton padding='11px 35px' ref={ref} onClick={handleOpen}>
-        <Box display={'flex'}>
-          {hovered ? (
-            <img src={upload_hov} alt='upload_hov' />
-          ) : (
-            <img src={upload} alt='upload' />
-          )}
-        </Box>
-        <StyledTypography>Upload</StyledTypography>
-      </MainStyledButton>
-
-      <Modal
-        aria-labelledby='modal-modal-title'
-        aria-describedby='modal-modal-description'
-        open={open}
-        onClose={handleClose}
-      >
-        <StyledModalBox
-          sx={{
-            width: {
-              md: '92%',
-              lg: '500px',
-              xl: '570px',
-              xxl: '680px',
-              xxxl: '750px',
-            },
-            height: {
-              xs: '100%',
-              md: '970px',
-              lg: '710px',
-              xl: '660px',
-              xxl: '840px',
-              xxxl: '870px',
-            },
-            right: { xs: 0, lg: 0, xxxl: '210px' },
-            left: { xs: 0, lg: 'auto' },
-            margin: { md: '30px' },
-
-            borderRadius: { md: '20px' },
-          }}
-        >
-          <CloseButton onClick={handleClose}>
-            <CloseIcon sx={{ fontSize: '38px', color: 'var(--main-red)' }} />
-          </CloseButton>
-
-          <Box
-            display={'flex'}
-            flexDirection={'column'}
-            alignItems={'center'}
-            justifyContent={'center'}
-            mt={{ xs: '100px', md: '100px', xl: '60px', xxl: '100px' }}
-            position={'relative'}
-          >
-            <ModalUploadInfo />
-
-            <ModalUploadBox files={fileURL} onChange={onHandleFileChange} />
-
-            <ModalUploadFileInfo
-              file={file}
-              imageStatus={imageStatus}
-              onClick={onHandleFileClick}
-            />
-            <ModalUploadAsyncContent isUploaded={isUploaded} />
+    <Context.Provider value={{ onDrop }}>
+      <Box>
+        <MainStyledButton padding='11px 35px' ref={ref} onClick={handleOpen}>
+          <Box display={'flex'}>
+            {hovered ? (
+              <img src={upload_hov} alt='upload_hov' />
+            ) : (
+              <img src={upload} alt='upload' />
+            )}
           </Box>
-        </StyledModalBox>
-      </Modal>
-    </Box>
+          <StyledTypography>Upload</StyledTypography>
+        </MainStyledButton>
+
+        <Modal
+          aria-labelledby='modal-modal-title'
+          aria-describedby='modal-modal-description'
+          open={open}
+          onClose={handleClose}
+        >
+          <StyledModalBox
+            sx={{
+              width: {
+                md: '92%',
+                lg: '500px',
+                xl: '570px',
+                xxl: '680px',
+                xxxl: '750px',
+              },
+              height: {
+                xs: '100%',
+                md: '970px',
+                lg: '710px',
+                xl: '660px',
+                xxl: '840px',
+                xxxl: '870px',
+              },
+              right: { xs: 0, lg: 0, xxxl: '210px' },
+              left: { xs: 0, lg: 'auto' },
+              margin: { md: '30px' },
+
+              borderRadius: { md: '20px' },
+            }}
+          >
+            <CloseButton onClick={handleClose}>
+              <CloseIcon sx={{ fontSize: '38px', color: 'var(--main-red)' }} />
+            </CloseButton>
+
+            <Box
+              display={'flex'}
+              flexDirection={'column'}
+              alignItems={'center'}
+              justifyContent={'center'}
+              mt={{ xs: '100px', md: '100px', xl: '60px', xxl: '100px' }}
+              position={'relative'}
+            >
+              <ModalUploadInfo />
+
+              <ModalUploadBox files={fileURL} onChange={onHandleFileChange} />
+
+              <ModalUploadFileInfo
+                file={file}
+                imageStatus={imageStatus}
+                onClick={onHandleFileClick}
+              />
+              <ModalUploadAsyncContent isUploaded={isUploaded} />
+            </Box>
+          </StyledModalBox>
+        </Modal>
+      </Box>
+    </Context.Provider>
   );
 };
 
