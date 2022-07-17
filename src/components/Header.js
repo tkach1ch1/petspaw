@@ -1,5 +1,4 @@
 import React from 'react';
-import { styled } from '@mui/styles';
 import Box from '@mui/material/Box';
 import BurgerMenu from './BurgerMenu';
 import SearchBar from './SearchBar';
@@ -10,6 +9,7 @@ import sad_smile from '../img/sad_smile.svg';
 import heart_act from '../img/heart_act.svg';
 import smile_act from '../img/smile_act.svg';
 import sad_smile_act from '../img/sad_smile_act.svg';
+import styled from '@emotion/styled';
 
 const StyledLinkHeader = styled(StyledNavLink)({
   padding: '15px',

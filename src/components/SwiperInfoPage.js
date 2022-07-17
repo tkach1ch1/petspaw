@@ -1,32 +1,27 @@
 import React from 'react';
-import { makeStyles, styled } from '@mui/styles';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import notfound from '../img/notfound.png';
 import '../styles/styles.css';
+import styled from '@emotion/styled';
 
-const StyledImg = styled('img')({
-  width: '100%',
-  objectFit: 'cover',
-  objectPosition: 'center',
-  borderRadius: '20px',
-});
-
-const useStyles = makeStyles((theme) => ({
-  imgSize: {
-    [theme.breakpoints.up('xs')]: {
-      height: '170px',
-    },
-    [theme.breakpoints.up('sm')]: {
-      height: '210px',
-    },
-    [theme.breakpoints.up('md')]: {
-      height: '360px',
-    },
-  },
-}));
+const StyledImg = styled('img')`
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 20px;
+  ${(props) => props.theme.breakpoints.up('xs')} {
+    height: 170px;
+  }
+  ${(props) => props.theme.breakpoints.up('sm')} {
+    height: 210px;
+  }
+  ${(props) => props.theme.breakpoints.up('md')} {
+    height: 360px;
+  } ;
+`;
 
 const StyledImgNotFound = styled('img')({
   width: '100%',
@@ -36,8 +31,6 @@ const StyledImgNotFound = styled('img')({
 //NOTE: Swiper on BreedsInfoPage
 
 const SwiperInfoPage = (props) => {
-  const classes = useStyles();
-
   const pagination = {
     clickable: true,
   };
@@ -46,7 +39,7 @@ const SwiperInfoPage = (props) => {
       {props.allImagesById.map((elem) =>
         elem.url ? (
           <SwiperSlide key={elem.id}>
-            <StyledImg src={elem.url} alt='foto' className={classes.imgSize} />
+            <StyledImg src={elem.url} alt='foto' />
           </SwiperSlide>
         ) : (
           <StyledImgNotFound src={notfound} alt='Not found' />

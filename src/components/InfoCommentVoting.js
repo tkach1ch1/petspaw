@@ -1,10 +1,10 @@
 import React from 'react';
-import { styled } from '@mui/styles';
 import '../styles/styles.css';
 import { Box, Typography } from '@mui/material';
 import heart from '../img/heart.svg';
 import smile_green from '../img/smile_green.svg';
 import smile_yellow from '../img/smile_yellow.svg';
+import styled from '@emotion/styled';
 
 const CommentWrapper = styled(Box)({
   backgroundColor: 'var(--main-gray)',

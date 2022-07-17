@@ -31,7 +31,7 @@ const FavouritesPage = () => {
       </Box>
       <Box>
         <Header isActivedFav={isActivedFav} />
-        <MainBox backgroundColor={'#ffffff'}>
+        <MainBox>
           <PageName name='Favourites' />
           <GridPageLoyaut arr={allFav} />
           {/* If image was remover from FavPage shows some info about this action */}

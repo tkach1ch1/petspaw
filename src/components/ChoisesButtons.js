@@ -1,5 +1,4 @@
 import React, { useRef } from 'react';
-import { styled } from '@mui/styles';
 import { useHover } from 'usehooks-ts';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchImage } from '../redux/votingPageReducer';
@@ -16,6 +15,7 @@ import {
   addToFavourites,
   addToLikes,
 } from '../redux/favLikesDislikesReducer';
+import styled from '@emotion/styled';
 
 const MainWrapper = styled(Box)({
   display: 'flex',

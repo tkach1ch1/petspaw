@@ -26,13 +26,13 @@ const Voting = () => {
       </Box>
       <Box>
         <Header />
-        <MainBox backgroundColor={'#ffffff '}>
+        <MainBox>
           <PageName name='Voting' />
           <Box sx={{ minHeight: { xs: '200px', sm: '250px', md: '400px' } }}>
             <ChosenImage />
           </Box>
           {imageStatus !== 'loading' && <ChoisesButtons />}
-          <Box mt={{xs: '-75px', sm: '-55px',md: '-95px'}}>
+          <Box mt={{ xs: '-75px', sm: '-55px', md: '-95px' }}>
             {/* Shows info about actions user did on VotingPage */}
             {all.map((obj) => (
               <InfoCommentVoting

@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
-import { styled } from '@mui/styles';
 import '../styles/styles.css';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import { makeStyles } from '@mui/styles';
 import Box from '@mui/material/Box';
 import { addSearchInput } from '../redux/searchReducer';
 import search_sign from '../img/search.svg';
+import styled from '@emotion/styled';
 
 const StyledInput = styled('input')({
   padding: '17px 20px 16px 20px',
@@ -39,22 +38,22 @@ const StyledInput = styled('input')({
   },
 });
 
-const useStyles = makeStyles((theme) => ({
-  [theme.breakpoints.up('lg')]: {
-    textFieldStyle: {
-      '&::placeholder': {
-        fontSize: '18px',
-      },
-    },
-  },
-  [theme.breakpoints.up('xl')]: {
-    textFieldStyle: {
-      '&::placeholder': {
-        fontSize: '20px',
-      },
-    },
-  },
-}));
+// const useStyles = makeStyles((theme) => ({
+//   [theme.breakpoints.up('lg')]: {
+//     textFieldStyle: {
+//       '&::placeholder': {
+//         fontSize: '18px',
+//       },
+//     },
+//   },
+//   [theme.breakpoints.up('xl')]: {
+//     textFieldStyle: {
+//       '&::placeholder': {
+//         fontSize: '20px',
+//       },
+//     },
+//   },
+// }));
 
 const StyleImg = styled('img')({
   position: 'absolute',
@@ -94,7 +93,6 @@ const SearchBar = (props) => {
     dispatch(addSearchInput(search.trim()));
   };
 
-  const classes = useStyles();
   return (
     <Box
       sx={{
@@ -111,11 +109,7 @@ const SearchBar = (props) => {
       onChange={onHandleSearchChange}
       onKeyPress={onHandleKeyPress}
     >
-      <StyledInput
-        type='text'
-        placeholder='Search for breeds by name'
-        className={`${classes.textFieldStyle}`}
-      />
+      <StyledInput type='text' placeholder='Search for breeds by name' />
       <Link to='/search' onClick={onHandleClick}>
         <StyleImg src={search_sign} alt='search_sign' />
       </Link>

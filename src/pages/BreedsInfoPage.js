@@ -66,7 +66,7 @@ const BreedsInfoPage = () => {
           </Box>
           <Box>
             <Header />
-            <MainBox backgroundColor={'#ffffff'}>
+            <MainBox>
               <Box display={'flex'} gap={'10px'} mb={'10px'}>
                 <PageName name='Breeds' />
                 <StyledId sx={{ padding: { xs: '5px 17px', md: '5px 30px' } }}>

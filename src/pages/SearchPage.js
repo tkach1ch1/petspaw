@@ -16,7 +16,6 @@ const SearchPage = () => {
   const allBreeds = useSelector((state) => state.allBreeds.breeds);
   const searchInput = useSelector((state) => state.search.searchInput);
 
-
   // Takes search input from search bar, looks for a match and then returns all found breeds
   useEffect(() => {
     if (searchInput !== '') {
@@ -40,7 +39,7 @@ const SearchPage = () => {
       </Box>
       <Box>
         <Header />
-        <MainBox backgroundColor={'#ffffff'}>
+        <MainBox>
           <PageName name='Search' />
 
           <Box

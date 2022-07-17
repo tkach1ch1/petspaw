@@ -88,7 +88,7 @@ const Breeds = () => {
         </Box>
         <Box>
           <Header />
-          <MainBox backgroundColor={'#ffffff'} position={'relative'}>
+          <MainBox position={'relative'}>
             <Box
               sx={{
                 display: { md: 'flex', lg: 'block', xl: 'flex' },

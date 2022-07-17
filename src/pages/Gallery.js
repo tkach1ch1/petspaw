@@ -48,7 +48,7 @@ const Gallery = () => {
         </Box>
         <Box>
           <Header />
-          <MainBox backgroundColor={'#ffffff'}>
+          <MainBox>
             <Box
               sx={{
                 display: 'flex',

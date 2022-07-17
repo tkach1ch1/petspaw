@@ -29,7 +29,7 @@ const LikesPage = () => {
       </Box>
       <Box>
         <Header isActivedLike={isActivedLike} />
-        <MainBox backgroundColor={'#ffffff'}>
+        <MainBox>
           <PageName name='Likes' />
           <GridPageLoyaut arr={allLikes} />
         </MainBox>

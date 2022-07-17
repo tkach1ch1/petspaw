@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
 import '../styles/styles.css';
-import { makeStyles, styled } from '@mui/styles';
 import { useDropzone } from 'react-dropzone';
 import { Box } from '@mui/material';
 import { MainTypography, SubTypography } from './ModalUpload';
 import unpload_bg from '../img/upload-bg.png';
 import UploadBox from './UploadBox';
 import Context from './context';
+import styled from '@emotion/styled';
 
 const ImgBox = styled(Box)({
   display: 'flex',
@@ -14,28 +14,22 @@ const ImgBox = styled(Box)({
   alignItems: 'center',
 });
 
-const StyledImg = styled('img')({
-  objectFit: 'contain',
-});
+const StyledImg = styled('img')`
+  object-fit: 'contain';
+  ${(props) => props.theme.breakpoints.up('xs')} {
+    width: 100%;
+    height: 100%;
+  }
+`;
 
-const useStyles = makeStyles((theme) => ({
-  imgSize: {
-    [theme.breakpoints.down('sm')]: {
-      width: '100px',
-      height: '100px',
-    },
-  },
-  addedImgSize: {
-    [theme.breakpoints.up('xs')]: {
-      width: '100%',
-      height: '100%',
-    },
-  },
-}));
+const ImgStyle = styled('img')`
+  ${(props) => props.theme.breakpoints.down('sm')} {
+    width: 100px;
+    height: 100px;
+  }
+`;
 
 const ModalUploadBox = (props) => {
-  const classes = useStyles();
-
   const { onDrop } = useContext(Context);
 
   const { getRootProps, getInputProps } = useDropzone({ onDrop });
@@ -65,11 +59,7 @@ const ModalUploadBox = (props) => {
                   },
                 }}
               >
-                <img
-                  src={unpload_bg}
-                  alt={'foto'}
-                  className={classes.imgSize}
-                />
+                <ImgStyle src={unpload_bg} alt={'foto'} />
                 <Box
                   display={'flex'}
                   flexDirection={{ xs: 'column', sm: 'row' }}
@@ -109,11 +99,7 @@ const ModalUploadBox = (props) => {
                 }}
               >
                 {/* Uploaded image I have styled with object-fit: contain to make an image more clearer. Although this is contrary to the design layout, where image width should be 100% of upload box, but on this way the proportions of any picture will be saved and it will be easier then for API to analyse an image for upload*/}
-                <StyledImg
-                  src={props.files}
-                  alt={'uploaded_foto'}
-                  className={classes.addedImgSize}
-                />
+                <StyledImg src={props.files} alt={'uploaded_foto'} />
               </ImgBox>
             )}
           </UploadBox>

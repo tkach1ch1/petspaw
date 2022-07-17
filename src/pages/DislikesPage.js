@@ -28,7 +28,7 @@ const DislikesPage = () => {
       </Box>
       <Box>
         <Header isActivedDis={isActivedDis} />
-        <MainBox backgroundColor={'#ffffff'}>
+        <MainBox>
           <PageName name='Dislikes' />
           <GridPageLoyaut arr={allDislikes} />
         </MainBox>
