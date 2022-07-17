@@ -1,8 +1,8 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { styled } from '@mui/system';
 import '../styles/styles.css';
+import { useHover } from 'react-haiku';
 import Box from '@mui/material/Box';
-import { useHover } from 'usehooks-ts';
 import { useNavigate } from 'react-router-dom';
 import arrow from '../img/Arrow.svg';
 import arrowHov from '../img/ArrowHov.svg';
@@ -33,15 +33,14 @@ export const StyledPageName = styled(Box)({
 });
 
 const PageName = (props) => {
-  const hoverRef = useRef(null);
-  const isHover = useHover(hoverRef);
+  const { hovered, ref } = useHover();
 
   const navigate = useNavigate();
 
   return (
     <Box display={'flex'} gap={'10px'} sx={{ mb: { xs: '10px', sm: '20px' } }}>
-      <StyledBackButton ref={hoverRef} onClick={() => navigate(-1)}>
-        {isHover ? (
+      <StyledBackButton ref={ref} onClick={() => navigate(-1)}>
+        {hovered ? (
           <img src={arrowHov} alt='arrowHov' />
         ) : (
           <img src={arrow} alt='arrow' />

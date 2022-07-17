@@ -22,14 +22,14 @@ const StyledId = styled(StyledPageName)({
 
 const BreedsInfoPage = () => {
   const allBreeds = useSelector((state) => state.allBreeds.breeds);
-  const allImagesById = useSelector((state) => state.allBreeds.imagesById);
   const imagesStatus = useSelector((state) => state.allBreeds.status);
 
+  // Based on breed id fetching certain breed images for Swiper
   const breedId = useSelector((state) => state.allBreeds.breedsId);
+  const allImagesById = useSelector((state) => state.allBreeds.imagesById);
 
+  // Finding certain breed based on id and showing breed info.
   const breedInfo = allBreeds.filter((elem) => elem.id === breedId);
-
-  console.log(allImagesById)
 
   const dispatch = useDispatch();
 
@@ -84,6 +84,7 @@ const BreedsInfoPage = () => {
 
               <InfoTextBreedsId
                 name={elem.name}
+                description={elem.description}
                 origin={elem.origin}
                 life_span={elem.life_span}
                 weight={elem.weight.metric}

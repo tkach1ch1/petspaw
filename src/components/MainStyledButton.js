@@ -16,7 +16,7 @@ export const StyledButton = styled(Box)({
   borderRadius: '10px',
   letterSpacing: '2px',
   cursor: 'pointer',
-  
+
   '&:hover': {
     backgroundColor: 'var(--main-red)',
     color: 'white',
@@ -28,12 +28,15 @@ export const StyledTypography = styled(Typography)({
   fontSize: '12px',
   fontFamily: 'Jost',
   fontWeight: '500',
-  
 });
 
 const MainStyledButton = React.forwardRef(({ children, ...props }, ref) => {
   return (
-    <StyledButton sx={{ padding: props.padding }} ref={ref} onClick={props.onClick}>
+    <StyledButton
+      sx={{ padding: props.padding }}
+      ref={ref}
+      onClick={props.onClick}
+    >
       {children}
     </StyledButton>
   );

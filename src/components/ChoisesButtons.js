@@ -120,7 +120,10 @@ const ChoisesButtons = () => {
   return (
     <MainWrapper>
       <ButtonsWrapper
-        sx={{ borderRadius: { xs: '10px', sm: '20px' }, bottom: {xs: '65px', sm: '45px', md: '80px'} }}
+        sx={{
+          borderRadius: { xs: '10px', sm: '20px' },
+          bottom: { xs: '65px', sm: '45px', md: '85px' },
+        }}
       >
         <StyledBox
           onClick={handleClickLikes}

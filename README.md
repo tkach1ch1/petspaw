@@ -1,12 +1,4 @@
 <style>
-painted {
-  background-color: #f8f8f7;
-  padding: 4px 7px;
-  border-radius: 5px;
-  font-size: 18px;
-  color: #5c5e5e;
-  font-weight: 500;
-}
 
 text {
     font-size: 30px;
@@ -88,7 +80,17 @@ Inside the project, you can run some built-in commands:
 
 - To start the project locally in **development** mode:
 
-<painted>npm start</painted> or <painted>yarn start</painted>
+<span style='background-color: #f8f8f7;
+  padding: 4px 7px;
+  border-radius: 5px;
+  font-size: 18px;
+  color: #5c5e5e;
+  font-weight: 500'>npm start</span> or <span style='background-color: #f8f8f7;
+  padding: 4px 7px;
+  border-radius: 5px;
+  font-size: 18px;
+  color: #5c5e5e;
+  font-weight: 500'>yarn start</span>
 
 When you run the project, a new browser tab will automatically open on your computer's default browser to view the app.
 
@@ -98,7 +100,17 @@ The page will automatically reload if you make changes to the code. You will see
 
 - To start the project in **production** mode:
 
-<painted>npm run build</painted> or <painted>yarn build</painted>
+<span style='background-color: #f8f8f7;
+  padding: 4px 7px;
+  border-radius: 5px;
+  font-size: 18px;
+  color: #5c5e5e;
+  font-weight: 500'>npm run build</span> or <span style='background-color: #f8f8f7;
+  padding: 4px 7px;
+  border-radius: 5px;
+  font-size: 18px;
+  color: #5c5e5e;
+  font-weight: 500'>yarn build</span>
 
 This command builds the app for production to the build folder. It correctly bundles React in production mode and optimizes the build for the best performance.
 

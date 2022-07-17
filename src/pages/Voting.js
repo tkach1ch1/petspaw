@@ -32,7 +32,7 @@ const Voting = () => {
             <ChosenImage />
           </Box>
           {imageStatus !== 'loading' && <ChoisesButtons />}
-          <Box mt={{xs: '-75px', sm: '-55px'   ,md: '-80px'}}>
+          <Box mt={{xs: '-75px', sm: '-55px',md: '-95px'}}>
             {/* Shows info about actions user did on VotingPage */}
             {all.map((obj) => (
               <InfoCommentVoting

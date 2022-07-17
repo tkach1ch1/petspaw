@@ -9,7 +9,7 @@ import notfound from '../img/notfound.png';
 const StyledImg = styled('img')({
   width: '100%',
   objectFit: 'cover',
-  objectPosition: 'center -70px',
+  objectPosition: 'center',
   borderRadius: '20px',
 });
 

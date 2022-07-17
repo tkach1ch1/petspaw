@@ -10,6 +10,7 @@ export const StyledGrid = styled(Box)({
   gridAutoRows: '150px',
   gridAutoFlow: 'dense',
   gridTemplateColumns: 'repeat(3, 1fr)',
+  justifyContent: 'center',
 });
 
 //NOTE: Grid for GalleryPage
@@ -57,8 +58,6 @@ const ImageGalleryTemplateGallery = ({ ...props }) => {
       sx={{
         display: { xs: 'flex', md: 'grid' },
         flexDirection: { xs: 'column' },
-        position: 'relative',
-        justifyContent: 'center',
       }}
     >
       {content}

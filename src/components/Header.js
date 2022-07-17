@@ -18,6 +18,13 @@ const StyledLinkHeader = styled(StyledNavLink)({
   borderRadius: '20px',
 });
 
+const BoxWrapper = styled(Box)({
+  display: 'flex',
+  justifyContent: 'space-between',
+  marginBottom: '10px',
+  width: '100%',
+});
+
 const Header = ({ ...props }) => {
   return (
     <Box
@@ -28,14 +35,7 @@ const Header = ({ ...props }) => {
         mb: { xs: '10px', md: 0 },
       }}
     >
-      <Box
-        sx={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          mb: '10px',
-          width: '100%',
-        }}
-      >
+      <BoxWrapper>
         <Box sx={{ ml: { xs: '10px', md: '10px', lg: 0 } }}>
           <BurgerMenu />
         </Box>
@@ -69,7 +69,7 @@ const Header = ({ ...props }) => {
             )}
           </StyledLinkHeader>
         </Box>
-      </Box>
+      </BoxWrapper>
 
       <Box>
         <SearchBar display={{ xs: 'block', md: 'none' }} />

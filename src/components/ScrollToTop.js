@@ -12,6 +12,12 @@ const StyledToTopButton = styled(Fab)({
   },
 });
 
+const ScrollBox = styled(Box)({
+  position: 'fixed',
+  bottom: 25,
+  right: 16,
+});
+
 const ScrollToTop = () => {
   const trigger = useScrollTrigger({
     target: window,
@@ -24,15 +30,11 @@ const ScrollToTop = () => {
   };
   return (
     <Fade in={trigger}>
-      <Box
-        onClick={handleClick}
-        role='presentation'
-        sx={{ position: 'fixed', bottom: 25, right: 16 }}
-      >
+      <ScrollBox onClick={handleClick} role='presentation'>
         <StyledToTopButton size='small' aria-label='scroll back to top'>
           <KeyboardArrowUpIcon color='primary' />
         </StyledToTopButton>
-      </Box>
+      </ScrollBox>
     </Fade>
   );
 };

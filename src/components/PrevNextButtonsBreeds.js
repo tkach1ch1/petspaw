@@ -80,7 +80,7 @@ const PrevNextButtonsBreeds = (props) => {
   return (
     <Box
       display={'flex'}
-      mt={{ xs: '50px', xxl: '150px' }}
+      mt={{xs: '50px', xxl: '130px', xxxl: '150px' }}
       justifyContent={'center'}
       gap={{ xs: '20px', sm: '40px' }}
     >

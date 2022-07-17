@@ -4,16 +4,24 @@ import { SubTypography } from './ModalUpload';
 import { StyledPageName } from './PageName';
 
 const UploadButton = styled(StyledPageName)({
-    fontSize: '12px',
-    padding: '12px 30px',
-    borderRadius: '10px',
-    fontWeight: '400',
-    cursor: 'pointer',
-    '&:hover': {
-      opacity: '0.8',
-      transition: 'all 0.4s',
-    },
-  });
+  fontSize: '12px',
+  padding: '12px 30px',
+  borderRadius: '10px',
+  fontWeight: '400',
+  cursor: 'pointer',
+  '&:hover': {
+    opacity: '0.8',
+    transition: 'all 0.4s',
+  },
+});
+
+const BoxWrapper = styled(Box)({
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  textAlign: 'center',
+  gap: '20px',
+});
 
 const ModalUploadFileInfo = (props) => {
   return (
@@ -32,21 +40,14 @@ const ModalUploadFileInfo = (props) => {
           No file selected
         </SubTypography>
       ) : (
-        <Box
-          display={'flex'}
-          flexDirection={'column'}
-          alignItems={'center'}
-          gap={'20px'}
-          textAlign={'center'}
-        >
+        <BoxWrapper>
           <SubTypography
             sx={{
               fontSize: {
                 xs: '16px',
                 md: '20px',
                 lg: '16px',
-                xl: '16px',
-                xxl: '20px'
+                xxl: '20px',
               },
             }}
           >
@@ -60,7 +61,7 @@ const ModalUploadFileInfo = (props) => {
               Upload photo
             </UploadButton>
           )}
-        </Box>
+        </BoxWrapper>
       )}
     </Box>
   );

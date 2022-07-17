@@ -9,6 +9,7 @@ import smile_yellow from '../img/smile_yellow.svg';
 const CommentWrapper = styled(Box)({
   backgroundColor: 'var(--main-gray)',
   borderRadius: '10px',
+  marginTop: '20px',
 });
 
 const TimeBox = styled(Box)({
@@ -32,10 +33,7 @@ const StyleId = styled(Typography)({
 
 const InfoCommentVoting = (props) => {
   return (
-    <CommentWrapper
-      sx={{ padding: { xs: '15px', sm: 0 }, mb: '10px' }}
-      mt={'20px'}
-    >
+    <CommentWrapper sx={{ padding: { xs: '15px', sm: 0 }, mb: '10px' }}>
       <Box
         sx={{
           display: 'flex',

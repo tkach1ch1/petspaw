@@ -177,10 +177,9 @@ const ModalUpload = () => {
                 xxl: '840px',
                 xxxl: '870px',
               },
-              right: { xs: 0, lg: 0, xxxl: '210px' },
+              right: { xs: 0, lg: 0, xxxl: '180px' },
               left: { xs: 0, lg: 'auto' },
               margin: { md: '30px' },
-
               borderRadius: { md: '20px' },
             }}
           >
