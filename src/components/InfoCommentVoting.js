@@ -54,7 +54,7 @@ const InfoCommentVoting = (props) => {
         >
           Image ID:
           <StyleId variant='span'>&nbsp;{props.id}&nbsp;</StyleId>
-          {props.votingValue ? 'was added to' : 'was removed from '}
+          {props.votingValue ? 'was added to ' : 'was removed from '}
           {props.value === 0
             ? 'Dislikes'
             : props.value === 1

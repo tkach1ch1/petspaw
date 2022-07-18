@@ -37,6 +37,7 @@ const Home = () => {
 
       <MainBoxHome
         sx={{
+          position : {xxxl:'relative'},
           width: { lg: '500px', xl: '570px', xxl: '680px', xxxl: '750px' },
           height: { lg: '637px', xl: '590px', xxl: '840px', xxxl: '865px' },
         }}

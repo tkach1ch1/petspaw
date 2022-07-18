@@ -91,11 +91,11 @@ const Breeds = () => {
           <MainBox position={'relative'}>
             <Box
               sx={{
-                display: { md: 'flex', lg: 'block', xl: 'flex' },
-                justifyContent: { md: 'space-between', xl: 'flex-start' },
+                display: { md: 'flex', lg: 'block', xxl: 'flex' },
+                justifyContent: { md: 'space-between', xxl: 'flex-start' },
                 gap: { md: '10px' },
                 alignItems: { md: 'flex-start' },
-                mb: { xs: '20px', md: 0, lg: '20px', xl: 0 },
+                mb: { xs: '20px', md: 0, lg: '20px', xxl: 0 },
               }}
             >
               <PageName name='Breeds' />

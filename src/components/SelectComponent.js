@@ -50,7 +50,7 @@ const SelectComponent = ({ ...props }) => {
             xs: '100%',
             md: props.widthmd,
             lg: '100%',
-            xl: props.widthxl,
+            xl: '100%',
             xxl: props.widthxxl,
             xxxl: props.widthxxxl,
           },
