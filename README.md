@@ -7,6 +7,8 @@
 - ### [Setup](#setup)
 - ### [FAQ](#faq)
 
+### Deployed project could be found under: https://master--catpaw-tkach.netlify.app/ 
+
 ---
 ## About
 
