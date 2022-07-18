@@ -40,6 +40,7 @@ const InfoCommentVoting = (props) => {
           justifyContent: 'space-between',
           alignItems: 'center',
           padding: { xs: 0, sm: '15px' },
+          marginBottom: '10px'
         }}
       >
         <TimeBox>{props.date}</TimeBox>
@@ -53,7 +54,7 @@ const InfoCommentVoting = (props) => {
         >
           Image ID:
           <StyleId variant='span'>&nbsp;{props.id}&nbsp;</StyleId>
-          {props.votingValue ? 'was added to ' : 'was removed from '}
+          {props.votingValue ? 'was added to' : 'was removed from '}
           {props.value === 0
             ? 'Dislikes'
             : props.value === 1
@@ -75,7 +76,7 @@ const InfoCommentVoting = (props) => {
       >
         Image ID:
         <StyleId variant='span'>&nbsp;{props.id}&nbsp;</StyleId>
-        was added to
+        {props.votingValue ? 'was added to ' : 'was removed from '}
         {props.value === 0
           ? 'Dislikes'
           : props.value === 1

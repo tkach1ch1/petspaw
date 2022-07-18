@@ -40,7 +40,7 @@ const ChosenImage = () => {
   if (imageStatus === 'loading') {
     content = (
       <StyledCircularProgress
-        sx={{ top: { xs: '90px', md: '90px' } }}
+        sx={{ top: { xs: '10px', sm: '30px', md: '90px' } }}
         size={'100px'}
         color='secondary'
       />
