@@ -24,8 +24,8 @@ const ImageGalleryTemplateGallery = ({ ...props }) => {
     content = (
       <StyledCircularProgress
         sx={{
+          display: { xs: 'none', md: 'block' },
           top: {
-            xs: '150px',
             md: '200px',
             lg: '100px',
             xxl: '200px',

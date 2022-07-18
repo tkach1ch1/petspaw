@@ -74,7 +74,7 @@ const BreedsInfoPage = () => {
                 </StyledId>
               </Box>
               <Box
-                sx={{ height: { xs: '170px', sm: '220px', md: '360px' } }}
+                sx={{ height: { xs: '170px', sm: '230px', md: '360px' } }}
                 position={'relative'}
                 display={'flex'}
                 justifyContent={'center'}

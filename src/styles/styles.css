@@ -12,7 +12,6 @@
   background-color: white;
   display: block;
   right: 0;
-  top: 320px;
   max-width: fit-content;
   margin-left: auto;
   margin-right: auto;
@@ -21,7 +20,7 @@
 }
 
 .swiper-pagination-bullet {
-  background-color:#fbe0dc !important;
+  background-color: #fbe0dc !important;
   padding: 5px !important;
   display: inline-block;
 }

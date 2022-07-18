@@ -16,7 +16,7 @@ const StyledImg = styled('img')`
     height: 170px;
   }
   ${(props) => props.theme.breakpoints.up('sm')} {
-    height: 210px;
+    height: 230px;
   }
   ${(props) => props.theme.breakpoints.up('md')} {
     height: 360px;

@@ -122,7 +122,7 @@ const ChoisesButtons = () => {
       <ButtonsWrapper
         sx={{
           borderRadius: { xs: '10px', sm: '20px' },
-          bottom: { xs: '65px', sm: '45px', md: '85px' },
+          bottom: { xs: '60px', sm: '45px', md: '85px' },
         }}
       >
         <StyledBox
