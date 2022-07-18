@@ -45,10 +45,10 @@ const ChosenImage = () => {
         color='secondary'
       />
     );
-  } else if (imageStatus === 'succeeded') {
+  } else if (imageStatus === 'succeeded' && imageVoting.length > 0) {
     content = imageVoting.map((elem) => (
       <ImgStyle
-        src={elem.url}
+        src={imageVoting && elem.url}
         key={elem.id}
         alt='cat_photo'
         style={{
