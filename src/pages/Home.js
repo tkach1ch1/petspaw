@@ -20,8 +20,8 @@ const ImgStyle = styled('img')`
     height: 890px;
   }
   ${(props) => props.theme.breakpoints.up('xxxl')} {
-    width: 780px;
-    height: 920px;
+    width: 800px;
+    height: 890px;
   } ;
 `;
 
