@@ -34,7 +34,7 @@ const SelectComponent = ({ ...props }) => {
 
   // When taking categories value async from API
   if (props.status === 'succeeded') {
-    content = props.arr.map((elem) => (
+    content = props.arr && props.arr.map((elem) => (
       <option key={elem.id}>{elem.name}</option>
     ));
   } else if (props.status === 'failed') {

@@ -103,7 +103,7 @@ const Breeds = () => {
                 {/* Breed select categorie */}
                 <SelectComponent
                   firstParam='All breeds'
-                  arr={allBreeds}
+                  arr={allBreeds.length > 0 && allBreeds}
                   onChange={onHandleBreedsChange}
                   value={breed}
                   status={breedsStatus}
@@ -113,7 +113,7 @@ const Breeds = () => {
               <Box display={'flex'} gap={'10px'} width={'100%'}>
                 {/* Limit breeds on page select categorie */}
                 <SelectComponent
-                  arr={arrayLimit}
+                  arr={arrayLimit.length > 0 && arrayLimit}
                   widthxl={'100px'}
                   widthxxl={'100%'}
                   value={limit}
