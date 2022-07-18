@@ -14,15 +14,15 @@ export const useRoutes = () => {
   return (
     <Routes>
       <Route path='/' element={<Home />} />
-      <Route path='breeds' element={<Breeds />} />
-      <Route path='breeds/:id' element={<BreedsInfoPage />} />
-      <Route path='gallery' element={<Gallery />} />
-      <Route path='voting' element={<Voting />} />
-      <Route path='favourites' element={<FavouritesPage />} />
-      <Route path='likes' element={<LikesPage />} />
-      <Route path='dislikes' element={<DislikesPage />} />
-      <Route path='search' element={<SearchPage />} />
-      <Route path='search/:id' element={<BreedsInfoPage />} />
+      <Route path='/breeds' element={<Breeds />} />
+      <Route path='/breeds/:id' element={<BreedsInfoPage />} />
+      <Route path='/gallery' element={<Gallery />} />
+      <Route path='/voting' element={<Voting />} />
+      <Route path='/favourites' element={<FavouritesPage />} />
+      <Route path='/likes' element={<LikesPage />} />
+      <Route path='/dislikes' element={<DislikesPage />} />
+      <Route path='/search' element={<SearchPage />} />
+      <Route path='/search/:id' element={<BreedsInfoPage />} />
       <Route path='*' element={<Navigate to='/' />} />
     </Routes>
   );
