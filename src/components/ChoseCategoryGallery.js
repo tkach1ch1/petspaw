@@ -92,7 +92,7 @@ const ChoseCategoryGallery = (props) => {
         {/* Breed categorie */}
         <StyledInputLabel>Breed</StyledInputLabel>
         <SelectComponent
-          arr={allBreeds}
+          arr={allBreeds.length > 0 && allBreeds}
           firstParam='None'
           backgroundColor='white'
           color='var(--black)'
