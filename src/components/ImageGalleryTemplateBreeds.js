@@ -45,7 +45,7 @@ const ImageGalleryTemplateBreeds = ({ ...props }) => {
     content =
       // Sorted Breeds from A to B
       props.selectedBreed === '' && props.valueAB
-        ? arrayLimited.map((elem) => (
+        ? arrayLimited.length > 0 && arrayLimited.map((elem) => (
             <GridItem
               id={elem.id}
               key={elem.id}

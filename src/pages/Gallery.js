@@ -14,6 +14,7 @@ import ChoseCategoryGallery from '../components/ChoseCategoryGallery';
 import ModalUpload from '../components/ModalUpload';
 import ScrollToTop from '../components/ScrollToTop';
 import ImageGalleryTemplateGallery from '../components/ImageGalleryTemlateGallery';
+import { fetchAllBreeds } from '../redux/allBreedsReducer';
 
 const Gallery = () => {
   const allImages = useSelector((state) => state.allImages.images);
@@ -29,12 +30,19 @@ const Gallery = () => {
 
   const dispatch = useDispatch();
 
+  //Fetches all breeds from API
+  useEffect(() => {
+    dispatch(fetchAllBreeds());
+  }, [dispatch]);
+
   //Fetching images from API based on selected categories
   useEffect(() => {
     dispatch(fetchImages({ limit, order, type, breedId }));
   }, [dispatch, limit, order, type, breedId]);
 
   const value = { limit, order, type, breedId };
+
+
 
   return (
     <Context.Provider value={value}>
