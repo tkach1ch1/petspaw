@@ -31,13 +31,7 @@ const ImageGalleryTemplateGallery = ({ ...props }) => {
             xxl: '200px',
             xxxl: '200px',
           },
-          right: {
-            md: '300px',
-            lg: '190px',
-            xl: '220px',
-            xxl: '280px',
-            xxxl: '310px',
-          },
+          right: '40%',
         }}
         size={'100px'}
         color='secondary'

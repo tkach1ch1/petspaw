@@ -29,13 +29,7 @@ const ImageGalleryTemplateBreeds = ({ ...props }) => {
         sx={{
           display: { xs: 'none', md: 'block' },
           top: { md: '250px', lg: '180px', xxxl: '250px' },
-          right: {
-            md: '300px',
-            lg: '190px',
-            xl: '220px',
-            xxl: '280px',
-            xxxl: '310px',
-          },
+          right: '40%'
         }}
         size={'100px'}
         color='secondary'
