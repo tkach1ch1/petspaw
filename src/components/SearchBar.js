@@ -38,23 +38,6 @@ const StyledInput = styled('input')({
   },
 });
 
-// const useStyles = makeStyles((theme) => ({
-//   [theme.breakpoints.up('lg')]: {
-//     textFieldStyle: {
-//       '&::placeholder': {
-//         fontSize: '18px',
-//       },
-//     },
-//   },
-//   [theme.breakpoints.up('xl')]: {
-//     textFieldStyle: {
-//       '&::placeholder': {
-//         fontSize: '20px',
-//       },
-//     },
-//   },
-// }));
-
 const StyleImg = styled('img')({
   position: 'absolute',
   right: '10px',

@@ -80,6 +80,7 @@ const ModalUpload = () => {
         setFileURL(URL.createObjectURL(file));
         setFile(file);
       };
+
       reader.readAsArrayBuffer(file);
     });
   }, []);

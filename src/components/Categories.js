@@ -29,10 +29,10 @@ const Categories = () => {
           </Link>
         </Box>
         <Typography variant='h1' mb={'10px'}>
-          Hi intern!
+          Hi user!
         </Typography>
         <Typography color='primary' mb={'60px'} sx={{ fontSize: '20px' }}>
-          Welcome to MI 2022 Front-end test
+          Welcome to #catslover application
         </Typography>
         <Typography mb={'20px'} sx={{ fontSize: '20px', fontWeight: 500 }}>
           Lets start using The Cat API
