@@ -1,18 +1,6 @@
-import React from 'react';
-import Box from '@mui/material/Box';
+import React from 'react'
+import { PageWrapperBox } from './style/style'
 
-const PageWrapper = ({ children }) => {
-  return (
-    <Box
-      sx={{
-        display: { lg: 'flex' },
-        justifyContent: { lg: 'center' },
-        gap: { lg: '30px', xl: '125px' },
-      }}
-    >
-      {children}
-    </Box>
-  );
-};
-
-export default PageWrapper;
+export const PageWrapper = ({ children }) => {
+    return <PageWrapperBox>{children}</PageWrapperBox>
+}
