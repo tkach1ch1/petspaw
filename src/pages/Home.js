@@ -5,13 +5,19 @@ import { Categories } from '../layouts/Navigation/Categories'
 import { PageWrapper } from '../components/PageWrapper'
 import girlAndPet from '../img/girl-and-pet 1.png'
 import styled from '@emotion/styled'
+import { theme } from '../styles/theme'
 
 const MainBoxHome = styled(Box)({
     borderRadius: '20px',
     backgroundColor: '#FBE0DC',
     position: 'relative',
-    display: { xs: 'none', lg: 'block' },
     overflow: 'hidden',
+    [theme.breakpoints.up('xs')]: {
+        display: 'none',
+    },
+    [theme.breakpoints.up('lg')]: {
+        display: 'block',
+    },
 })
 
 export const Home = () => {
