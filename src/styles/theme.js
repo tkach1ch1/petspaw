@@ -1,5 +1,8 @@
 import { createTheme } from '@mui/material/styles'
 
+//I don't change .js to .ts in theme.js because of breackpoints.
+//In .js we can set as much breackpoints as we want, but in .ts there are
+//limited breackpoints quantity that cannot be changed in MUI yet.
 export const theme = createTheme({
     components: {
         MuiCssBaseline: {
