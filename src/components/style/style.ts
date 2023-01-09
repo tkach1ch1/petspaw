@@ -247,6 +247,8 @@ export const PageWrapperBox = styled(Box)({
     },
     [theme.breakpoints.down('md')]: {
         marginBottom: '70px',
+        display: 'flex',
+        justifyContent: 'center',
     },
     [theme.breakpoints.up('md')]: {
         display: 'flex',

@@ -23,12 +23,20 @@ export const ImgBox = styled(Box)({
         width: '105px',
         height: '150px',
     },
+    [theme.breakpoints.down('lg')]: {
+        width: '130px',
+        height: '190px',
+    },
 })
 
 export const StyledCategImg = styled('img')({
     [theme.breakpoints.down('xl')]: {
         width: '85px',
         height: '95px',
+    },
+    [theme.breakpoints.down('lg')]: {
+        width: '110px',
+        height: '130px',
     },
 })
 
@@ -48,5 +56,9 @@ export const StyledBaseNavLinkImg = styled(BaseNavLink)({
     [theme.breakpoints.down('xl')]: {
         width: '105px',
         height: '150px',
+    },
+    [theme.breakpoints.down('lg')]: {
+        width: '130px',
+        height: '190px',
     },
 })
