@@ -44,6 +44,7 @@ Moreover there is an opportunity to add images from gallery to favourites only i
 Main technologies used for this project:
 
 -   ReactJS (Create-react-app) v18.2.0
+-   Typescript v4.8.4
 -   Material UI v5.8.6
 -   Redux Toolkit v1.8.3
 -   Redux Persist v8.0.2
