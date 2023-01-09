@@ -4,7 +4,7 @@ import vote from 'src/img/vote-table.png'
 import breeds from 'src/img/pet-breeds.png'
 import search from 'src/img/images-search.png'
 import { StyledNavLink } from 'src/components/StyledNavLink'
-import { CategoryWrapper, ImgBox } from './style/style'
+import { CategoryWrapper, ImgBox, StyledCategImg } from './style/style'
 import { nanoid } from 'nanoid'
 
 const categories = [
@@ -31,7 +31,7 @@ export const Category = () => {
                         border={'4px solid rgba(255, 255, 255, 0.6)'}
                     >
                         <ImgBox>
-                            <img
+                            <StyledCategImg
                                 src={categ.src}
                                 alt={categ.name}
                             />

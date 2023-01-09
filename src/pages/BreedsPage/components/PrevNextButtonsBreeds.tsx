@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useHover } from 'usehooks-ts'
 import 'src/styles/styles.css'
 import { Box } from '@mui/material'
@@ -9,12 +9,10 @@ import arrow_prev_hov from 'src/img/svg/arrow_prew_hov.svg'
 import arrow_next_hov from 'src/img/svg/arrow_next_hov.svg'
 import arrow_prev_dis from 'src/img/svg/arrow_prev_dis.svg'
 import arrow_next_dis from 'src/img/svg/arrow_next_dis.svg'
-import { fetchLimitBreeds } from 'src/redux/allBreedsReducer'
-import usePrevious from 'src/hooks/usePrevious'
-import { increaseBreedsPage, decreaseBreedsPage } from 'src/redux/breedsPageReducer'
 import { StyledTypography } from 'src/components/style/style'
 import { DisabledButton } from '../style/style'
-import { useAppDispatch, useAppSelector } from 'src/hooks/reduxHooks'
+import { usePrevAndNextButtons } from '../hooks/usePrevAndNextButtons'
+import { useAppSelector } from 'src/hooks/reduxHooks'
 
 interface PrevNextButtonsBreedsProps {
     limit: number
@@ -28,36 +26,10 @@ export const PrevNextButtonsBreeds = ({ limit }: PrevNextButtonsBreedsProps) => 
     const hoverRefNext = React.createRef<HTMLButtonElement>()
     const isHoverNext = useHover(hoverRefNext)
 
-    const dispatch = useAppDispatch()
-
+    const breedPage = useAppSelector((state) => state.breedPage.page)
     const limitedBreeds = useAppSelector((state) => state.allBreeds.limBreeds)
 
-    //Current breed page
-    const breedPage = useAppSelector((state) => state.breedPage.page)
-
-    const prevAmount = usePrevious(breedPage)
-
-    // Next page if there are still cat breeds that are filling a limit select condition user has chosen
-    const onHandleNextClick = () => {
-        if (limitedBreeds.length === Number(limit)) dispatch(increaseBreedsPage())
-    }
-
-    // Prev page if there is not a first page already
-    const onHandlePrevClick = () => {
-        if (breedPage !== 0) {
-            dispatch(decreaseBreedsPage())
-        }
-    }
-
-    // If current page > prev page then next page with breeds will load
-    // If current page < prev page then prev page will load
-    useEffect(() => {
-        if (breedPage > prevAmount) {
-            dispatch(fetchLimitBreeds({ limit, breedPage }))
-        } else if (breedPage < prevAmount) {
-            dispatch(fetchLimitBreeds({ limit, breedPage }))
-        }
-    }, [dispatch, limit, breedPage, prevAmount])
+    const { onHandleNextClick, onHandlePrevClick } = usePrevAndNextButtons(limit)
 
     return (
         <Box

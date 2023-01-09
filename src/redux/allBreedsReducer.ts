@@ -9,6 +9,7 @@ const getAllImagesById = 'https://api.thecatapi.com/v1/images/search'
 
 export interface ImagesByIdElements {
     url: string
+    name: string
 }
 
 interface AllBreedsReducerState {

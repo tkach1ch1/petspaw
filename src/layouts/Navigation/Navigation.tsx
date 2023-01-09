@@ -1,14 +1,10 @@
-import { Box } from '@mui/system'
 import { Categories } from './Categories'
+import { NavigationBox } from './style/style'
 
 export const Navigation = () => {
     return (
-        <Box
-            sx={{
-                display: { xs: 'none', lg: 'block' },
-            }}
-        >
+        <NavigationBox>
             <Categories />
-        </Box>
+        </NavigationBox>
     )
 }

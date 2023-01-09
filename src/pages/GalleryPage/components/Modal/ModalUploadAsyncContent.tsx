@@ -23,7 +23,7 @@ export const ModalUploadAsyncContent = ({ isUploaded }: ModalUploadAsyncContentP
                         xs: '450px',
                         sm: '500px',
                         md: '550px',
-                        lg: '470px',
+                        lg: '500px',
                         xxl: '550px',
                         xxxl: '550px',
                     },

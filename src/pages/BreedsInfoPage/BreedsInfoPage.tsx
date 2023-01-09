@@ -57,7 +57,7 @@ export const BreedsInfoPage = () => {
             {breedInfo.map((elem) => (
                 <PageWrapper key={nanoid()}>
                     <Navigation />
-                    <Box>
+                    <Box sx={{ width: { xs: '100%', xxxl: '1000px' } }}>
                         <Header />
                         <MainBox>
                             <Box

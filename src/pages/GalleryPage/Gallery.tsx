@@ -41,7 +41,7 @@ export const Gallery = () => {
     return (
         <PageWrapper>
             <Navigation />
-            <Box>
+            <Box sx={{ width: { xs: '100%', xxxl: '1000px' } }}>
                 <Header />
                 <MainBox>
                     <Box

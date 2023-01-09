@@ -27,10 +27,10 @@ export const ImageGalleryTemplateGallery = ({
                     top: {
                         md: '200px',
                         lg: '100px',
-                        xxl: '200px',
+                        xxl: '120px',
                         xxxl: '200px',
                     },
-                    right: '40%',
+                    right: '45%',
                 }}
                 size={'100px'}
                 color='secondary'

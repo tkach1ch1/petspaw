@@ -23,6 +23,7 @@ export const UpdateButton = ({ limit, order, type, breedId }: UpdateButtonProps)
         <StyledUpdateBox
             ref={ref}
             onClick={() => dispatch(fetchImages({ limit, order, type, breedId }))}
+            sx={{ width: '40px', height: '40px' }}
         >
             {hovered ? (
                 <img

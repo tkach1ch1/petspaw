@@ -5,13 +5,12 @@ import { StyledGrid } from '../pages/BreedsPage/style/style'
 import { nanoid } from 'nanoid'
 import { ActionsElements } from 'src/assets/BreedTypes'
 
-//NOTE: GridBox for Liked/Dislikes/Favourites Page
-
 interface GridPageLoyautProps {
     array: ActionsElements[]
     searchValue?: string
 }
 
+//NOTE: GridBox for Liked/Dislikes/Favourites Page
 export const GridPageLoyaut = ({ array, searchValue }: GridPageLoyautProps) => {
     //NOTE: Value for every categorie:
     //      Likes: '1'

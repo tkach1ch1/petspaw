@@ -10,16 +10,7 @@ interface ModalUploadFileInfoProps {
 
 export const ModalUploadFileInfo = ({ onClick, imageStatus, file }: ModalUploadFileInfoProps) => {
     return (
-        <Box
-            mt={{
-                xs: '200px',
-                sm: '270px',
-                md: '340px',
-                lg: '230px',
-                xl: '240px',
-                xxl: '340px',
-            }}
-        >
+        <Box sx={{ mt: '40px' }}>
             {!file ? (
                 <SubTypography sx={{ fontSize: '20px' }}>No file selected</SubTypography>
             ) : (
@@ -34,7 +25,7 @@ export const ModalUploadFileInfo = ({ onClick, imageStatus, file }: ModalUploadF
                             },
                         }}
                     >
-                        Image File Name: {file && file[0].name}
+                        Image File Name: {!!file[0] ? file[0].name : ''}
                     </SubTypography>
                     {imageStatus !== 'loading' && (
                         <UploadButton

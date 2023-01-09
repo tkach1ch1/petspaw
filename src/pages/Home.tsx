@@ -17,6 +17,20 @@ const MainBoxHome = styled(Box)({
     [theme.breakpoints.up('lg')]: {
         display: 'block',
     },
+
+    [theme.breakpoints.up('xl')]: {
+        display: 'block',
+        maxHeight: '1000px',
+    },
+})
+
+const StyledHomeImage = styled('img')({
+    display: 'block',
+    width: '100%',
+    height: 'auto',
+    [theme.breakpoints.down('xl')]: {
+        height: '700px',
+    },
 })
 
 export const Home = () => {
@@ -25,8 +39,7 @@ export const Home = () => {
             <Categories />
 
             <MainBoxHome>
-                <img
-                    style={{ display: 'block', width: '100%', height: 'auto' }}
+                <StyledHomeImage
                     src={girlAndPet}
                     alt='girl-and-pet'
                 />

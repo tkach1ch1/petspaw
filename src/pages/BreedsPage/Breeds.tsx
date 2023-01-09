@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import 'src/styles/styles.css'
 import Box from '@mui/material/Box'
-import { fetchAllBreeds, fetchLimitBreeds } from 'src/redux/allBreedsReducer'
+import { fetchAllBreeds } from 'src/redux/allBreedsReducer'
 import { MainBox } from 'src/components/MainBox'
 import { PageWrapper } from 'src/components/PageWrapper'
 import { Header } from 'src/layouts/Header/Header'
@@ -13,72 +13,40 @@ import { PrevNextButtonsBreeds } from './components/PrevNextButtonsBreeds'
 import { ScrollToTop } from 'src/components/ScrollToTop'
 import { Navigation } from 'src/layouts/Navigation/Navigation'
 import { useAppDispatch, useAppSelector } from 'src/hooks/reduxHooks'
+import { useDefAndRevSort } from './hooks/useDefAndRevSort'
+import { useGetLimitBreeds } from './hooks/useGetLimitBreeds'
+import { useGetSelectedBreed } from './hooks/useGetSelectedBreed'
 
 export const Breeds = () => {
+    const dispatch = useAppDispatch()
+
     const allBreeds = useAppSelector((state) => state.allBreeds.breeds)
     const limitedBreeds = useAppSelector((state) => state.allBreeds.limBreeds)
     const breedsStatus = useAppSelector((state) => state.allBreeds.status)
     const breedsError = useAppSelector((state) => state.allBreeds.error)
-
-    const dispatch = useAppDispatch()
-
-    //State and anctions for limit select
-    const arrayLimit = [
-        { name: 'Limit: 5', value: 5 },
-        { name: 'Limit: 10', value: 10 },
-        { name: 'Limit: 15', value: 15 },
-        { name: 'Limit: 20', value: 20 },
-    ]
-
-    const [limit, setLimit] = useState(5)
-
-    const onHandleLimitChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-        const value = event.target.value
-        setLimit(Number(value))
-    }
 
     //Fetches all breeds from API
     useEffect(() => {
         dispatch(fetchAllBreeds())
     }, [dispatch])
 
-    //Fetches limited breeds from API dependes on selected limit value
-    useEffect(() => {
-        dispatch(fetchLimitBreeds({ limit }))
-    }, [dispatch, limit])
+    //Get limit breeds dependes on chosen limit value
+    const { limit, onHandleLimitChange, arrayLimit } = useGetLimitBreeds()
 
-    //State and actions for breed select
-    const [breed, setBreed] = useState('')
+    //Get breed dependes on chosen breed value
+    const { breed, onHandleBreedsChange } = useGetSelectedBreed()
 
-    const onHandleBreedsChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-        setBreed(event.target.value)
-    }
-
-    if (breed === 'All breeds') {
-        setBreed('')
-    }
-
-    //States and actions for sort buttons
-    const [isActiveBA, setIsActiveBA] = useState(false)
-    const [isActiveAB, setIsActiveAB] = useState(true)
-
-    const onClickHandleBA = () => {
-        setIsActiveBA(true)
-        if (isActiveAB) {
-            setIsActiveAB(false)
-        }
-    }
-    const onClickHandleAB = () => {
-        setIsActiveAB(true)
-        if (isActiveBA) {
-            setIsActiveBA(false)
-        }
-    }
+    const {
+        isActiveDefaultSort,
+        isActiveReversSort,
+        onClickHandleDefaultSort,
+        onClickHandleReverseSort,
+    } = useDefAndRevSort()
 
     return (
         <PageWrapper>
             <Navigation />
-            <Box>
+            <Box sx={{ width: { xs: '100%', xxxl: '1000px' } }}>
                 <Header />
                 <MainBox sx={{ position: 'relative' }}>
                     <Box
@@ -118,10 +86,10 @@ export const Breeds = () => {
                             />
                             {/* Sort buttons */}
                             <SortButtons
-                                onClickBA={onClickHandleBA}
-                                onClickAB={onClickHandleAB}
-                                valueBA={isActiveBA}
-                                valueAB={isActiveAB}
+                                onClickHandleReverseSort={onClickHandleReverseSort}
+                                onClickHandleDefaultSort={onClickHandleDefaultSort}
+                                isActiveReversSort={isActiveReversSort}
+                                isActiveDefaultSort={isActiveDefaultSort}
                             />
                         </Box>
                     </Box>
@@ -131,8 +99,8 @@ export const Breeds = () => {
                         status={breedsStatus}
                         error={breedsError}
                         selectedBreed={breed}
-                        valueBA={isActiveBA}
-                        valueAB={isActiveAB}
+                        isActiveReversSort={isActiveReversSort}
+                        isActiveDefaultSort={isActiveDefaultSort}
                     />
                     {breed === '' && breedsStatus !== 'loading' && (
                         <PrevNextButtonsBreeds limit={limit} />

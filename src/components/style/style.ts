@@ -184,7 +184,6 @@ export const StyledButton = styled(Box)({
     borderRadius: '10px',
     letterSpacing: '2px',
     cursor: 'pointer',
-
     '&:hover': {
         backgroundColor: 'var(--main-red)',
         color: 'white',
@@ -233,6 +232,7 @@ export const StyledPageName = styled(Box)({
 
 export const PageWrapperBox = styled(Box)({
     position: 'absolute',
+    display: 'flex',
     maxHeight: '1200px',
     minWidth: '320px',
     bottom: '0',
@@ -248,13 +248,16 @@ export const PageWrapperBox = styled(Box)({
     [theme.breakpoints.down('md')]: {
         marginBottom: '70px',
     },
-    [theme.breakpoints.up('lg')]: {
+    [theme.breakpoints.up('md')]: {
         display: 'flex',
-        justifyContent: 'center',
+        justifyContent: 'space-around',
         gap: '30px',
+        margin: '30px 60px',
     },
     [theme.breakpoints.up('xl')]: {
-        gap: '125px',
+        gap: '90px',
+        display: 'flex',
+        justifyContent: 'center',
     },
 })
 

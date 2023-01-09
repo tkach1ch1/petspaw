@@ -1,28 +1,17 @@
 import { useRef } from 'react'
 import { useHover } from 'usehooks-ts'
-import { fetchImage } from 'src/redux/votingPageReducer'
 import sad_smile_act from 'src/img/svg/sad_smile_act.svg'
 import heart_act from 'src/img/svg/heart_act.svg'
 import heart from 'src/img/svg/heart.svg'
 import smile_act from 'src/img/svg/smile_act.svg'
 import smile_green from 'src/img/svg/smile_green.svg'
 import smile_yellow from 'src/img/svg/smile_yellow.svg'
-import {
-    addToAll,
-    addToDislikes,
-    addToFavourites,
-    addToLikes,
-} from 'src/redux/favLikesDislikesReducer'
-import { useAppDispatch, useAppSelector } from 'src/hooks/reduxHooks'
 import { ButtonsWrapper, MainWrapper, StyledBox } from '../style/style'
+import { useChoisesButtons } from '../hooks/useChoisesButtons'
 
 //NOTE: On Voting page user can choose between three buttons and add onClick choosen image to likes/favourites/dislikes page
 
 export const ChoisesButtons = () => {
-    const dispatch = useAppDispatch()
-
-    const fetchImageInfo = useAppSelector((state) => state.votingPage.image)
-
     const hoverRefLike = useRef(null)
     const isHoverLike = useHover(hoverRefLike)
 
@@ -32,74 +21,14 @@ export const ChoisesButtons = () => {
     const hoverRefDislike = useRef(null)
     const isHoverDislike = useHover(hoverRefDislike)
 
-    const nowDate = () => {
-        let dateNow = new Date()
-        let dateNowMinAndSec =
-            dateNow.getMinutes() < 10
-                ? dateNow.getHours() + ':' + 0 + dateNow.getMinutes()
-                : dateNow.getHours() + ':' + dateNow.getMinutes()
-        return dateNowMinAndSec.toString()
-    }
-
-    const getInfoFav = () => {
-        const newFav = {
-            id: fetchImageInfo[0].id,
-            url: fetchImageInfo[0].url,
-            value: 2,
-            date: nowDate(),
-        }
-
-        return newFav
-    }
-    const getInfoLikes = () => {
-        const newFav = {
-            id: fetchImageInfo[0].id,
-            url: fetchImageInfo[0].url,
-            value: 1,
-            date: nowDate(),
-        }
-
-        return newFav
-    }
-    const getInfoDislikes = () => {
-        const newFav = {
-            id: fetchImageInfo[0].id,
-            url: fetchImageInfo[0].url,
-            value: 0,
-            date: nowDate(),
-        }
-
-        return newFav
-    }
-
-    //On one of three buttons click action
-    //At first the image will be added to separate array in order to show it on certain page (likes/dis/fav)
-    //Then the image will be added to main array where all actions are stacking to show them in the InfoCommentVoting component
-    //The last one dispatch reloaded the image
-
-    const handleClickFav = () => {
-        dispatch(addToFavourites(getInfoFav()))
-        dispatch(addToAll(getInfoFav()))
-        dispatch(fetchImage())
-    }
-    const handleClickLikes = () => {
-        dispatch(addToLikes(getInfoLikes()))
-        dispatch(addToAll(getInfoLikes()))
-        dispatch(fetchImage())
-    }
-
-    const handleClickDislikes = () => {
-        dispatch(addToDislikes(getInfoDislikes()))
-        dispatch(addToAll(getInfoDislikes()))
-        dispatch(fetchImage())
-    }
+    const { handleClickFav, handleClickLikes, handleClickDislikes } = useChoisesButtons()
 
     return (
         <MainWrapper>
             <ButtonsWrapper
                 sx={{
                     borderRadius: { xs: '10px', sm: '20px' },
-                    bottom: { xs: '60px', sm: '45px', md: '85px' },
+                    bottom: '0px',
                 }}
             >
                 <StyledBox

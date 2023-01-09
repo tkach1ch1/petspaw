@@ -1,11 +1,10 @@
 import { useEffect } from 'react'
 import 'src/styles/styles.css'
-import { Box } from '@mui/system'
 import { StyledCircularProgress } from 'src/components/style/style'
 import { nanoid } from 'nanoid'
 import { useAppDispatch, useAppSelector } from 'src/hooks/reduxHooks'
 import { fetchImage } from 'src/redux/votingPageReducer'
-import { ImgStyle } from '../style/style'
+import { ChosenImageBox, ImgStyle } from '../style/style'
 
 export const ChosenImage = () => {
     const dispatch = useAppDispatch()
@@ -25,7 +24,7 @@ export const ChosenImage = () => {
     if (imageStatus === 'loading') {
         content = (
             <StyledCircularProgress
-                sx={{ top: { xs: '10px', sm: '30px', md: '90px' } }}
+                sx={{ top: { xs: '120px', sm: '100px', md: '90px' } }}
                 size={'100px'}
                 color='secondary'
             />
@@ -35,7 +34,7 @@ export const ChosenImage = () => {
             <ImgStyle
                 src={imageVoting && elem.url}
                 key={nanoid()}
-                alt='cat_photo'
+                alt='Random cat'
                 style={{
                     width: '100%',
                     objectFit: 'cover',
@@ -48,13 +47,5 @@ export const ChosenImage = () => {
         content = <div>{imageError}</div>
     }
 
-    return (
-        <Box
-            display={'flex'}
-            justifyContent={'center'}
-            position={'relative'}
-        >
-            {content}
-        </Box>
-    )
+    return <ChosenImageBox>{content}</ChosenImageBox>
 }

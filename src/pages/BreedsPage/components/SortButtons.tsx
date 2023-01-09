@@ -6,20 +6,25 @@ import sortAB_act from 'src/img/svg/sortAB_act.svg'
 import { SortButton } from '../style/style'
 
 interface SortButtonsProps {
-    valueBA: boolean
-    onClickBA: () => void
-    valueAB: boolean
-    onClickAB: () => void
+    isActiveReversSort: boolean
+    onClickHandleReverseSort: () => void
+    isActiveDefaultSort: boolean
+    onClickHandleDefaultSort: () => void
 }
 
-export const SortButtons = ({ valueAB, onClickAB, valueBA, onClickBA }: SortButtonsProps) => {
+export const SortButtons = ({
+    isActiveReversSort,
+    isActiveDefaultSort,
+    onClickHandleReverseSort,
+    onClickHandleDefaultSort,
+}: SortButtonsProps) => {
     return (
         <Box
             display={'flex'}
             gap={'10px'}
         >
-            <SortButton onClick={onClickBA}>
-                {valueBA ? (
+            <SortButton onClick={onClickHandleReverseSort}>
+                {isActiveReversSort ? (
                     <img
                         src={sortBA_act}
                         alt='sortBA_act'
@@ -31,8 +36,8 @@ export const SortButtons = ({ valueAB, onClickAB, valueBA, onClickBA }: SortButt
                     />
                 )}
             </SortButton>
-            <SortButton onClick={onClickAB}>
-                {valueAB ? (
+            <SortButton onClick={onClickHandleDefaultSort}>
+                {isActiveDefaultSort ? (
                     <img
                         src={sortAB_act}
                         alt='sortAB_act'

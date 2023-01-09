@@ -26,7 +26,6 @@ export const Header = () => {
 
     // Takes page pathname to compare it with a NavLink
     //to change categorie image on active image when user on the page
-
     useEffect(() => {
         setNewActiveLink(location.pathname)
     }, [location])

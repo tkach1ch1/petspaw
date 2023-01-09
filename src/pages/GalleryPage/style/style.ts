@@ -41,8 +41,8 @@ export const StyledUpdateBox = styled(Box)({
     display: 'flex',
     justifyContent: 'center',
     backgroundColor: 'white',
-    width: '40px',
-    height: '40px',
+    width: '100%',
+    height: '100%',
     borderRadius: '10px',
     padding: '10px',
     cursor: 'pointer',
@@ -58,15 +58,23 @@ export const StyledUpdateBox = styled(Box)({
 // -- Modal -- //
 
 export const StyledModalBox = styled(Box)({
-    outline: 'none',
-    border: 'none',
+    position: 'relative',
+    width: '55%',
+    height: '92vh',
+    maxWidth: '800px',
+    maxHeight: '1000px',
+    margin: '30px',
     padding: '20px',
-    position: 'absolute',
+    borderRadius: '20px',
     backgroundColor: 'var(--main-gray)',
     overflow: 'hidden',
     overflowY: 'scroll',
     '::-webkit-scrollbar': {
         width: 0,
+    },
+    [theme.breakpoints.down('lg')]: {
+        width: '100%',
+        maxWidth: '100%',
     },
 })
 
@@ -118,6 +126,8 @@ export const StyledImg = styled('img')({
 })
 
 export const ImgStyle = styled('img')({
+    width: '100%',
+    height: '100%',
     [theme.breakpoints.down('sm')]: {
         width: '100px',
         height: '100px',
@@ -155,8 +165,6 @@ export const StyledLink = styled('a')({
 })
 
 export const StyledUploadBoxMain = styled(Button)({
-    position: 'absolute',
-    left: 0,
     width: '100%',
     textTransform: 'none',
     borderRadius: '20px',

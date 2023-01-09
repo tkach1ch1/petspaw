@@ -15,7 +15,7 @@ export const ModalUploadBox = ({ onDrop, onChange, fileUrl }: ModalUploadBoxProp
     const { getRootProps, getInputProps } = useDropzone({ onDrop })
 
     return (
-        <Box>
+        <Box sx={{ mt: '30px' }}>
             <Box {...getRootProps()}>
                 <input
                     onChange={onChange}
@@ -79,7 +79,7 @@ export const ModalUploadBox = ({ onDrop, onChange, fileUrl }: ModalUploadBoxProp
                                         sm: '240px',
                                         md: '320px',
                                         lg: '200px',
-                                        xl: '220px',
+                                        xl: '250px',
                                         xxl: '320px',
                                     },
                                     padding: { xs: '10px 20px', sm: '20px 40px' },

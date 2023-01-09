@@ -11,8 +11,8 @@ interface ImageGalleryTemplateBreedsProps {
     status: string
     error: string | undefined
     selectedBreed: string
-    valueAB: boolean
-    valueBA: boolean
+    isActiveDefaultSort: boolean
+    isActiveReversSort: boolean
 }
 
 //NOTE: Grid for BreedsPage
@@ -21,8 +21,8 @@ export const ImageGalleryTemplateBreeds = ({
     status,
     error,
     selectedBreed,
-    valueAB,
-    valueBA,
+    isActiveDefaultSort,
+    isActiveReversSort,
 }: ImageGalleryTemplateBreedsProps) => {
     const allBreeds = useAppSelector((state) => state.allBreeds.breeds)
 
@@ -36,7 +36,7 @@ export const ImageGalleryTemplateBreeds = ({
                 sx={{
                     display: { xs: 'none', md: 'block' },
                     top: { md: '250px', lg: '180px', xxxl: '250px' },
-                    right: '40%',
+                    right: '45%',
                 }}
                 size={'100px'}
                 color='secondary'
@@ -45,7 +45,7 @@ export const ImageGalleryTemplateBreeds = ({
     } else if (status === 'succeeded') {
         content =
             // Sorted Breeds from A to B
-            selectedBreed === '' && valueAB
+            selectedBreed === '' && isActiveDefaultSort
                 ? arrayLimited.length > 0 &&
                   arrayLimited.map((elem) => (
                       <GridItem
@@ -57,7 +57,7 @@ export const ImageGalleryTemplateBreeds = ({
                       />
                   ))
                 : // Sorted Breeds from B to A
-                selectedBreed === '' && valueBA
+                selectedBreed === '' && isActiveReversSort
                 ? arrayLimited
                       .map((elem) => (
                           <GridItem
