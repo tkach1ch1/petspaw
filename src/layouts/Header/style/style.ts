@@ -22,13 +22,14 @@ export const BoxWrapper = styled(Box)({
 
 export const StyledMenuDrawer = styled(Box)({
     position: 'absolute',
-    zIndex: 10,
+    zIndex: 1000,
     right: 0,
     top: 0,
     left: 0,
-    height: '100%',
+    height: '95vh',
     backgroundColor: '#F8F8F7',
     padding: '20px',
+    margin: '-20px',
 })
 
 // -- Search bar  -- //

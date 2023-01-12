@@ -53,5 +53,11 @@ export const ModalUploadAsyncContent = ({ isUploaded }: ModalUploadAsyncContentP
             </InfoUploadBox>
         )
     }
-    return <Box sx={{ display: 'flex', justifyContent: 'center', width: '100%' }}>{content}</Box>
+    return (
+        <Box
+            sx={{ display: 'flex', justifyContent: 'center', width: '100%', marginBottom: '100px' }}
+        >
+            {content}
+        </Box>
+    )
 }
